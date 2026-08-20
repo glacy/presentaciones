@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Flag, Compass, BookOpen, ArrowLeft, Sparkles } from "lucide-react";
 import { slidesMeta } from "../data/slidesMeta";
 
+
 const meta = slidesMeta[8];
 
 export function Slide09Epilogue() {

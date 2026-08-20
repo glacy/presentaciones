@@ -119,7 +119,7 @@ export function TeacherNote({
           neonTextMap[color],
         )}
       >
-        Narrativa del docente
+        Note que ...
       </span>
       <div className="pr-24 pt-1 sm:pr-28">“{children}”</div>
     </motion.blockquote>

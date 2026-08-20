@@ -14,8 +14,8 @@ import {
   Zap,
 } from "lucide-react";
 import { slidesMeta } from "../data/slidesMeta";
-import { SlideShell } from "../ui/SlideShell";
-import { TeacherNote } from "../ui/primitives";
+import { SlideShell } from "../../shared/ui/SlideShell";
+import { TeacherNote } from "../../shared/ui/primitives";
 
 const meta = slidesMeta[3];
 

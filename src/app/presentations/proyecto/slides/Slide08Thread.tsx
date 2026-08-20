@@ -12,8 +12,8 @@ import {
   Workflow,
 } from "lucide-react";
 import { slidesMeta } from "../data/slidesMeta";
-import { SlideShell } from "../ui/SlideShell";
-import { TeacherNote } from "../ui/primitives";
+import { SlideShell } from "../../shared/ui/SlideShell";
+import { TeacherNote } from "../../shared/ui/primitives";
 
 const meta = slidesMeta[7];
 
@@ -95,11 +95,10 @@ export function Slide08Thread() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 + i * 0.12 }}
               whileHover={{ scale: 1.005 }}
-              className={`group w-full rounded-xl border p-3 text-left transition sm:p-4 ${
-                isActive
-                  ? "border-[#00e5ff]/50 bg-[#00e5ff]/8"
-                  : "border-white/8 bg-card/40 hover:border-white/15"
-              }`}
+              className={`group w-full rounded-xl border p-3 text-left transition sm:p-4 ${isActive
+                ? "border-[#00e5ff]/50 bg-[#00e5ff]/8"
+                : "border-white/8 bg-card/40 hover:border-white/15"
+                }`}
             >
               <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center">
                 {/* From */}

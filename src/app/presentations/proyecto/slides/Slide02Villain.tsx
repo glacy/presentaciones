@@ -3,8 +3,8 @@
 import { motion } from "framer-motion";
 import { MessageCircle, AlertTriangle, ArrowRight } from "lucide-react";
 import { slidesMeta } from "../data/slidesMeta";
-import { SlideShell } from "../ui/SlideShell";
-import { TeacherNote } from "../ui/primitives";
+import { SlideShell } from "../../shared/ui/SlideShell";
+import { TeacherNote } from "../../shared/ui/primitives";
 
 const meta = slidesMeta[1];
 
@@ -122,11 +122,10 @@ export function Slide02Villain() {
                   className={`flex ${m.self ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`max-w-[80%] rounded-lg px-3 py-2 text-sm ${
-                      m.self
-                        ? "rounded-tr-none bg-[#005c4b] text-[#e9edef]"
-                        : "rounded-tl-none bg-[#202c33] text-[#e9edef]"
-                    }`}
+                    className={`max-w-[80%] rounded-lg px-3 py-2 text-sm ${m.self
+                      ? "rounded-tr-none bg-[#005c4b] text-[#e9edef]"
+                      : "rounded-tl-none bg-[#202c33] text-[#e9edef]"
+                      }`}
                   >
                     {!m.self && (
                       <div className="mb-0.5 text-[11px] font-semibold text-[#ff3d8b]">

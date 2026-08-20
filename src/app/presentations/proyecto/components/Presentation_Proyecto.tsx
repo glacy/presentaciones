@@ -9,18 +9,19 @@ import {
   X,
   Play,
   Keyboard,
+  Home,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { slidesMeta } from "./data/slidesMeta";
-import { Slide01Cover } from "./slides/Slide01Cover";
-import { Slide02Villain } from "./slides/Slide02Villain";
-import { Slide03Diagnosis } from "./slides/Slide03Diagnosis";
-import { Slide04Treaty } from "./slides/Slide04Treaty";
-import { Slide05Timeline } from "./slides/Slide05Timeline";
-import { Slide06Storm } from "./slides/Slide06Storm";
-import { Slide07Mirror } from "./slides/Slide07Mirror";
-import { Slide08Thread } from "./slides/Slide08Thread";
-import { Slide09Epilogue } from "./slides/Slide09Epilogue";
+import { slidesMeta } from "../data/slidesMeta";
+import { Slide01Cover } from "../slides/Slide01Cover";
+import { Slide02Villain } from "../slides/Slide02Villain";
+import { Slide03Diagnosis } from "../slides/Slide03Diagnosis";
+import { Slide04Treaty } from "../slides/Slide04Treaty";
+import { Slide05Timeline } from "../slides/Slide05Timeline";
+import { Slide06Storm } from "../slides/Slide06Storm";
+import { Slide07Mirror } from "../slides/Slide07Mirror";
+import { Slide08Thread } from "../slides/Slide08Thread";
+import { Slide09Epilogue } from "../slides/Slide09Epilogue";
 
 const slideComponents = [
   Slide01Cover,
@@ -91,6 +92,8 @@ export function Presentation() {
         setOverview(false);
       } else if (e.key.toLowerCase() === "g") {
         setOverview((v) => !v);
+      } else if (e.key.toLowerCase() === "h") {
+        window.location.href = "/";
       } else if (/^[1-9]$/.test(e.key)) {
         const n = parseInt(e.key, 10) - 1;
         if (n < total) go(n);
@@ -207,14 +210,23 @@ export function Presentation() {
             <ChevronRight className="h-4 w-4" />
           </button>
 
-          <button
-            onClick={() => setOverview(true)}
-            aria-label="Ver todas las diapositivas"
-            title="Vista general (G)"
-            className="ml-1 hidden items-center gap-1 rounded-lg border border-white/10 bg-white/5 p-2 text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground sm:inline-flex"
-          >
-            <Grid2x2 className="h-4 w-4" />
-          </button>
+           <button
+             onClick={() => setOverview(true)}
+             aria-label="Ver todas las diapositivas"
+             title="Vista general (G)"
+             className="ml-1 hidden items-center gap-1 rounded-lg border border-white/10 bg-white/5 p-2 text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground sm:inline-flex"
+           >
+             <Grid2x2 className="h-4 w-4" />
+           </button>
+
+           <button
+             onClick={() => window.location.href = "/"}
+             aria-label="Ir al lanzador de presentaciones (H)"
+             title="Lanzador (H)"
+             className="ml-1 hidden items-center gap-1 rounded-lg border border-white/10 bg-white/5 p-2 text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground sm:inline-flex"
+           >
+             <Home className="h-4 w-4" />
+           </button>
         </div>
       </div>
 

@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "katex/dist/katex.css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -275,4 +276,100 @@
 }
 .animate-fade-up {
   animation: fade-up 0.6s ease forwards;
+}
+
+/* Accessibility: Ensure minimum text size for better readability */
+[class*="text-xs"], 
+[class*="text-[11px"], 
+[class*="text-[10px"] {
+  font-size: clamp(0.8125rem, 0.75rem + 0.3125vw, 0.875rem) !important;
+}
+
+/* Improved contrast for small text */
+.text-muted-foreground {
+  color: hsl(var(--muted-foreground) / 0.85);
+}
+
+/* Better focus visibility for keyboard navigation */
+*:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 2px;
+}
+
+/* Ensure adequate spacing between interactive elements */
+button, a {
+  min-height: 44px;
+  min-width: 44px;
+}
+
+/* Improve readability of mathematical content */
+.katex, .katex-html {
+  font-size: 1.05em;
+}
+
+/* Fix KaTeX alignment and display issues */
+.katex {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1em;
+  max-width: 100%;
+  line-height: 1.2;
+}
+
+.katex-display {
+  display: block;
+  margin: 1em 0;
+  text-align: center;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Fix baseline alignment for inline math */
+span.katex {
+  vertical-align: middle;
+  line-height: 1.2;
+}
+
+/* Fix for accents like \vec{}: position the arrow body using overlay class */
+.katex .accent-body .overlay {
+  position: relative !important;
+  top: -0.05em !important;
+  left: 0.5em !important;
+  z-index: 10 !important;
+  display: block !important;
+}
+
+.katex .accent-body {
+  width: 0 !important;
+  position: relative !important;
+}
+
+.katex .vlist {
+  position: relative !important;
+}
+
+.katex .accent {
+  position: relative !important;
+  display: inline-block !important;
+}
+
+.katex .katex-overlay {
+  display: block;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+.katex .katex-overlay svg,
+.katex .katex-overlay svg path,
+.katex svg,
+.katex svg path {
+  fill: currentColor !important;
+  stroke: currentColor !important;
+  color: currentColor !important;
+}
+
+/* Ensure proper baseline alignment in tables */
+table .katex {
+  vertical-align: baseline;
 }

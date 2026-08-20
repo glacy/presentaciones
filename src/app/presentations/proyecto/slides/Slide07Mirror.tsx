@@ -4,8 +4,8 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ClipboardCheck, Eye, Quote, Link2 } from "lucide-react";
 import { slidesMeta } from "../data/slidesMeta";
-import { SlideShell } from "../ui/SlideShell";
-import { TeacherNote } from "../ui/primitives";
+import { SlideShell } from "../../shared/ui/SlideShell";
+import { TeacherNote } from "../../shared/ui/primitives";
 
 const meta = slidesMeta[6];
 
@@ -104,22 +104,20 @@ export function Slide07Mirror() {
                 <button
                   key={s}
                   onClick={() => setSelected(selected === i ? null : i)}
-                  className={`grid place-items-center rounded-md border px-1 py-2 text-[10px] transition sm:text-xs ${
-                    selected === i && isExemplar
-                      ? "border-[#a855f7]/60 bg-[#a855f7]/20 text-[#e0c7ff]"
-                      : isExemplar
-                        ? "border-[#a855f7]/30 bg-[#a855f7]/5 text-[#c89ef7]"
-                        : "border-white/8 bg-white/3 text-muted-foreground hover:border-white/20"
-                  }`}
+                  className={`grid place-items-center rounded-md border px-1 py-2 text-[10px] transition sm:text-xs ${selected === i && isExemplar
+                    ? "border-[#a855f7]/60 bg-[#a855f7]/20 text-[#e0c7ff]"
+                    : isExemplar
+                      ? "border-[#a855f7]/30 bg-[#a855f7]/5 text-[#c89ef7]"
+                      : "border-white/8 bg-white/3 text-muted-foreground hover:border-white/20"
+                    }`}
                 >
                   <span
-                    className={`h-2 w-2 rounded-full ${
-                      selected === i && isExemplar
-                        ? "bg-[#a855f7]"
-                        : isExemplar
-                          ? "bg-[#a855f7]/40"
-                          : "bg-white/15"
-                    }`}
+                    className={`h-2 w-2 rounded-full ${selected === i && isExemplar
+                      ? "bg-[#a855f7]"
+                      : isExemplar
+                        ? "bg-[#a855f7]/40"
+                        : "bg-white/15"
+                      }`}
                   />
                 </button>
               );

@@ -18,25 +18,23 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "El Mapa del Tesoro | Bitácora de Trabajo en Equipo",
+  title: "Presentaciones Interactivas | Física General I",
   description:
-    "Presentación interactiva para aprender a completar correctamente la bitácora de trabajo en equipo en Física General I. Storytelling visual de principio a fin.",
+    "Portal de presentaciones interactivas para Física General I. Accede a diferentes módulos de aprendizaje con contenido visual y dinámico.",
   keywords: [
-    "bitácora",
-    "trabajo en equipo",
-    "Física General I",
-    "proyecto grupal",
-    "rubrica",
-    "trazabilidad",
+    "presentaciones",
+    "física general",
+    "aprendizaje interactivo",
+    "educación",
   ],
   authors: [{ name: "Cátedra de Física General I" }],
   icons: {
     icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
   },
   openGraph: {
-    title: "El Mapa del Tesoro | Bitácora de Trabajo en Equipo",
+    title: "Presentaciones Interactivas | Física General I",
     description:
-      "Cómo conquistar el trabajo en equipo sin morir en el intento.",
+      "Portal de presentaciones interactivas para Física General I",
     type: "website",
   },
 };

@@ -79,7 +79,7 @@ export function SlideShell({
               </div>
             </div>
             <div className="hidden font-mono text-xs text-muted-foreground sm:block">
-              {String(meta.index).padStart(2, "0")} / 09
+              {String(meta.index).padStart(2, "0")} / 10
             </div>
           </motion.header>
         )}
