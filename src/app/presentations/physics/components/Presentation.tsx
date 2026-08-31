@@ -212,23 +212,23 @@ export function Presentation() {
             <ChevronRight className="h-4 w-4" />
           </button>
 
-           <button
-             onClick={() => setOverview(true)}
-             aria-label="Ver todas las diapositivas"
-             title="Vista general (G)"
-             className="ml-1 hidden items-center gap-1 rounded-lg border border-white/10 bg-white/5 p-2 text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground sm:inline-flex"
-           >
-             <Grid2x2 className="h-4 w-4" />
-           </button>
+          <button
+            onClick={() => setOverview(true)}
+            aria-label="Ver todas las diapositivas"
+            title="Vista general (G)"
+            className="flex  items-center gap-1 rounded-lg border border-white/10 bg-white/5 p-2 text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground sm:inline-flex"
+          >
+            <Grid2x2 className="h-4 w-4" />
+          </button>
 
-           <button
-             onClick={() => window.location.href = "/"}
-             aria-label="Ir al lanzador de presentaciones (H)"
-             title="Lanzador (H)"
-             className="ml-1 hidden items-center gap-1 rounded-lg border border-white/10 bg-white/5 p-2 text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground sm:inline-flex"
-           >
-             <Home className="h-4 w-4" />
-           </button>
+          <button
+            onClick={() => window.location.href = "/"}
+            aria-label="Ir al lanzador de presentaciones (H)"
+            title="Lanzador (H)"
+            className="ml-1 flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 p-2 text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground sm:inline-flex"
+          >
+            <Home className="h-4 w-4" />
+          </button>
         </div>
       </div>
 

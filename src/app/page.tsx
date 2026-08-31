@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Atom, Map, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
+import type { KeyboardEvent } from "react";
 
 export default function PresentationLauncher() {
   const [openInNewWindow, setOpenInNewWindow] = useState(false);
@@ -28,6 +29,17 @@ export default function PresentationLauncher() {
       bgColor: "bg-neon-magenta/10",
     },
   ];
+
+  const handleKeyDown = (e: KeyboardEvent, path: string) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      if (openInNewWindow) {
+        window.open(path, '_blank', 'noopener noreferrer');
+      } else {
+        window.location.href = path;
+      }
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center p-6">
@@ -59,51 +71,47 @@ export default function PresentationLauncher() {
 
         <div className="grid gap-6 md:grid-cols-2">
           {presentations.map((presentation, index) => (
-            <motion.div
+            <div
               key={presentation.path}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: index * 0.1 }}
+              onKeyDown={(e) => handleKeyDown(e, presentation.path)}
               tabIndex={0}
+              role="button"
+              aria-label={`Abrir ${presentation.title}`}
             >
-              <Link 
-                href={presentation.path} 
-                target={openInNewWindow ? "_blank" : "_self"} 
-                rel={openInNewWindow ? "noopener noreferrer" : undefined}
-                className="focus-visible:outline-none"
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    if (openInNewWindow) {
-                      window.open(presentation.path, '_blank', 'noopener noreferrer');
-                    } else {
-                      window.location.href = presentation.path;
-                    }
-                  }
-                }}
+              <motion.div
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: index * 0.1 }}
               >
-                <div className={`group relative rounded-xl border ${presentation.borderColor} ${presentation.bgColor} p-6 transition hover:bg-card/60 hover:border-white/20 focus-visible:ring-2 focus-visible:ring-${presentation.color.replace('text-', '')} focus-visible:ring-offset-2 focus-visible:ring-offset-background`}>
-                  <div className="flex items-start gap-4">
-                    <div className={`grid h-12 w-12 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/5 ${presentation.color}`}>
-                      <presentation.icon className="h-6 w-6" />
-                    </div>
-                    <div className="flex-1">
-                      <h3 className={`font-semibold ${presentation.color} mb-2`}>
-                        {presentation.title}
-                      </h3>
-                      <p className="text-sm text-muted-foreground mb-4">
-                        {presentation.description}
-                      </p>
-                      <div className="flex items-center gap-2 text-sm font-medium text-foreground group-hover:translate-x-1 transition-transform">
-                        Comenzar
-                        <ArrowRight className="h-4 w-4" />
-                        {openInNewWindow && <ExternalLink className="h-3 w-3 ml-1 opacity-60" />}
+                <Link 
+                  href={presentation.path} 
+                  target={openInNewWindow ? "_blank" : "_self"} 
+                  rel={openInNewWindow ? "noopener noreferrer" : undefined}
+                  className="block focus-visible:outline-none"
+                >
+                  <div className={`group relative rounded-xl border ${presentation.borderColor} ${presentation.bgColor} p-6 transition hover:bg-card/60 hover:border-white/20 focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:ring-offset-background`}>
+                    <div className="flex items-start gap-4">
+                      <div className={`grid h-12 w-12 shrink-0 place-items-center rounded-lg border border-white/10 bg-white/5 ${presentation.color}`}>
+                        <presentation.icon className="h-6 w-6" />
+                      </div>
+                      <div className="flex-1">
+                        <h3 className={`font-semibold ${presentation.color} mb-2`}>
+                          {presentation.title}
+                        </h3>
+                        <p className="text-sm text-muted-foreground mb-4">
+                          {presentation.description}
+                        </p>
+                        <div className="flex items-center gap-2 text-sm font-medium text-foreground group-hover:translate-x-1 transition-transform">
+                          Comenzar
+                          <ArrowRight className="h-4 w-4" />
+                          {openInNewWindow && <ExternalLink className="h-3 w-3 ml-1 opacity-60" />}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </Link>
-            </motion.div>
+                </Link>
+              </motion.div>
+            </div>
           ))}
         </div>
       </div>

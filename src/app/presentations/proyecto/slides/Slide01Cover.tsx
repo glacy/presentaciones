@@ -100,7 +100,7 @@ export function Slide01Cover() {
           className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#00e5ff]/40 bg-[#00e5ff]/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#7decff]"
         >
           <Compass className="h-3.5 w-3.5" />
-          Física General I · I Semestre 2026
+          Física General I · II Semestre 2026
         </motion.div>
 
         <motion.h1
@@ -109,9 +109,9 @@ export function Slide01Cover() {
           transition={{ duration: 0.9, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
           className="font-sans text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl lg:text-8xl"
         >
-          <span className="block text-foreground">El Mapa del</span>
+          <span className="block text-foreground">¿Qué es la</span>
           <span className="block bg-gradient-to-r from-[#00e5ff] via-[#4ade80] to-[#ff8c42] bg-clip-text text-transparent">
-            Tesoro
+            Bitácora?
           </span>
         </motion.h1>
 
@@ -122,32 +122,32 @@ export function Slide01Cover() {
           className="mt-5 max-w-2xl text-base text-muted-foreground sm:text-lg md:text-xl"
         >
           Cómo convertir la{" "}
-          <span className="font-semibold text-foreground">Bitácora de Física I</span>{" "}
-          en tu mejor arma contra el caos del trabajo en equipo.
+          <span className="font-semibold text-foreground">Bitácora</span>{" "}
+          en tu mejor herramienta contra el caos del trabajo en equipo.
         </motion.p>
 
-        <motion.div
+        {/*  <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-8 flex flex-wrap items-center justify-center gap-3"
         >
-          <div className="inline-flex items-center gap-2 rounded-xl border border-[#00e5ff]/30 bg-[#00e5ff]/10 px-4 py-2.5 text-sm font-medium text-[#7decff]">
+           <div className="inline-flex items-center gap-2 rounded-xl border border-[#00e5ff]/30 bg-[#00e5ff]/10 px-4 py-2.5 text-sm font-medium text-[#7decff]">
             <Sparkles className="h-4 w-4" />
             9 capítulos · Storytelling visual
           </div>
-          <div className="hidden font-mono text-xs text-muted-foreground sm:flex sm:items-center sm:gap-1.5">
+                     <div className="hidden font-mono text-xs text-muted-foreground sm:flex sm:items-center sm:gap-1.5">
             <kbd className="rounded border border-white/10 bg-white/5 px-1.5 py-0.5">→</kbd>
             <span>para empezar</span>
             <ArrowRight className="h-3 w-3" />
-          </div>
-        </motion.div>
+          </div> 
+        </motion.div> */}
       </div>
 
       {/* Footer credit */}
       <div className="absolute bottom-4 left-1/2 z-10 -translate-x-1/2 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground/60">
-        Cátedra de Física General I · Tecnológico de Costa Rica
+        Tecnológico de Costa Rica
       </div>
-    </div>
+    </div >
   );
 }

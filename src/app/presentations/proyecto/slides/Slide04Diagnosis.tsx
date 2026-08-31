@@ -6,7 +6,7 @@ import { slidesMeta } from "../data/slidesMeta";
 import { SlideShell } from "../../shared/ui/SlideShell";
 import { TeacherNote } from "../../shared/ui/primitives";
 
-const meta = slidesMeta[2];
+const meta = slidesMeta[3];
 
 const badExamples = [
   "Soy bueno en todo.",

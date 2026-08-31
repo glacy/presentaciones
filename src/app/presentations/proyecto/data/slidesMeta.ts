@@ -1,5 +1,6 @@
 import {
   Map,
+  Target,
   Ghost,
   ScanFace,
   Puzzle,
@@ -9,19 +10,27 @@ import {
   Workflow,
   Flag,
 } from "lucide-react";
-import type { SlideMeta } from "../types";
+import type { SlideMeta } from "../../shared/types";
 
 export const slidesMeta: SlideMeta[] = [
   {
     index: 1,
     shortLabel: "Portada",
-    title: "El Mapa del Tesoro",
+    title: "La Bitacora del Trabajo Individual y en Equipo",
     chapter: "Portada",
     accent: "cyan",
     icon: Map,
   },
   {
     index: 2,
+    shortLabel: "Contexto",
+    title: "¿Por qué estamos aquí?",
+    chapter: "Introducción",
+    accent: "cyan",
+    icon: Target,
+  },
+  {
+    index: 3,
     shortLabel: "El problema",
     title: "El Villano de la Historia",
     chapter: "El Problema",
@@ -29,7 +38,7 @@ export const slidesMeta: SlideMeta[] = [
     icon: Ghost,
   },
   {
-    index: 3,
+    index: 4,
     shortLabel: "Diagnóstico · T1",
     title: "Mirarse al espejo sin filtro",
     chapter: "Capítulo 1 · Tabla 1",
@@ -37,7 +46,7 @@ export const slidesMeta: SlideMeta[] = [
     icon: ScanFace,
   },
   {
-    index: 4,
+    index: 5,
     shortLabel: "Tratado de paz · T2-T3",
     title: "Armando el rompecabezas",
     chapter: "Capítulo 2 · Tablas 2 y 3",
@@ -45,7 +54,7 @@ export const slidesMeta: SlideMeta[] = [
     icon: Puzzle,
   },
   {
-    index: 5,
+    index: 6,
     shortLabel: "Cronograma · T4",
     title: "El Cronograma no es un deseo, es un contrato",
     chapter: "Capítulo 3 · Tabla 4",
@@ -53,7 +62,7 @@ export const slidesMeta: SlideMeta[] = [
     icon: CalendarClock,
   },
   {
-    index: 6,
+    index: 7,
     shortLabel: "La Tormenta · T5",
     title: "La realidad siempre gana a la teoría",
     chapter: "Capítulo 4 · Tabla 5 · CRÍTICA",
@@ -61,7 +70,7 @@ export const slidesMeta: SlideMeta[] = [
     icon: CloudLightning,
   },
   {
-    index: 7,
+    index: 8,
     shortLabel: "Espejo final · T6",
     title: "La evaluación que no es por cumplir",
     chapter: "Capítulo 5 · Tabla 6",
@@ -69,7 +78,7 @@ export const slidesMeta: SlideMeta[] = [
     icon: ClipboardCheck,
   },
   {
-    index: 8,
+    index: 9,
     shortLabel: "El hilo invisible",
     title: "La Trazabilidad: el secreto de los 100 puntos",
     chapter: "Resumen visual",
@@ -77,7 +86,7 @@ export const slidesMeta: SlideMeta[] = [
     icon: Workflow,
   },
   {
-    index: 9,
+    index: 10,
     shortLabel: "Epílogo",
     title: "La bitácora no es puro papeleo",
     chapter: "Epílogo",

@@ -14,25 +14,27 @@ import {
 import { cn } from "@/lib/utils";
 import { slidesMeta } from "../data/slidesMeta";
 import { Slide01Cover } from "../slides/Slide01Cover";
-import { Slide02Villain } from "../slides/Slide02Villain";
-import { Slide03Diagnosis } from "../slides/Slide03Diagnosis";
-import { Slide04Treaty } from "../slides/Slide04Treaty";
-import { Slide05Timeline } from "../slides/Slide05Timeline";
-import { Slide06Storm } from "../slides/Slide06Storm";
-import { Slide07Mirror } from "../slides/Slide07Mirror";
-import { Slide08Thread } from "../slides/Slide08Thread";
-import { Slide09Epilogue } from "../slides/Slide09Epilogue";
+import { Slide02Context } from "../slides/Slide02Context";
+import { Slide03Villain } from "../slides/Slide03Villain";
+import { Slide04Diagnosis } from "../slides/Slide04Diagnosis";
+import { Slide05Treaty } from "../slides/Slide05Treaty";
+import { Slide06Timeline } from "../slides/Slide06Timeline";
+import { Slide07Storm } from "../slides/Slide07Storm";
+import { Slide08Mirror } from "../slides/Slide08Mirror";
+import { Slide09Thread } from "../slides/Slide09Thread";
+import { Slide10Epilogue } from "../slides/Slide10Epilogue";
 
 const slideComponents = [
   Slide01Cover,
-  Slide02Villain,
-  Slide03Diagnosis,
-  Slide04Treaty,
-  Slide05Timeline,
-  Slide06Storm,
-  Slide07Mirror,
-  Slide08Thread,
-  Slide09Epilogue,
+  Slide02Context,
+  Slide03Villain,
+  Slide04Diagnosis,
+  Slide05Treaty,
+  Slide06Timeline,
+  Slide07Storm,
+  Slide08Mirror,
+  Slide09Thread,
+  Slide10Epilogue,
 ];
 
 type Direction = 1 | -1;
@@ -214,7 +216,7 @@ export function Presentation() {
              onClick={() => setOverview(true)}
              aria-label="Ver todas las diapositivas"
              title="Vista general (G)"
-             className="ml-1 hidden items-center gap-1 rounded-lg border border-white/10 bg-white/5 p-2 text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground sm:inline-flex"
+             className="ml-1 flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 p-2 text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground sm:inline-flex"
            >
              <Grid2x2 className="h-4 w-4" />
            </button>
@@ -223,7 +225,7 @@ export function Presentation() {
              onClick={() => window.location.href = "/"}
              aria-label="Ir al lanzador de presentaciones (H)"
              title="Lanzador (H)"
-             className="ml-1 hidden items-center gap-1 rounded-lg border border-white/10 bg-white/5 p-2 text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground sm:inline-flex"
+             className="ml-1 flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 p-2 text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground sm:inline-flex"
            >
              <Home className="h-4 w-4" />
            </button>

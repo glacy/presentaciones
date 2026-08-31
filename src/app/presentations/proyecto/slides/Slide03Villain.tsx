@@ -6,14 +6,14 @@ import { slidesMeta } from "../data/slidesMeta";
 import { SlideShell } from "../../shared/ui/SlideShell";
 import { TeacherNote } from "../../shared/ui/primitives";
 
-const meta = slidesMeta[1];
+const meta = slidesMeta[2];
 
 const chaoticMessages = [
-  { from: "Carlos", text: "Compañeros, alguien me pasa lo que le tocó a Carlos que no responde", time: "11:58 PM", self: false, delay: 0.1 },
-  { from: "María", text: "¿Quién hizo el Word? 🤔", time: "11:59 PM", self: false, delay: 0.5 },
-  { from: "Diego", text: "Yo pegué mi parte, no sé qué hizo el resto", time: "11:59 PM", self: false, delay: 0.9 },
-  { from: "Ana", text: "Nos juntamos el domingo antes de entregar", time: "Hace 2 sem.", self: false, delay: 1.3 },
-  { from: "Tú", text: "¿Y la introducción?", time: "12:00 AM", self: true, delay: 1.7 },
+  { from: "Carlos", text: "Compañeros, alguien me pasa lo que le tocó a Diego que no me responde", time: "11:58 PM", self: true, delay: 0.5 },
+  { from: "María", text: "¿Quién hizo el Word? 🤔", time: "11:59 PM", self: false, delay: 1.0 },
+  { from: "Diego", text: "Yo pegué mi parte, no sé qué hizo el resto", time: "11:59 PM", self: false, delay: 1.5 },
+  { from: "Ana", text: "Nos juntamos el domingo antes de entregar", time: "Hace 2 sem.", self: false, delay: 2.0 },
+  { from: "Tú", text: "¿Y la introducción?", time: "12:00 AM", self: true, delay: 2.5 },
 ];
 
 const symptoms = [
@@ -143,7 +143,7 @@ export function Slide02Villain() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 2.1 }}
+                transition={{ delay: 3.0 }}
                 className="mt-3 flex items-center justify-center gap-1.5 rounded-lg border border-[#ff3d8b]/30 bg-[#ff3d8b]/5 py-2 text-xs text-[#ff7eaf]"
               >
                 <AlertTriangle className="h-3.5 w-3.5" />
