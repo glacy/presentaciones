@@ -15,7 +15,7 @@ import { slidesMeta } from "../data/slidesMeta";
 import { SlideShell } from "../../shared/ui/SlideShell";
 import { TeacherNote } from "../../shared/ui/primitives";
 
-const meta = slidesMeta[7];
+const meta = slidesMeta[8];
 
 const links = [
   {

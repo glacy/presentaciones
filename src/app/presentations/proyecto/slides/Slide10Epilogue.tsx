@@ -5,7 +5,7 @@ import { Flag, Compass, BookOpen, ArrowLeft, Sparkles } from "lucide-react";
 import { slidesMeta } from "../data/slidesMeta";
 
 
-const meta = slidesMeta[8];
+const meta = slidesMeta[9];
 
 export function Slide09Epilogue() {
   return (

@@ -14,7 +14,7 @@ import { slidesMeta } from "../data/slidesMeta";
 import { SlideShell } from "../../shared/ui/SlideShell";
 import { TeacherNote } from "../../shared/ui/primitives";
 
-const meta = slidesMeta[5];
+const meta = slidesMeta[6];
 
 export function Slide06Storm() {
   return (
