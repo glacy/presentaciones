@@ -10,32 +10,38 @@ import {
   Play,
   Keyboard,
   Home,
+  Eye,
+  EyeOff,
+  Maximize2,
+  Minimize2,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { slidesMeta } from "../data/slidesMeta";
-import { Slide01Cover } from "../slides/Slide01Cover";
-import { Slide02Context } from "../slides/Slide02Context";
-import { Slide03Villain } from "../slides/Slide03Villain";
-import { Slide04Diagnosis } from "../slides/Slide04Diagnosis";
-import { Slide05Treaty } from "../slides/Slide05Treaty";
-import { Slide06Timeline } from "../slides/Slide06Timeline";
-import { Slide07Storm } from "../slides/Slide07Storm";
-import { Slide08Mirror } from "../slides/Slide08Mirror";
-import { Slide09Thread } from "../slides/Slide09Thread";
-import { Slide10Epilogue } from "../slides/Slide10Epilogue";
+import { CoverSlide } from "../slides/CoverSlide";
+import { ContextSlide } from "../slides/ContextSlide";
+import { VillainSlide } from "../slides/VillainSlide";
+import { StructureSlide } from "../slides/StructureSlide";
+import { DiagnosisSlide } from "../slides/DiagnosisSlide";
+import { TreatySlide } from "../slides/TreatySlide";
+import { TimelineSlide } from "../slides/TimelineSlide";
+import { StormSlide } from "../slides/StormSlide";
+import { MirrorSlide } from "../slides/MirrorSlide";
+import { ThreadSlide } from "../slides/ThreadSlide";
+import { EpilogueSlide } from "../slides/EpilogueSlide";
 
-const slideComponents = [
-  Slide01Cover,
-  Slide02Context,
-  Slide03Villain,
-  Slide04Diagnosis,
-  Slide05Treaty,
-  Slide06Timeline,
-  Slide07Storm,
-  Slide08Mirror,
-  Slide09Thread,
-  Slide10Epilogue,
-];
+const slideComponents: Record<string, React.ComponentType> = {
+  cover: CoverSlide,
+  context: ContextSlide,
+  villain: VillainSlide,
+  structure: StructureSlide,
+  diagnosis: DiagnosisSlide,
+  treaty: TreatySlide,
+  timeline: TimelineSlide,
+  storm: StormSlide,
+  mirror: MirrorSlide,
+  thread: ThreadSlide,
+  epilogue: EpilogueSlide,
+};
 
 type Direction = 1 | -1;
 
@@ -43,10 +49,12 @@ export function Presentation() {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState<Direction>(1);
   const [overview, setOverview] = useState(false);
+  const [showNav, setShowNav] = useState(true);
+  const [isFullscreen, setIsFullscreen] = useState(false);
 
   const total = slidesMeta.length;
   const meta = slidesMeta[index];
-  const Current = slideComponents[index];
+  const Current = slideComponents[meta.id];
 
   const go = useCallback(
     (next: number) => {
@@ -72,6 +80,49 @@ export function Presentation() {
     }
   }, [index]);
 
+  const toggleFullscreen = useCallback(() => {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+      setIsFullscreen(true);
+    } else {
+      document.exitFullscreen();
+      setIsFullscreen(false);
+    }
+  }, []);
+
+  const [hoverArea, setHoverArea] = useState(false);
+
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+    const showNavTemporarily = () => {
+      setShowNav(true);
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        setShowNav(false);
+      }, 3000);
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const bottomArea = window.innerHeight - e.clientY < 100;
+      const rightArea = window.innerWidth - e.clientX < 100;
+      
+      if (bottomArea || rightArea) {
+        setHoverArea(true);
+        showNavTemporarily();
+      } else {
+        setHoverArea(false);
+      }
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+    showNavTemporarily();
+
+    return () => {
+      clearTimeout(timeout);
+      document.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLElement) {
@@ -96,6 +147,10 @@ export function Presentation() {
         setOverview((v) => !v);
       } else if (e.key.toLowerCase() === "h") {
         window.location.href = "/";
+      } else if (e.key.toLowerCase() === "n") {
+        setShowNav((v) => !v);
+      } else if (e.key.toLowerCase() === "f") {
+        toggleFullscreen();
       } else if (/^[1-9]$/.test(e.key)) {
         const n = parseInt(e.key, 10) - 1;
         if (n < total) go(n);
@@ -103,7 +158,30 @@ export function Presentation() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [next, prev, go, total]);
+  }, [next, prev, go, total, toggleFullscreen]);
+
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+    const resetTimer = () => {
+      setShowNav(true);
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        setShowNav(false);
+      }, 3000);
+    };
+
+    const handleMouseMove = () => {
+      resetTimer();
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+    resetTimer();
+
+    return () => {
+      clearTimeout(timeout);
+      document.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []);
 
   return (
     <div className="relative flex h-[100dvh] w-full flex-col overflow-hidden bg-background text-foreground">
@@ -133,6 +211,54 @@ export function Presentation() {
           </motion.div>
         </AnimatePresence>
 
+        {/* Subtle indicator when nav is hidden but mouse is near */}
+        <AnimatePresence>
+          {!showNav && hoverArea && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute bottom-4 right-4 z-30"
+            >
+              <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-background/60 px-3 py-1.5 text-xs text-muted-foreground backdrop-blur-sm">
+                <span>Presiona N para mostrar controles</span>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
+        {/* Floating control buttons */}
+        <AnimatePresence>
+          {showNav && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute bottom-4 right-4 z-40 flex flex-col gap-2"
+            >
+              <button
+                onClick={() => setShowNav((v) => !v)}
+                aria-label={showNav ? "Ocultar navegación" : "Mostrar navegación"}
+                title={`${showNav ? "Ocultar" : "Mostrar"} navegación (N)`}
+                className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-background/90 px-3 py-2 text-xs font-medium text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground backdrop-blur-md"
+              >
+                {showNav ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                <span className="hidden sm:inline">{showNav ? "Ocultar" : "Mostrar"}</span>
+              </button>
+              <button
+                onClick={toggleFullscreen}
+                aria-label={isFullscreen ? "Salir de pantalla completa" : "Pantalla completa"}
+                title={`${isFullscreen ? "Salir de" : "Pantalla"} completa (F)`}
+                className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-background/90 px-3 py-2 text-xs font-medium text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground backdrop-blur-md"
+              >
+                {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+                <span className="hidden sm:inline">{isFullscreen ? "Minimizar" : "Fullscreen"}</span>
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         {/* Click zones for prev/next on desktop */}
         <button
           aria-label="Diapositiva anterior"
@@ -149,88 +275,98 @@ export function Presentation() {
       </div>
 
       {/* Bottom control bar */}
-      <div className="relative z-20 border-t border-white/5 bg-background/80 px-3 py-2.5 backdrop-blur-md sm:px-5">
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-2">
-          <button
-            onClick={prev}
-            disabled={index === 0}
-            className="group inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground disabled:pointer-events-none disabled:opacity-30 sm:px-3 sm:py-2 sm:text-sm"
+      <AnimatePresence>
+        {showNav && (
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 100, opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="relative z-20 border-t border-white/5 bg-background/80 px-3 py-2.5 backdrop-blur-md sm:px-5"
           >
-            <ChevronLeft className="h-4 w-4" />
-            <span className="hidden sm:inline">Anterior</span>
-          </button>
+            <div className="mx-auto flex max-w-6xl items-center justify-between gap-2">
+              <button
+                onClick={prev}
+                disabled={index === 0}
+                className="group inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground disabled:pointer-events-none disabled:opacity-30 sm:px-3 sm:py-2 sm:text-sm"
+              >
+                <ChevronLeft className="h-4 w-4" />
+                <span className="hidden sm:inline">Anterior</span>
+              </button>
 
-          {/* Slide pills */}
-          <div className="flex flex-1 items-center justify-center gap-1.5 overflow-x-auto px-1 sm:gap-2">
-            {slidesMeta.map((s, i) => {
-              const active = i === index;
-              return (
-                <button
-                  key={s.index}
-                  onClick={() => go(i)}
-                  aria-label={`Ir a la diapositiva ${s.index}: ${s.title}`}
-                  title={`${s.index}. ${s.title}`}
-                  className={cn(
-                    "group relative flex shrink-0 items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs transition sm:px-3",
-                    active
-                      ? "bg-white/10 text-foreground"
-                      : "text-muted-foreground hover:bg-white/5 hover:text-foreground",
-                  )}
+              {/* Slide pills */}
+              <div className="flex flex-1 items-center justify-center gap-1.5 overflow-x-auto px-1 sm:gap-2">
+                {slidesMeta.map((s, i) => {
+                  const active = i === index;
+                  return (
+                    <button
+                      key={s.index}
+                      onClick={() => go(i)}
+                      aria-label={`Ir a la diapositiva ${s.index}: ${s.title}`}
+                      title={`${s.index}. ${s.title}`}
+                      className={cn(
+                        "group relative flex shrink-0 items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs transition sm:px-3",
+                        active
+                          ? "bg-white/10 text-foreground"
+                          : "text-muted-foreground hover:bg-white/5 hover:text-foreground",
+                      )}
+                    >
+                      <span
+                        className={cn(
+                          "font-mono text-[10px]",
+                          active && s.accent === "cyan" && "text-neon-cyan",
+                          active && s.accent === "mint" && "text-neon-mint",
+                          active && s.accent === "orange" && "text-neon-orange",
+                          active && s.accent === "magenta" && "text-neon-magenta",
+                          active && s.accent === "violet" && "text-[#c084fc]",
+                          active && s.accent === "amber" && "text-[#fbbf24]",
+                          !active && "opacity-60",
+                        )}
+                      >
+                        {String(s.index).padStart(2, "0")}
+                      </span>
+                      <span className="hidden md:inline">{s.shortLabel}</span>
+                      {active && (
+                        <motion.span
+                          layoutId="slide-underline"
+                          className="absolute -bottom-[1px] left-2 right-2 h-0.5 rounded-full bg-current"
+                        />
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+
+              <button
+                onClick={next}
+                disabled={index === total - 1}
+                className="group inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground disabled:pointer-events-none disabled:opacity-30 sm:px-3 sm:py-2 sm:text-sm"
+              >
+                <span className="hidden sm:inline">Siguiente</span>
+                <ChevronRight className="h-4 w-4" />
+              </button>
+
+               <button
+                  onClick={() => setOverview(true)}
+                  aria-label="Ver todas las diapositivas"
+                  title="Vista general (G)"
+                  className="ml-1 flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 p-2 text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground sm:inline-flex"
                 >
-                  <span
-                    className={cn(
-                      "font-mono text-[10px]",
-                      active && s.accent === "cyan" && "text-neon-cyan",
-                      active && s.accent === "mint" && "text-neon-mint",
-                      active && s.accent === "orange" && "text-neon-orange",
-                      active && s.accent === "magenta" && "text-neon-magenta",
-                      active && s.accent === "violet" && "text-[#c084fc]",
-                      active && s.accent === "amber" && "text-[#fbbf24]",
-                      !active && "opacity-60",
-                    )}
-                  >
-                    {String(s.index).padStart(2, "0")}
-                  </span>
-                  <span className="hidden md:inline">{s.shortLabel}</span>
-                  {active && (
-                    <motion.span
-                      layoutId="slide-underline"
-                      className="absolute -bottom-[1px] left-2 right-2 h-0.5 rounded-full bg-current"
-                    />
-                  )}
+                  <Grid2x2 className="h-4 w-4" />
                 </button>
-              );
-            })}
-          </div>
 
-          <button
-            onClick={next}
-            disabled={index === total - 1}
-            className="group inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground disabled:pointer-events-none disabled:opacity-30 sm:px-3 sm:py-2 sm:text-sm"
-          >
-            <span className="hidden sm:inline">Siguiente</span>
-            <ChevronRight className="h-4 w-4" />
-          </button>
-
-           <button
-             onClick={() => setOverview(true)}
-             aria-label="Ver todas las diapositivas"
-             title="Vista general (G)"
-             className="ml-1 flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 p-2 text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground sm:inline-flex"
-           >
-             <Grid2x2 className="h-4 w-4" />
-           </button>
-
-           <button
-             onClick={() => window.location.href = "/"}
-             aria-label="Ir al lanzador de presentaciones (H)"
-             title="Lanzador (H)"
-             className="ml-1 flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 p-2 text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground sm:inline-flex"
-           >
-             <Home className="h-4 w-4" />
-           </button>
-        </div>
-      </div>
+                <button
+                  onClick={() => window.location.href = "/"}
+                  aria-label="Ir al lanzador de presentaciones (H)"
+                  title="Lanzador (H)"
+                  className="ml-1 flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 p-2 text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground sm:inline-flex"
+                >
+                  <Home className="h-4 w-4" />
+                </button>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Overview modal */}
       <AnimatePresence>

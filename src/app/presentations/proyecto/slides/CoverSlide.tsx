@@ -2,11 +2,11 @@
 
 import { motion } from "framer-motion";
 import { Compass, ArrowRight, Sparkles } from "lucide-react";
-import { slidesMeta } from "../data/slidesMeta";
+import { getSlideMetaById } from "../data/slidesMeta";
 
-const meta = slidesMeta[0];
+const meta = getSlideMetaById("cover");
 
-export function Slide01Cover() {
+export function CoverSlide() {
   return (
     <div className="relative h-full w-full overflow-hidden bg-background">
       {/* Background layers */}
@@ -123,7 +123,7 @@ export function Slide01Cover() {
         >
           Cómo convertir la{" "}
           <span className="font-semibold text-foreground">Bitácora</span>{" "}
-          en tu mejor herramienta contra el caos del trabajo en equipo.
+          en tu mejor herramienta para organizar el trabajo en equipo.
         </motion.p>
 
         {/*  <motion.div

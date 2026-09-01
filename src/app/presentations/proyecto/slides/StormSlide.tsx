@@ -10,13 +10,13 @@ import {
   AlertTriangle,
   ArrowRight,
 } from "lucide-react";
-import { slidesMeta } from "../data/slidesMeta";
+import { getSlideMetaById } from "../data/slidesMeta";
 import { SlideShell } from "../../shared/ui/SlideShell";
 import { TeacherNote } from "../../shared/ui/primitives";
 
-const meta = slidesMeta[6];
+const meta = getSlideMetaById("storm");
 
-export function Slide06Storm() {
+export function StormSlide() {
   return (
     <SlideShell meta={meta}>
       {/* Critical banner */}

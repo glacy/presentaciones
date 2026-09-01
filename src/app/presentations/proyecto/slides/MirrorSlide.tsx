@@ -3,11 +3,11 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ClipboardCheck, Eye, Quote, Link2 } from "lucide-react";
-import { slidesMeta } from "../data/slidesMeta";
+import { getSlideMetaById } from "../data/slidesMeta";
 import { SlideShell } from "../../shared/ui/SlideShell";
 import { TeacherNote } from "../../shared/ui/primitives";
 
-const meta = slidesMeta[7];
+const meta = getSlideMetaById("mirror");
 
 const aspects = [
   {
@@ -35,7 +35,7 @@ const aspects = [
 
 const scales = ["Incipiente", "En desarrollo", "Suficiente", "Ejemplar"];
 
-export function Slide07Mirror() {
+export function MirrorSlide() {
   const [selected, setSelected] = useState<number | null>(0);
 
   return (

@@ -10,11 +10,11 @@ import {
   XCircle,
   AlertCircle,
 } from "lucide-react";
-import { slidesMeta } from "../data/slidesMeta";
+import { getSlideMetaById } from "../data/slidesMeta";
 import { SlideShell } from "../../shared/ui/SlideShell";
 import { TeacherNote } from "../../shared/ui/primitives";
 
-const meta = slidesMeta[5];
+const meta = getSlideMetaById("timeline");
 
 const badRow = {
   actividad: "Semana 2: Investigamos",
@@ -48,7 +48,7 @@ const goodRows = [
   },
 ];
 
-export function Slide05Timeline() {
+export function TimelineSlide() {
   return (
     <SlideShell meta={meta}>
       {/* Specificity callout */}

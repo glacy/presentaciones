@@ -2,12 +2,12 @@
 
 import { motion } from "framer-motion";
 import { Flag, Compass, BookOpen, ArrowLeft, Sparkles } from "lucide-react";
-import { slidesMeta } from "../data/slidesMeta";
+import { getSlideMetaById } from "../data/slidesMeta";
 
 
-const meta = slidesMeta[9];
+const meta = getSlideMetaById("epilogue");
 
-export function Slide09Epilogue() {
+export function EpilogueSlide() {
   return (
     <div className="relative h-full w-full overflow-hidden bg-background">
       {/* Soft background — students vibe */}
@@ -102,8 +102,8 @@ export function Slide09Epilogue() {
           transition={{ duration: 0.7, delay: 0.55 }}
           className="mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg md:text-xl"
         >
-          Es la primera vez en la universidad que gestionan un proyecto como{" "}
-          <span className="font-semibold text-neon-mint">verdaderos profesionales</span>.
+          Es un {" "}
+          <span className="font-semibold text-neon-mint">sistema articulado</span> que te ayuda a organizar el Trabajo en equipo.
         </motion.p>
 
         <motion.div
@@ -136,17 +136,7 @@ export function Slide09Epilogue() {
           </div>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.3 }}
-          className="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-[0.3em] text-muted-foreground/70"
-        >
-          <ArrowLeft className="h-3 w-3" />
-          Usa ← para repasar
-          <span className="mx-2 text-white/20">·</span>
-          Ahora, a trabajar
-        </motion.div>
+
       </div>
     </div>
   );

@@ -13,11 +13,11 @@ import {
   Repeat,
   Zap,
 } from "lucide-react";
-import { slidesMeta } from "../data/slidesMeta";
+import { getSlideMetaById } from "../data/slidesMeta";
 import { SlideShell } from "../../shared/ui/SlideShell";
 import { TeacherNote } from "../../shared/ui/primitives";
 
-const meta = slidesMeta[4];
+const meta = getSlideMetaById("treaty");
 
 const flow = [
   {
@@ -84,13 +84,14 @@ const colorBorderMap: Record<string, string> = {
   violet: "border-[#a855f7]/30 bg-[#a855f7]/5",
 };
 
-export function Slide04Treaty() {
+export function TreatySlide() {
   return (
     <SlideShell meta={meta}>
       {/* Coherence warning */}
       <motion.div
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
         className="mb-5 flex flex-wrap items-center gap-3 rounded-xl border border-[#00e5ff]/30 bg-[#00e5ff]/5 px-4 py-3"
       >
         <div className="grid h-9 w-9 place-items-center rounded-lg bg-[#00e5ff]/15 text-neon-cyan">
@@ -101,9 +102,8 @@ export function Slide04Treaty() {
             Concepto clave · Coherencia
           </span>
           <br />
-          Si en la Tabla 1 dijiste que te estresas en el lab, tu rol aquí{" "}
-          <span className="font-semibold text-neon-magenta">NO</span> puede ser
-          “Montador experimental”.
+          La asignación de roles y responsabilidades debe basarse en <span className="font-semibold text-neon-magenta">debilidades</span> y <span className="font-semibold text-neon-mint">fortalezas</span> de cada miembro, de manera crítica y objetiva.
+          <br />
         </p>
       </motion.div>
 
@@ -182,7 +182,7 @@ export function Slide04Treaty() {
         className="mb-3 mt-6 flex items-center gap-2 font-sans text-base font-semibold text-foreground sm:text-lg"
       >
         <ScrollText className="h-5 w-5 text-neon-cyan" />
-        Roles sugeridos (Tabla 3)
+        Roles sugeridos
       </motion.h3>
       <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
         {roles.map((r, i) => {
@@ -192,7 +192,7 @@ export function Slide04Treaty() {
               key={i}
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 + i * 0.1 }}
+              transition={{ delay: 3 + i * 1.0 }}
               className={`rounded-xl border p-4 ${colorBorderMap[r.color]}`}
             >
               <Icon className={`h-6 w-6 ${colorTextMap[r.color]}`} />
@@ -206,7 +206,7 @@ export function Slide04Treaty() {
           );
         })}
       </div>
-
+      {/* 
       <div className="mt-6">
         <TeacherNote color="cyan">
           El rol no te encierra en una jaula, te da una responsabilidad
@@ -215,7 +215,7 @@ export function Slide04Treaty() {
           ¿qué hacen? Ese “plan de contingencia” les da puntos extra en la
           rúbrica.
         </TeacherNote>
-      </div>
+      </div> */}
     </SlideShell>
   );
 }

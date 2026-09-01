@@ -2,6 +2,7 @@ import {
   Map,
   Target,
   Ghost,
+  Link2,
   ScanFace,
   Puzzle,
   CalendarClock,
@@ -15,6 +16,7 @@ import type { SlideMeta } from "../../shared/types";
 export const slidesMeta: SlideMeta[] = [
   {
     index: 1,
+    id: "cover",
     shortLabel: "Portada",
     title: "La Bitacora del Trabajo Individual y en Equipo",
     chapter: "Portada",
@@ -23,14 +25,16 @@ export const slidesMeta: SlideMeta[] = [
   },
   {
     index: 2,
+    id: "context",
     shortLabel: "Contexto",
-    title: "¿Por qué estamos aquí?",
+    title: "¿Para que sirve la Bitácora?",
     chapter: "Introducción",
     accent: "cyan",
     icon: Target,
   },
   {
     index: 3,
+    id: "villain",
     shortLabel: "El problema",
     title: "El Villano de la Historia",
     chapter: "El Problema",
@@ -39,46 +43,61 @@ export const slidesMeta: SlideMeta[] = [
   },
   {
     index: 4,
+    id: "structure",
+    shortLabel: "Estructura integrada",
+    title: "La Bitácora: Un sistema articulado",
+    chapter: "Sistema integrado",
+    accent: "cyan",
+    icon: Link2,
+  },
+  {
+    index: 5,
+    id: "diagnosis",
     shortLabel: "Diagnóstico · T1",
     title: "Mirarse al espejo sin filtro",
-    chapter: "Capítulo 1 · Tabla 1",
+    chapter: "Tabla 1",
     accent: "mint",
     icon: ScanFace,
   },
   {
-    index: 5,
+    index: 6,
+    id: "treaty",
     shortLabel: "Tratado de paz · T2-T3",
     title: "Armando el rompecabezas",
-    chapter: "Capítulo 2 · Tablas 2 y 3",
+    chapter: "Tablas 2 y 3",
     accent: "cyan",
     icon: Puzzle,
   },
   {
-    index: 6,
+    index: 7,
+    id: "timeline",
     shortLabel: "Cronograma · T4",
     title: "El Cronograma no es un deseo, es un contrato",
-    chapter: "Capítulo 3 · Tabla 4",
+    chapter: "Tabla 4",
     accent: "amber",
     icon: CalendarClock,
   },
   {
-    index: 7,
+    index: 8,
+    id: "storm",
     shortLabel: "La Tormenta · T5",
     title: "La realidad siempre gana a la teoría",
-    chapter: "Capítulo 4 · Tabla 5 · CRÍTICA",
+    chapter: "Tabla 5 · CRÍTICA",
     accent: "orange",
     icon: CloudLightning,
   },
   {
-    index: 8,
+    index: 9,
+    id: "mirror",
     shortLabel: "Espejo final · T6",
     title: "La evaluación que no es por cumplir",
-    chapter: "Capítulo 5 · Tabla 6",
+    chapter: "Tabla 6",
     accent: "violet",
     icon: ClipboardCheck,
   },
   {
-    index: 9,
+    index: 10,
+    id: "thread",
     shortLabel: "El hilo invisible",
     title: "La Trazabilidad: el secreto de los 100 puntos",
     chapter: "Resumen visual",
@@ -86,7 +105,8 @@ export const slidesMeta: SlideMeta[] = [
     icon: Workflow,
   },
   {
-    index: 10,
+    index: 11,
+    id: "epilogue",
     shortLabel: "Epílogo",
     title: "La bitácora no es puro papeleo",
     chapter: "Epílogo",
@@ -94,3 +114,11 @@ export const slidesMeta: SlideMeta[] = [
     icon: Flag,
   },
 ];
+
+export function getSlideMetaById(id: string): SlideMeta {
+  const meta = slidesMeta.find((m) => m.id === id);
+  if (!meta) {
+    throw new Error(`Slide with id "${id}" not found`);
+  }
+  return meta;
+}

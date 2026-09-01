@@ -5,6 +5,8 @@ export type NeonColor = "cyan" | "mint" | "orange" | "magenta" | "violet" | "amb
 export interface SlideMeta {
   /** 1-based index */
   index: number;
+  /** Unique identifier for the slide component (e.g., "cover", "context", "villain") */
+  id: string;
   /** Short label for the navigation rail */
   shortLabel: string;
   /** Full title shown in the slide header */

@@ -11,11 +11,11 @@ import {
   ArrowRight,
   Workflow,
 } from "lucide-react";
-import { slidesMeta } from "../data/slidesMeta";
+import { getSlideMetaById } from "../data/slidesMeta";
 import { SlideShell } from "../../shared/ui/SlideShell";
 import { TeacherNote } from "../../shared/ui/primitives";
 
-const meta = slidesMeta[8];
+const meta = getSlideMetaById("thread");
 
 const links = [
   {
@@ -58,7 +58,7 @@ const colorBgMap: Record<string, string> = {
   amber: "border-[#fbbf24]/30 bg-[#fbbf24]/5",
 };
 
-export function Slide08Thread() {
+export function ThreadSlide() {
   const [active, setActive] = useState<number | null>(0);
 
   return (

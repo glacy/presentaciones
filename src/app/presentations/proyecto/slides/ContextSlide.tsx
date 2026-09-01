@@ -2,10 +2,10 @@
 
 import { motion } from "framer-motion";
 import { Target, Users, Award, ArrowRight } from "lucide-react";
-import { slidesMeta } from "../data/slidesMeta";
+import { getSlideMetaById } from "../data/slidesMeta";
 import { SlideShell } from "../../shared/ui/SlideShell";
 
-const meta = slidesMeta[1];
+const meta = getSlideMetaById("context");
 
 const goals = [
   {
@@ -26,7 +26,7 @@ const goals = [
   },
   {
     icon: Award,
-    title: "Lograr el 100%",
+    title: "Lograr el 100 %",
     description: "Entregar proyectos de calidad que cumplen la rúbrica completa",
     color: "text-neon-amber",
     bgColor: "bg-[#fbbf24]/10",
@@ -34,7 +34,7 @@ const goals = [
   }
 ];
 
-export function Slide02Context() {
+export function ContextSlide() {
   return (
     <SlideShell meta={meta}>
       <div className="space-y-8">
@@ -44,10 +44,13 @@ export function Slide02Context() {
           className="text-center space-y-4"
         >
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground">
-            ¿Por qué estamos aquí?
+            La Bitácora {" "}
+            <span className="text-muted-foreground line-through decoration-[#ff3d8b]/60">
+              es puro papeleo
+            </span>
           </h2>
           <p className="max-w-2xl mx-auto text-lg text-muted-foreground">
-            Esta presentación tiene un propósito claro: ayudarte a transformar la experiencia de trabajar en equipo en la universidad.
+            Confiamos que entender el propósito de esta herramienta va ayudarte a transformar la experiencia de trabajar en equipo.
           </p>
         </motion.div>
 
@@ -59,7 +62,7 @@ export function Slide02Context() {
                 key={i}
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 + i * 0.2 }}
+                transition={{ delay: 1.5 + i * 1.5 }}
                 className={`group relative rounded-xl border ${goal.borderColor} ${goal.bgColor} p-5 transition hover:border-opacity-60`}
               >
                 <div className="flex flex-col items-center text-center space-y-3">
@@ -80,13 +83,13 @@ export function Slide02Context() {
           })}
         </div>
 
-        <motion.div
+        {/*   <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.0 }}
           className="mx-auto max-w-2xl rounded-xl border border-[#00e5ff]/30 bg-[#00e5ff]/5 p-5"
         >
-          <div className="flex items-start gap-3">
+                 <div className="flex items-start gap-3">
             <ArrowRight className="h-5 w-5 shrink-0 mt-0.5 text-[#7decff]" />
             <div className="space-y-2">
               <p className="text-sm text-foreground">
@@ -96,16 +99,16 @@ export function Slide02Context() {
                 Porque en Física General I, como en la vida profesional, el trabajo en equipo no es opcional — es una habilidad fundamental.
               </p>
             </div>
-          </div>
-        </motion.div>
+          </div> 
+        </motion.div> */}
 
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.3 }}
+          transition={{ delay: 6.0 }}
           className="text-center"
         >
-          <p className="text-sm text-muted-foreground">
+          <p className=" text-muted-foreground mx-auto text-lg">
             <span className="font-semibold text-foreground">¿Listos?</span> Vamos a empezar identificando el problema que todos conocemos...
           </p>
         </motion.div>
