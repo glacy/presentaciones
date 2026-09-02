@@ -1,11 +1,3 @@
-# Audio para slide 3 (villain)
+El villano de esta historia es el caos organizacional. Sin una bitácora adecuada, los proyectos se convierten en pesadillas.
 
-Texto: El villano de esta historia es el caos organizacional. Sin una bitácora adecuada, los proyectos se convierten en pesadillas.
-
-Instrucciones para generar audio:
-- Usar TTS (Text-to-Speech) o grabación profesional
-- Formato: MP3, bitrate 128kbps
-- Duración estimada: 9 segundos
-- Tono: profesional, educativo, moderado
-
-Nombre de archivo de audio: villain.mp3
+La comunicación entre integrantes se complica, no hay claridad sobre roles y responsabilidades; por ende no es posible ejercer un seguimiento adecuado y el resultado final es un trabajo fragmentado, sin coherencia y con baja calidad. 
