@@ -1,0 +1,11 @@
+# Audio para slide 4
+
+Texto: Para trabajar con vectores necesitamos sistemas de coordenadas. Estos nos permiten describir la posición y el movimiento en el espacio.
+
+Instrucciones para generar audio:
+- Usar TTS (Text-to-Speech) o grabación profesional
+- Formato: MP3, bitrate 128kbps
+- Duración estimada: 9 segundos
+- Tono: profesional, educativo, moderado
+
+Nombre de archivo de audio: slide-04.mp3
