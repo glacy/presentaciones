@@ -1,0 +1,11 @@
+# Audio para slide 11 (epilogue)
+
+Texto: La bitácora no es puro papeleo. Es tu herramienta más valiosa para el éxito profesional y académico en equipo.
+
+Instrucciones para generar audio:
+- Usar TTS (Text-to-Speech) o grabación profesional
+- Formato: MP3, bitrate 128kbps
+- Duración estimada: 8 segundos
+- Tono: profesional, educativo, moderado
+
+Nombre de archivo de audio: epilogue.mp3

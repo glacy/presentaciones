@@ -1,0 +1,11 @@
+# Audio para slide 10
+
+Texto: Los vectores son una herramienta poderosa en física. Nos permiten describir fuerzas, velocidades, aceleraciones y muchos otros fenómenos físicos.
+
+Instrucciones para generar audio:
+- Usar TTS (Text-to-Speech) o grabación profesional
+- Formato: MP3, bitrate 128kbps
+- Duración estimada: 10 segundos
+- Tono: profesional, educativo, moderado
+
+Nombre de archivo de audio: slide-10.mp3

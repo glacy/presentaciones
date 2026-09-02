@@ -1,0 +1,11 @@
+# Audio para slide 1
+
+Texto: Bienvenidos a esta presentación sobre Vectores y Operaciones Vectoriales. En esta sesión exploraremos los fundamentos matemáticos que describen el mundo físico.
+
+Instrucciones para generar audio:
+- Usar TTS (Text-to-Speech) o grabación profesional
+- Formato: MP3, bitrate 128kbps
+- Duración estimada: 11 segundos
+- Tono: profesional, educativo, moderado
+
+Nombre de archivo de audio: slide-01.mp3

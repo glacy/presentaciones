@@ -17,4 +17,8 @@ export interface SlideMeta {
   accent: NeonColor;
   /** Optional icon */
   icon?: LucideIcon;
+  /** Audio duration in seconds for synchronization (optional) */
+  audioDuration?: number;
+  /** Audio file path (optional, auto-generated if not provided) */
+  audioPath?: string;
 }

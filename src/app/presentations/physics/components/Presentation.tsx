@@ -23,6 +23,10 @@ import { PhysicsSlide07DotProduct } from "../slides/PhysicsSlide07DotProduct";
 import { PhysicsSlide08CrossProduct } from "../slides/PhysicsSlide08CrossProduct";
 import { PhysicsSlide09Summary } from "../slides/PhysicsSlide09Summary";
 import { PhysicsSlide10Conclusion } from "../slides/PhysicsSlide10Conclusion";
+import { AutoPlayToggle } from "../../shared/ui/AutoPlayToggle";
+import { AudioPlayer } from "../../shared/ui/AudioPlayer";
+import { getAudioPath, hasAudio } from "../../shared/utils/audio";
+import { useAudioManager } from "../../shared/hooks/useAudioManager";
 
 const slideComponents = [
   PhysicsSlide01Cover,
@@ -43,10 +47,22 @@ export function Presentation() {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState<Direction>(1);
   const [overview, setOverview] = useState(false);
+  const [autoPlayAudio, setAutoPlayAudio] = useState(true);
 
   const total = physicsSlidesMeta.length;
   const meta = physicsSlidesMeta[index];
   const Current = slideComponents[index];
+
+  const audioManager = useAudioManager(total, {
+    onAudioEnded: () => {
+      if (autoPlayAudio && index < total - 1) {
+        next();
+      }
+    },
+  });
+
+  const currentAudioPath = getAudioPath("physics", meta);
+  const hasSlideAudio = hasAudio("physics", meta);
 
   const go = useCallback(
     (next: number) => {
@@ -54,23 +70,26 @@ export function Presentation() {
       setDirection(clamped > index ? 1 : -1);
       setIndex(clamped);
       setOverview(false);
+      audioManager.changeSlide(clamped, autoPlayAudio);
     },
-    [index, total],
+    [index, total, audioManager, autoPlayAudio],
   );
 
   const next = useCallback(() => {
     if (index < total - 1) {
       setDirection(1);
       setIndex((i) => i + 1);
+      audioManager.nextSlide(autoPlayAudio);
     }
-  }, [index, total]);
+  }, [index, total, audioManager, autoPlayAudio]);
 
   const prev = useCallback(() => {
     if (index > 0) {
       setDirection(-1);
       setIndex((i) => i - 1);
+      audioManager.prevSlide(autoPlayAudio);
     }
-  }, [index]);
+  }, [index, audioManager, autoPlayAudio]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -151,14 +170,26 @@ export function Presentation() {
       {/* Bottom control bar */}
       <div className="relative z-20 border-t border-white/5 bg-background/80 px-3 py-2.5 backdrop-blur-md sm:px-5">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-2">
-          <button
-            onClick={prev}
-            disabled={index === 0}
-            className="group inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground disabled:pointer-events-none disabled:opacity-30 sm:px-3 sm:py-2 sm:text-sm"
-          >
-            <ChevronLeft className="h-4 w-4" />
-            <span className="hidden sm:inline">Anterior</span>
-          </button>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={prev}
+              disabled={index === 0}
+              className="group inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground disabled:pointer-events-none disabled:opacity-30 sm:px-3 sm:py-2 sm:text-sm"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              <span className="hidden sm:inline">Anterior</span>
+            </button>
+
+            {hasSlideAudio && (
+              <AudioPlayer
+                audioPath={currentAudioPath}
+                autoPlay={autoPlayAudio}
+                onPlay={() => setAutoPlayAudio(true)}
+                onPause={() => setAutoPlayAudio(false)}
+                className="hidden sm:flex"
+              />
+            )}
+          </div>
 
           {/* Slide pills */}
           <div className="flex flex-1 items-center justify-center gap-1.5 overflow-x-auto px-1 sm:gap-2">
@@ -203,14 +234,19 @@ export function Presentation() {
             })}
           </div>
 
-          <button
-            onClick={next}
-            disabled={index === total - 1}
-            className="group inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground disabled:pointer-events-none disabled:opacity-30 sm:px-3 sm:py-2 sm:text-sm"
-          >
-            <span className="hidden sm:inline">Siguiente</span>
-            <ChevronRight className="h-4 w-4" />
-          </button>
+            <button
+              onClick={next}
+              disabled={index === total - 1}
+              className="group inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground disabled:pointer-events-none disabled:opacity-30 sm:px-3 sm:py-2 sm:text-sm"
+            >
+              <span className="hidden sm:inline">Siguiente</span>
+              <ChevronRight className="h-4 w-4" />
+            </button>
+
+            <AutoPlayToggle 
+              autoPlay={autoPlayAudio} 
+              onToggle={() => setAutoPlayAudio(!autoPlayAudio)} 
+            />
 
           <button
             onClick={() => setOverview(true)}

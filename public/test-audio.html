@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Audio</title>
+    <style>
+        body {
+            font-family: system-ui, sans-serif;
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            background: #0a0a0a;
+            color: #fff;
+        }
+        .test-section {
+            margin: 2rem 0;
+            padding: 1.5rem;
+            background: #1a1a1a;
+            border-radius: 8px;
+            border: 1px solid #333;
+        }
+        h1 { color: #00e5ff; }
+        h2 { color: #4ade80; margin-top: 1.5rem; }
+        .status {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            margin: 0.5rem 0;
+        }
+        .success { background: #22c55e; color: #000; }
+        .error { background: #ef4444; color: #fff; }
+        .pending { background: #fbbf24; color: #000; }
+        audio { width: 100%; margin: 0.5rem 0; }
+        code {
+            background: #333;
+            padding: 0.125rem 0.25rem;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+    </style>
+</head>
+<body>
+    <h1>🎵 Test de Audio</h1>
+    
+    <div class="test-section">
+        <h2>Test 1: Audio directo desde public/</h2>
+        <p>Ruta esperada: <code>/audio/physics/slide-01.wav</code></p>
+        <div id="test1-status" class="status pending">Prueba...</div>
+        <audio id="audio1" controls>
+            <source src="/audio/physics/slide-01.wav" type="audio/wav">
+            Tu navegador no soporta audio.
+        </audio>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 2: Lista de archivos disponibles</h2>
+        <div id="file-list">Cargando...</div>
+    </div>
+
+    <div class="test-section">
+        <h2>Test 3: Detección de errores</h2>
+        <div id="error-log">Sin errores registrados</div>
+    </div>
+
+    <script>
+        const errorLog = [];
+        
+        function logError(message) {
+            errorLog.push(message);
+            document.getElementById('error-log').innerHTML = 
+                `<pre>${errorLog.join('\n')}</pre>`;
+        }
+
+        function testAudio() {
+            const audio1 = document.getElementById('audio1');
+            const status1 = document.getElementById('test1-status');
+            
+            audio1.addEventListener('canplay', () => {
+                status1.className = 'status success';
+                status1.textContent = '✅ Audio cargado correctamente';
+                console.log('Audio can play:', audio1.src);
+            });
+
+            audio1.addEventListener('error', (e) => {
+                status1.className = 'status error';
+                const error = audio1.error;
+                const errorMsg = error ? `Error ${error.code}: ${error.message}` : 'Error desconocido';
+                status1.textContent = `❌ ${errorMsg}`;
+                logError(`Test 1: ${errorMsg}`);
+                logError(`Src: ${audio1.src}`);
+                logError(`Network state: ${audio1.networkState}`);
+                logError(`Ready state: ${audio1.readyState}`);
+                console.error('Audio error:', e);
+            });
+
+            audio1.addEventListener('loadstart', () => {
+                console.log('Audio loading started:', audio1.src);
+            });
+
+            audio1.addEventListener('loadeddata', () => {
+                console.log('Audio data loaded:', audio1.src);
+            });
+        }
+
+        function checkFiles() {
+            const filesToCheck = [
+                '/audio/physics/slide-01.wav',
+                '/audio/physics/slide-02.wav',
+                '/audio/proyecto/cover.wav'
+            ];
+
+            const fileListDiv = document.getElementById('file-list');
+            let html = '<ul>';
+
+            filesToCheck.forEach(file => {
+                html += `<li><a href="${file}" target="_blank">${file}</a> - `;
+                html += `<span id="file-${file.replace(/\//g, '-')}">Prueba...</span></li>`;
+                
+                fetch(file)
+                    .then(response => {
+                        const span = document.getElementById(`file-${file.replace(/\//g, '-')}`);
+                        if (response.ok) {
+                            span.textContent = `✅ Disponible (${response.headers.get('content-length')} bytes)`;
+                            span.style.color = '#22c55e';
+                        } else {
+                            span.textContent = `❌ Error ${response.status}`;
+                            span.style.color = '#ef4444';
+                        }
+                    })
+                    .catch(error => {
+                        const span = document.getElementById(`file-${file.replace(/\//g, '-')}`);
+                        span.textContent = `❌ ${error.message}`;
+                        span.style.color = '#ef4444';
+                        logError(`File check ${file}: ${error.message}`);
+                    });
+            });
+
+            html += '</ul>';
+            fileListDiv.innerHTML = html;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            testAudio();
+            checkFiles();
+        });
+    </script>
+</body>
+</html>

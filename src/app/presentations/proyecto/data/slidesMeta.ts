@@ -22,6 +22,7 @@ export const slidesMeta: SlideMeta[] = [
     chapter: "Portada",
     accent: "cyan",
     icon: Map,
+    audioDuration: 4,
   },
   {
     index: 2,
