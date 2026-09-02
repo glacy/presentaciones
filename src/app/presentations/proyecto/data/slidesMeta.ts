@@ -22,7 +22,7 @@ export const slidesMeta: SlideMeta[] = [
     chapter: "Portada",
     accent: "cyan",
     icon: Map,
-    audioDuration: 4,
+    audioDuration: 6.8,
   },
   {
     index: 2,
@@ -32,6 +32,7 @@ export const slidesMeta: SlideMeta[] = [
     chapter: "Introducción",
     accent: "cyan",
     icon: Target,
+    audioDuration: 6.4,
   },
   {
     index: 3,
@@ -41,6 +42,7 @@ export const slidesMeta: SlideMeta[] = [
     chapter: "El Problema",
     accent: "magenta",
     icon: Ghost,
+    audioDuration: 7.2,
   },
   {
     index: 4,
@@ -50,6 +52,7 @@ export const slidesMeta: SlideMeta[] = [
     chapter: "Sistema integrado",
     accent: "cyan",
     icon: Link2,
+    audioDuration: 7.1,
   },
   {
     index: 5,
@@ -59,6 +62,7 @@ export const slidesMeta: SlideMeta[] = [
     chapter: "Tabla 1",
     accent: "mint",
     icon: ScanFace,
+    audioDuration: 7.0,
   },
   {
     index: 6,
@@ -68,6 +72,7 @@ export const slidesMeta: SlideMeta[] = [
     chapter: "Tablas 2 y 3",
     accent: "cyan",
     icon: Puzzle,
+    audioDuration: 7.1,
   },
   {
     index: 7,
@@ -77,6 +82,7 @@ export const slidesMeta: SlideMeta[] = [
     chapter: "Tabla 4",
     accent: "amber",
     icon: CalendarClock,
+    audioDuration: 6.2,
   },
   {
     index: 8,
@@ -86,6 +92,7 @@ export const slidesMeta: SlideMeta[] = [
     chapter: "Tabla 5 · CRÍTICA",
     accent: "orange",
     icon: CloudLightning,
+    audioDuration: 6.9,
   },
   {
     index: 9,
@@ -95,6 +102,7 @@ export const slidesMeta: SlideMeta[] = [
     chapter: "Tabla 6",
     accent: "violet",
     icon: ClipboardCheck,
+    audioDuration: 6.3,
   },
   {
     index: 10,
@@ -104,6 +112,7 @@ export const slidesMeta: SlideMeta[] = [
     chapter: "Resumen visual",
     accent: "cyan",
     icon: Workflow,
+    audioDuration: 6.8,
   },
   {
     index: 11,
@@ -113,6 +122,7 @@ export const slidesMeta: SlideMeta[] = [
     chapter: "Epílogo",
     accent: "mint",
     icon: Flag,
+    audioDuration: 6.1,
   },
 ];
 

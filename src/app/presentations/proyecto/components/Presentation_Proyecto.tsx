@@ -17,6 +17,10 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { slidesMeta } from "../data/slidesMeta";
+import { AutoPlayToggle } from "../../shared/ui/AutoPlayToggle";
+import { AudioPlayer } from "../../shared/ui/AudioPlayer";
+import { getAudioPath, hasAudio } from "../../shared/utils/audio";
+import { useAudioManager } from "../../shared/hooks/useAudioManager";
 import { CoverSlide } from "../slides/CoverSlide";
 import { ContextSlide } from "../slides/ContextSlide";
 import { VillainSlide } from "../slides/VillainSlide";
@@ -51,10 +55,22 @@ export function Presentation() {
   const [overview, setOverview] = useState(false);
   const [showNav, setShowNav] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [autoPlayAudio, setAutoPlayAudio] = useState(true);
 
   const total = slidesMeta.length;
   const meta = slidesMeta[index];
   const Current = slideComponents[meta.id];
+
+  const audioManager = useAudioManager(total, {
+    onAudioEnded: () => {
+      if (autoPlayAudio && index < total - 1) {
+        next();
+      }
+    },
+  });
+
+  const currentAudioPath = getAudioPath("proyecto", meta);
+  const hasSlideAudio = hasAudio("proyecto", meta);
 
   const go = useCallback(
     (next: number) => {
@@ -62,23 +78,26 @@ export function Presentation() {
       setDirection(clamped > index ? 1 : -1);
       setIndex(clamped);
       setOverview(false);
+      audioManager.changeSlide(clamped, autoPlayAudio);
     },
-    [index, total],
+    [index, total, audioManager, autoPlayAudio],
   );
 
   const next = useCallback(() => {
     if (index < total - 1) {
       setDirection(1);
       setIndex((i) => i + 1);
+      audioManager.nextSlide(autoPlayAudio);
     }
-  }, [index, total]);
+  }, [index, total, audioManager, autoPlayAudio]);
 
   const prev = useCallback(() => {
     if (index > 0) {
       setDirection(-1);
       setIndex((i) => i - 1);
+      audioManager.prevSlide(autoPlayAudio);
     }
-  }, [index]);
+  }, [index, audioManager, autoPlayAudio]);
 
   const toggleFullscreen = useCallback(() => {
     if (!document.fullscreenElement) {
@@ -105,13 +124,8 @@ export function Presentation() {
     const handleMouseMove = (e: MouseEvent) => {
       const bottomArea = window.innerHeight - e.clientY < 100;
       const rightArea = window.innerWidth - e.clientX < 100;
-      
-      if (bottomArea || rightArea) {
-        setHoverArea(true);
-        showNavTemporarily();
-      } else {
-        setHoverArea(false);
-      }
+      setHoverArea(bottomArea || rightArea);
+      showNavTemporarily();
     };
 
     document.addEventListener("mousemove", handleMouseMove);
@@ -136,11 +150,9 @@ export function Presentation() {
         e.preventDefault();
         prev();
       } else if (e.key === "Home") {
-        setDirection(-1);
-        setIndex(0);
+        go(0);
       } else if (e.key === "End") {
-        setDirection(1);
-        setIndex(total - 1);
+        go(total - 1);
       } else if (e.key === "Escape") {
         setOverview(false);
       } else if (e.key.toLowerCase() === "g") {
@@ -159,29 +171,6 @@ export function Presentation() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [next, prev, go, total, toggleFullscreen]);
-
-  useEffect(() => {
-    let timeout: NodeJS.Timeout;
-    const resetTimer = () => {
-      setShowNav(true);
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        setShowNav(false);
-      }, 3000);
-    };
-
-    const handleMouseMove = () => {
-      resetTimer();
-    };
-
-    document.addEventListener("mousemove", handleMouseMove);
-    resetTimer();
-
-    return () => {
-      clearTimeout(timeout);
-      document.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
 
   return (
     <div className="relative flex h-[100dvh] w-full flex-col overflow-hidden bg-background text-foreground">
@@ -274,16 +263,18 @@ export function Presentation() {
         />
       </div>
 
-      {/* Bottom control bar */}
-      <AnimatePresence>
-        {showNav && (
-          <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 100, opacity: 0 }}
-            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-            className="relative z-20 border-t border-white/5 bg-background/80 px-3 py-2.5 backdrop-blur-md sm:px-5"
-          >
+      {/* Bottom control bar — always mounted so audio keeps playing when hidden */}
+      <motion.div
+        initial={false}
+        animate={{ y: showNav ? 0 : 100, opacity: showNav ? 1 : 0 }}
+        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        className={cn(
+          "relative z-20 border-t border-white/5 bg-background/80 px-3 py-2.5 backdrop-blur-md sm:px-5",
+          !showNav && "pointer-events-none",
+        )}
+        aria-hidden={!showNav}
+        inert={!showNav}
+      >
             <div className="mx-auto flex max-w-6xl items-center justify-between gap-2">
               <button
                 onClick={prev}
@@ -293,6 +284,16 @@ export function Presentation() {
                 <ChevronLeft className="h-4 w-4" />
                 <span className="hidden sm:inline">Anterior</span>
               </button>
+
+              {hasSlideAudio && (
+                <AudioPlayer
+                  audioPath={currentAudioPath}
+                  autoPlay={autoPlayAudio}
+                  onPlay={() => setAutoPlayAudio(true)}
+                  onPause={() => setAutoPlayAudio(false)}
+                  className="hidden sm:flex"
+                />
+              )}
 
               {/* Slide pills */}
               <div className="flex flex-1 items-center justify-center gap-1.5 overflow-x-auto px-1 sm:gap-2">
@@ -346,6 +347,11 @@ export function Presentation() {
                 <ChevronRight className="h-4 w-4" />
               </button>
 
+              <AutoPlayToggle
+                autoPlay={autoPlayAudio}
+                onToggle={() => setAutoPlayAudio(!autoPlayAudio)}
+              />
+
                <button
                   onClick={() => setOverview(true)}
                   aria-label="Ver todas las diapositivas"
@@ -364,9 +370,7 @@ export function Presentation() {
                   <Home className="h-4 w-4" />
                 </button>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      </motion.div>
 
       {/* Overview modal */}
       <AnimatePresence>

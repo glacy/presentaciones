@@ -9,8 +9,6 @@ regenerar voces y cómo actualizar guiones.
   narración generada en `public/audio/physics/slide-XX.wav`.
 - Voces generadas localmente con **Kokoro-82M** vía el CLI de HyperFrames
   (`npx hyperframes tts`), voz `ef_dora` (español), WAV PCM 16-bit mono 24 kHz.
-- Los archivos `.mp3` antiguos fueron eliminados: eran PCM crudo sin cabecera
-  (ruido al reproducir). Formato válido actual: `.wav`.
 
 ### Cómo se conecta el audio con las diapositivas
 
@@ -124,3 +122,5 @@ Verificado el 2026-09-02: sin sesión, la ruta activa es Kokoro local.
 | Ruido/interferencia | Archivo con contenido inválido (PCM crudo con extensión `.mp3`, descarga truncada) | Regenera con `npx hyperframes tts` y valida con `file public/audio/physics/slide-XX.wav` (debe decir `WAVE audio, Microsoft PCM`) |
 | El reproductor no aparece | Falta `audioDuration` en el meta del slide | Agrégalo con la duración de `ffprobe` |
 | El audio se corta al mover volumen | Versión antigua de `AudioPlayer.tsx` | Ya corregido: el volumen se aplica sin recargar el `src` |
+| El audio se pausa/reinicia al ocultarse la barra inferior | El reproductor estaba montado dentro del bloque condicional de la barra (`{showNav && ...}`) → se desmontaba | Ya corregido en `proyecto`: la barra se oculta con animación (`y`/`opacity` + `inert`) pero **nunca se desmonta**. Regla: el audio nunca debe vivir dentro de UI que se desmonta |
+| El auto-play se desactiva al cambiar de diapositiva | `onPause` estaba ligado al evento `pause` del elemento, que también se dispara en pausas programáticas (cambio de slide/`src`) → apagaba `autoPlayAudio` | Ya corregido en `AudioPlayer.tsx`: `onPlay`/`onPause` solo se disparan en el clic explícito del botón. Además, reactivar el toggle inicia la narración de la diapositiva actual |

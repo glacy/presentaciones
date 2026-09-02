@@ -36,8 +36,10 @@ export function AudioPlayer({
 
     if (isPlaying) {
       audioRef.current.pause();
+      onPause?.();
     } else {
       audioRef.current.play();
+      onPlay?.();
     }
   };
 
@@ -63,12 +65,10 @@ export function AudioPlayer({
 
   const handlePlay = () => {
     setIsPlaying(true);
-    onPlay?.();
   };
 
   const handlePause = () => {
     setIsPlaying(false);
-    onPause?.();
   };
 
   const handleEnded = () => {
@@ -96,7 +96,6 @@ export function AudioPlayer({
     if (autoPlay && audioRef.current) {
       audioRef.current.play().catch(err => {
         console.log("Auto-play blocked:", err);
-        setHasError(true);
       });
     }
   };
@@ -135,6 +134,15 @@ export function AudioPlayer({
       audio.pause();
     };
   }, [audioPath]);
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio || !autoPlay || !isLoaded) return;
+
+    if (audio.paused) {
+      audio.play().catch(() => {});
+    }
+  }, [autoPlay, isLoaded]);
 
   if (hasError) {
     return (
