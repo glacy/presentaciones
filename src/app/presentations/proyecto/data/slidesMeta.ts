@@ -38,11 +38,11 @@ export const slidesMeta: SlideMeta[] = [
     index: 3,
     id: "villain",
     shortLabel: "El problema",
-    title: "El Villano de la Historia",
+    title: "El Villano de la historia",
     chapter: "El Problema",
     accent: "magenta",
     icon: Ghost,
-    audioDuration: 7.2,
+    audioDuration: 20.21,
   },
   {
     index: 4,
@@ -52,7 +52,7 @@ export const slidesMeta: SlideMeta[] = [
     chapter: "Sistema integrado",
     accent: "cyan",
     icon: Link2,
-    audioDuration: 7.1,
+    audioDuration: 13.8,
   },
   {
     index: 5,
@@ -62,7 +62,7 @@ export const slidesMeta: SlideMeta[] = [
     chapter: "Tabla 1",
     accent: "mint",
     icon: ScanFace,
-    audioDuration: 14.5,
+    audioDuration: 14.6,
   },
   {
     index: 6,
@@ -72,7 +72,7 @@ export const slidesMeta: SlideMeta[] = [
     chapter: "Tablas 2 y 3",
     accent: "cyan",
     icon: Puzzle,
-    audioDuration: 7.1,
+    audioDuration: 23.5,
   },
   {
     index: 7,
@@ -82,17 +82,17 @@ export const slidesMeta: SlideMeta[] = [
     chapter: "Tabla 4",
     accent: "amber",
     icon: CalendarClock,
-    audioDuration: 6.2,
+    audioDuration: 17.8,
   },
   {
     index: 8,
     id: "storm",
     shortLabel: "Evidencias · T5",
-    title: "La realidad siempre gana a la teoría",
-    chapter: "Tabla 5 · Evidenicias",
+    title: "El proceso debe documentarse",
+    chapter: "Tabla 5",
     accent: "orange",
     icon: CloudLightning,
-    audioDuration: 8.6,
+    audioDuration: 22.1,
   },
   {
     index: 9,
@@ -122,7 +122,7 @@ export const slidesMeta: SlideMeta[] = [
     chapter: "Epílogo",
     accent: "mint",
     icon: Flag,
-    audioDuration: 6.1,
+    audioDuration: 11.0,
   },
 ];
 

@@ -67,6 +67,7 @@ export function ThreadSlide() {
       <motion.div
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.5, duration: 1.5 }}
         className="mb-5 flex flex-wrap items-center gap-3 rounded-xl border border-[#00e5ff]/30 bg-[#00e5ff]/5 px-4 py-3"
       >
         <div className="grid h-9 w-9 place-items-center rounded-lg bg-[#00e5ff]/15 text-neon-cyan">
@@ -93,7 +94,7 @@ export function ThreadSlide() {
               onClick={() => setActive(isActive ? null : i)}
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15 + i * 0.12 }}
+              transition={{ delay: 6.0 + i * 1.5 }}
               whileHover={{ scale: 1.005 }}
               className={`group w-full rounded-xl border p-3 text-left transition sm:p-4 ${isActive
                 ? "border-[#00e5ff]/50 bg-[#00e5ff]/8"

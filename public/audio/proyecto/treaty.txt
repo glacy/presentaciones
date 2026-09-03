@@ -1,3 +1,5 @@
 Las Tablas dos y tres permiten armar el rompecabezas. 
 
 A partir de la reflexión anterior, se definen los roles y se asignan las responsabilidades y expectativas para cada persona del equipo.
+
+Aunque cada proyecto es diferente, es recomendable, al menos, asignar una persona que se encarge de la coordinación general, otra que documente el proceso, alguien responsable del desarrollo práctico y quien revise e integre todos los aportes.

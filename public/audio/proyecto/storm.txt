@@ -1,1 +1,9 @@
-Tabla cinco es crítica: La realidad siempre gana a la teoría. Aquí registramos problemas reales y sus soluciones.
+Tabla cinco: El proceso debe documentarse.
+
+Aunque el cronograma sea muy detallado y realista, en un proyecto siempre surgirán imprevistos y situaciones que resolver.
+
+El registro, como su nombre lo indica, permite al equipo llevar un control de todo aquello que acontece en el proyecto, tanto lo planificado como lo emergente.
+
+La persona con el rol de documentar, debe guardar evidencias de todo ello.
+
+

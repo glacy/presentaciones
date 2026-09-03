@@ -89,9 +89,9 @@ export function EpilogueSlide() {
           transition={{ duration: 0.8, delay: 0.3 }}
           className="max-w-3xl font-sans text-3xl font-extrabold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl"
         >
-          La bitácora no es{" "}
+          La bitácora{" "}
           <span className="text-muted-foreground line-through decoration-[#ff3d8b]/60">
-            puro papeleo
+            no es puro papeleo
           </span>
           .
         </motion.h2>
@@ -103,38 +103,28 @@ export function EpilogueSlide() {
           className="mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg md:text-xl"
         >
           Es un {" "}
-          <span className="font-semibold text-neon-mint">sistema articulado</span> que te ayuda a organizar el Trabajo en equipo.
+          <span className="font-semibold text-neon-mint">sistema articulado</span> que te ayuda a organizar el trabajo en equipo.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.85 }}
-          className="mt-8 grid w-full max-w-2xl gap-3 sm:grid-cols-2"
+          className="mt-8 grid w-full max-w-2xl gap-3 sm:grid-cols-1"
         >
           <div className="flex items-start gap-3 rounded-xl border border-[#00e5ff]/25 bg-[#00e5ff]/5 p-4 text-left">
             <BookOpen className="mt-0.5 h-5 w-5 shrink-0 text-neon-cyan" />
             <div>
               <div className="text-sm font-semibold text-foreground">
-                Lee el ejemplo modelo
+                Revisa el ejemplo modelo
               </div>
               <div className="mt-0.5 text-xs text-muted-foreground">
-                Disponible en el campus virtual. Úsenlo como guía.
-              </div>
-            </div>
-          </div>
-          <div className="flex items-start gap-3 rounded-xl border border-[#4ade80]/25 bg-[#4ade80]/5 p-4 text-left">
-            <Sparkles className="mt-0.5 h-5 w-5 shrink-0 text-neon-mint" />
-            <div>
-              <div className="text-sm font-semibold text-foreground">
-                No es solo para Física I
-              </div>
-              <div className="mt-0.5 text-xs text-muted-foreground">
-                Sirve para tu tesis, prácticas y la industria.
+                Disponible en el campus virtual.
               </div>
             </div>
           </div>
         </motion.div>
+
 
 
       </div>

@@ -1,3 +1,6 @@
 Tabla cuatro: El cronograma es un contrato. Establece actividades, plazos y fechas.
 
-Es importante que los tiempos ser realistas y se respeten.
+El cronograma permite visualizar en un formato sencillo las tareas y su distribución en el tiempo; así como las personas encargadas de la supervisión.
+
+
+Para que el cronograma se útil, los tiempos deben ser realistas y respetarse.

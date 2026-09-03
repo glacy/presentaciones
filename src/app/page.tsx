@@ -10,18 +10,18 @@ export default function PresentationLauncher() {
   const [openInNewWindow, setOpenInNewWindow] = useState(false);
 
   const presentations = [
-    {
-      title: "Vectores y Operaciones vectoriales",
-      description: "Vectores, sistemas de coordenadas y operaciones vectoriales",
-      path: "/presentations/physics",
-      icon: Atom,
-      color: "text-neon-cyan",
-      borderColor: "border-neon-cyan/30",
-      bgColor: "bg-neon-cyan/10",
-    },
+    // {
+    //   title: "Vectores y Operaciones vectoriales",
+    //   description: "Vectores, sistemas de coordenadas y operaciones vectoriales",
+    //   path: "/presentations/physics",
+    //   icon: Atom,
+    //   color: "text-neon-cyan",
+    //   borderColor: "border-neon-cyan/30",
+    //   bgColor: "bg-neon-cyan/10",
+    // },
     {
       title: "Bitácora de Trabajo en Equipo",
-      description: "Cómo conquistar el trabajo en equipo sin morir en el intento - Storytelling visual",
+      description: "Una herramienta para organizar el trabajo en equipo y documentar el proceso",
       path: "/presentations/proyecto",
       icon: Map,
       color: "text-neon-magenta",
@@ -83,9 +83,9 @@ export default function PresentationLauncher() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.1 }}
               >
-                <Link 
-                  href={presentation.path} 
-                  target={openInNewWindow ? "_blank" : "_self"} 
+                <Link
+                  href={presentation.path}
+                  target={openInNewWindow ? "_blank" : "_self"}
                   rel={openInNewWindow ? "noopener noreferrer" : undefined}
                   className="block focus-visible:outline-none"
                 >

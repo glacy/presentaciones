@@ -8,7 +8,7 @@ import {
   Eye,
   Camera,
   AlertTriangle,
-  ArrowRight,
+  ArrowRight, Activity
 } from "lucide-react";
 import { getSlideMetaById } from "../data/slidesMeta";
 import { SlideShell } from "../../shared/ui/SlideShell";
@@ -23,6 +23,7 @@ export function StormSlide() {
       <motion.div
         initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 1.0, duration: 2.0 }}
         className="animate-neon-pulse mb-5 flex flex-wrap items-center gap-3 rounded-xl border border-[#ff8c42]/40 bg-[#ff8c42]/8 px-4 py-3"
       >
         <div className="grid h-9 w-9 place-items-center rounded-lg bg-[#ff8c42]/15 text-neon-orange">
@@ -30,11 +31,12 @@ export function StormSlide() {
         </div>
         <p className="flex-1 text-sm text-foreground sm:text-base">
           <span className="text-[11px] font-semibold uppercase tracking-widest text-[#ffb07d]">
-            Diapositiva crítica
+            Expectativa vs Realidad
           </span>
           <br />
-          El registro <span className="font-semibold text-neon-orange">NO</span> es
-          un cuento de hadas. Si escriben “Todo salió perfecto”, pierden puntos.
+          Aunque el cronograma sea muy detallado y realista, en un proyecto siempre surgirán imprevistos y situaciones que resolver.
+          <br />
+          El <span className="font-semibold text-neon-orange">registro y las evidencias</span> son cruciales.
         </p>
       </motion.div>
 
@@ -42,7 +44,7 @@ export function StormSlide() {
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
+        transition={{ delay: 6.0, duration: 2.0 }}
         className="mb-6 flex items-center justify-center gap-4 rounded-xl border border-white/8 bg-card/30 px-4 py-6 sm:gap-8"
       >
         <div className="flex flex-col items-center text-center">
@@ -100,7 +102,7 @@ export function StormSlide() {
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.35 }}
+        transition={{ delay: 10.0 }}
         className="overflow-hidden rounded-xl border border-[#ff8c42]/30 bg-card/40"
       >
         <div className="flex items-center gap-2 border-b border-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-neon-orange">
@@ -112,7 +114,7 @@ export function StormSlide() {
           {/* Action */}
           <div className="border-b border-white/5 p-4 sm:border-b-0 sm:border-r">
             <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
-              <Pencil className="h-3 w-3" /> Acción
+              <Activity className="h-3 w-3" /> Acción
             </div>
             <div className="mt-1 text-sm font-medium text-foreground">
               Ensayamos el montaje.
@@ -122,7 +124,7 @@ export function StormSlide() {
           {/* Observation — the highlight */}
           <div className="relative p-4">
             <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-widest text-neon-orange">
-              <Eye className="h-3 w-3" /> Observación (lo que hay que poner)
+              <Eye className="h-3 w-3" /> Observación
             </div>
             <div className="mt-1 text-sm leading-relaxed text-foreground">
               “El riel estaba desnivelado y los datos salían raros. Tuvimos que
@@ -141,7 +143,7 @@ export function StormSlide() {
       </motion.div>
 
       {/* Rubric alignment */}
-      <motion.div
+      {/* <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6 }}
@@ -174,7 +176,7 @@ export function StormSlide() {
             <div className="mt-1 text-xs text-muted-foreground">{c.title}</div>
           </div>
         ))}
-      </motion.div>
+      </motion.div> */}
 
       {/*   <div className="mt-6">
         <TeacherNote color="orange">

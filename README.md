@@ -6,7 +6,8 @@ Portal de presentaciones educativas interactivas con diseño neon/cyberpunk y an
 
 - **Múltiples presentaciones** separadas con metadata específica
 - **Presentación interactiva** de vectores y operaciones vectoriales (10 capítulos)
-- **Presentación de bitácora** de trabajo en equipo (9 capítulos)
+- **Presentación de bitácora** de trabajo en equipo (11 capítulos)
+- **Audio narrado por diapositiva** con TTS local (Kokoro), auto-play y auto-avance (ver [Audio](#-audio-narrado))
 - **Navegación por teclado**: ← → para navegar, 1-9 para saltar a diapositivas específicas
 - **Diseño neon/cyberpunk** con efectos de brillo y animaciones suaves
 - **Vista general (G)** para ver todas las diapositivas en cuadrícula
@@ -31,15 +32,17 @@ Portal de presentaciones educativas interactivas con diseño neon/cyberpunk y an
 
 ### Presentación de Bitácora de Trabajo en Equipo
 
-1. **Portada** - El Mapa del Tesoro
-2. **El problema** - El Villano de la Historia
-3. **Diagnóstico · T1** - Mirarse al espejo sin filtro
-4. **Tratado de paz · T2-T3** - Armando el rompecabezas
-5. **Cronograma · T4** - El Cronograma no es un deseo, es un contrato
-6. **La Tormenta · T5** - La realidad siempre gana a la teoría
-7. **Espejo final · T6** - La evaluación que no es por cumplir
-8. **El hilo invisible** - La Trazabilidad: el secreto de los 100 puntos
-9. **Epílogo** - La bitácora no es puro papeleo
+1. **Portada** - La Bitácora del Trabajo Individual y en Equipo
+2. **Contexto** - ¿Para qué sirve la Bitácora?
+3. **El problema** - El Villano de la Historia
+4. **Estructura integrada** - La Bitácora: un sistema articulado
+5. **Diagnóstico · T1** - Mirarse al espejo sin filtro
+6. **Tratado de paz · T2-T3** - Armando el rompecabezas
+7. **Cronograma · T4** - El Cronograma no es un deseo, es un contrato
+8. **La Tormenta · T5** - La realidad siempre gana a la teoría
+9. **Espejo final · T6** - La evaluación que no es por cumplir
+10. **El hilo invisible** - La Trazabilidad: el secreto de los 100 puntos
+11. **Epílogo** - La bitácora no es puro papeleo
 
 ## 🚀 Comenzando
 
@@ -47,6 +50,7 @@ Portal de presentaciones educativas interactivas con diseño neon/cyberpunk y an
 
 - [Bun](https://bun.sh/) como runtime
 - SQLite para base de datos
+- **Para regenerar audios** (opcional): [Node.js ≥ 18](https://nodejs.org/) (ejecuta el TTS local vía `npx hyperframes`), `ffmpeg`/`ffprobe` (validación y duración)
 
 ### Instalación
 
@@ -84,6 +88,48 @@ bun run start
 - **`/presentations/physics`** - Presentación de Vectores y Operaciones Vectoriales
 - **`/presentations/proyecto`** - Presentación de Bitácora de Trabajo en Equipo
 
+## 🔊 Audio Narrado
+
+Cada diapositiva tiene un guion (`.txt`) y su narración generada con **TTS local
+(Kokoro-82M, voz `ef_dora`, español)** — sin servicios externos ni credenciales.
+
+### Cómo funciona
+
+| Pieza | Archivo | Función |
+| --- | --- | --- |
+| Guion + narración | `public/audio/<presentación>/<id>.txt` / `.wav` | Fuente del texto y audio servido estáticamente |
+| Resolución de ruta | `src/app/presentations/shared/utils/audio.ts` | `getAudioPath()` construye `/audio/<pres>/<id>.wav`; `hasAudio()` decide si se muestra el reproductor |
+| Metadata | `physics/data/physicsSlidesMeta.ts`, `proyecto/data/slidesMeta.ts` | Cada slide declara `id` (define el nombre del WAV) y `audioDuration` (segundos reales) |
+| Reproductor | `shared/ui/AudioPlayer.tsx` | Play/pausa, volumen, progreso; visible siempre (barra inferior animada sin desmontarse) |
+| Auto-play / auto-avance | `shared/hooks/useAudioManager.ts` + `shared/ui/AutoPlayToggle.tsx` | Al terminar la narración avanza a la siguiente diapositiva (si auto-play está activo) |
+
+Convenciones clave:
+
+- El `id` del slide define el archivo esperado: `id: "slide-04"` →
+  `/audio/physics/slide-04.wav`; `id: "cover"` → `/audio/proyecto/cover.wav`.
+- Sin `audioDuration` en el meta, el reproductor no aparece para esa diapositiva.
+- El audio **nunca** debe montarse dentro de UI que se desmonta (barra de
+  navegación que se oculta, etc.).
+
+### Herramientas para gestión de audios
+
+- **TTS local**: `npx hyperframes tts` (Kokoro-82M vía el CLI de HyperFrames;
+  requiere Node ≥ 18; la primera corrida descarga el modelo)
+- **Validación**: `file <archivo.wav>` (debe reportar `WAVE audio, Microsoft PCM`)
+- **Duración**: `ffprobe -v error -show_entries format=duration -of csv=p=0 <archivo.wav>`
+- **Conversión a MP3 (producción)**: `ffmpeg -i entrada.wav -codec:a libmp3lame -b:a 128k -ac 1 salida.mp3`
+
+```bash
+# Regenerar la narración de una diapositiva tras editar su guion
+sed -n 's/^Texto: //p' public/audio/physics/slide-01.txt > /tmp/narracion.txt
+npx hyperframes tts --text-file /tmp/narracion.txt -v ef_dora \
+  -o public/audio/physics/slide-01.wav
+```
+
+> Guía completa (actualizar guiones, cambiar voz/velocidad, agregar audios a
+> nuevas diapositivas, solución de problemas) en
+> [`public/audio/README.md`](public/audio/README.md).
+
 ## 🛠️ Stack Tecnológico
 
 - **Framework**: Next.js 16.1.1 con App Router
@@ -94,6 +140,7 @@ bun run start
 - **Tipado**: TypeScript (con errores de compilación ignorados)
 - **Matemáticas**: KaTeX para renderizado de LaTeX
 - **Estilos**: Sistema de colores neon personalizado
+- **TTS**: Kokoro-82M local vía CLI de HyperFrames (solo para regenerar audios; requiere Node ≥ 18)
 
 ## 🎨 Sistema de Diseño
 
@@ -115,28 +162,36 @@ src/
 ├── app/
 │   ├── presentations/
 │   │   ├── physics/
-│   │   │   ├── layout.tsx    # Metadata específica de física
-│   │   │   └── page.tsx      # Physics Presentation
-│   │   └── proyecto/
-│   │       ├── layout.tsx    # Metadata específica del proyecto
-│   │       └── page.tsx      # Proyecto Presentation
+│   │   │   ├── components/Presentation.tsx  # Reproductor de audio + navegación
+│   │   │   ├── data/physicsSlidesMeta.ts    # Metadatos (id, audioDuration)
+│   │   │   ├── slides/                      # Diapositivas individuales
+│   │   │   ├── layout.tsx                   # Metadata específica de física
+│   │   │   └── page.tsx                     # Ruta /presentations/physics
+│   │   ├── proyecto/
+│   │   │   ├── components/Presentation_Proyecto.tsx
+│   │   │   ├── data/slidesMeta.ts
+│   │   │   ├── slides/
+│   │   │   ├── layout.tsx                   # Metadata específica del proyecto
+│   │   │   └── page.tsx                     # Ruta /presentations/proyecto
+│   │   └── shared/
+│   │       ├── ui/AudioPlayer.tsx           # Play/pausa, volumen, progreso
+│   │       ├── ui/AutoPlayToggle.tsx        # Toggle de reproducción automática
+│   │       ├── hooks/useAudioManager.ts     # Cambio de pista y auto-avance
+│   │       ├── utils/audio.ts               # getAudioPath / hasAudio
+│   │       └── types.ts                     # SlideMeta (id, audioDuration)
 │   ├── globals.css           # Estilos globales y sistema neon
 │   ├── layout.tsx            # Layout principal con fuentes y Toaster
 │   └── page.tsx              # Página de inicio (lanzador)
 ├── components/
-│   ├── presentation/
-│   │   ├── Presentation.tsx  # Componente principal de física
-│   │   ├── Presentation_Proyecto.tsx # Componente principal de proyecto
-│   │   ├── data/
-│   │   │   ├── physicsSlidesMeta.ts # Metadatos de diapositivas física
-│   │   │   └── slidesMeta.ts # Metadatos de diapositivas proyecto
-│   │   └── slides/
-│   │       ├── physics/      # Diapositivas individuales de física
-│   │       └── proyecto/     # Diapositivas individuales de proyecto
 │   └── ui/                   # Componentes shadcn/ui
 └── lib/
     ├── db.ts                 # Cliente Prisma (singleton)
     └── utils.ts              # Utilidades
+public/
+└── audio/
+    ├── physics/              # slide-XX.txt (guion) + slide-XX.wav (narración)
+    ├── proyecto/             # <id>.txt (guion) + <id>.wav (narración)
+    └── README.md             # Guía de gestión de audios
 ```
 
 ## ⌨️ Atajos de Teclado
