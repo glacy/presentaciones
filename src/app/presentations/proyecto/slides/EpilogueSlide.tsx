@@ -1,11 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Flag, Compass, BookOpen, ArrowLeft, Sparkles } from "lucide-react";
+import { Flag, Compass, ExternalLink, Table, Binoculars } from "lucide-react";
+import Link from "next/link";
 import { getSlideMetaById } from "../data/slidesMeta";
 
 
 const meta = getSlideMetaById("epilogue");
+
+const PLANTILLA_URL = "#";
+
+const EJEMPLO_MODELO_URL = "#";
 
 export function EpilogueSlide() {
   return (
@@ -86,7 +91,7 @@ export function EpilogueSlide() {
         <motion.h2
           initial={{ opacity: 0, y: 14, filter: "blur(8px)" }}
           animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
-          transition={{ duration: 0.8, delay: 0.3 }}
+          transition={{ duration: 1.0, delay: 0.5 }}
           className="max-w-3xl font-sans text-3xl font-extrabold leading-tight tracking-tight text-foreground sm:text-4xl md:text-5xl"
         >
           La bitácora{" "}
@@ -99,7 +104,7 @@ export function EpilogueSlide() {
         <motion.p
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.55 }}
+          transition={{ duration: 1.0, delay: 1.5 }}
           className="mt-4 max-w-2xl text-base text-muted-foreground sm:text-lg md:text-xl"
         >
           Es un {" "}
@@ -109,22 +114,51 @@ export function EpilogueSlide() {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.85 }}
+          transition={{ duration: 1.0, delay: 5.0 }}
           className="mt-8 grid w-full max-w-2xl gap-3 sm:grid-cols-1"
         >
-          <div className="flex items-start gap-3 rounded-xl border border-[#00e5ff]/25 bg-[#00e5ff]/5 p-4 text-left">
-            <BookOpen className="mt-0.5 h-5 w-5 shrink-0 text-neon-cyan" />
-            <div>
-              <div className="text-sm font-semibold text-foreground">
-                Revisa el ejemplo modelo
-              </div>
-              <div className="mt-0.5 text-xs text-muted-foreground">
-                Disponible en el campus virtual.
+          <Link
+            href={EJEMPLO_MODELO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block focus-visible:outline-none"
+          >
+            <div className="group relative flex items-start gap-3 rounded-xl border border-[#00e5ff]/25 bg-[#00e5ff]/5 p-4 text-left transition hover:border-[#00e5ff]/50 hover:bg-card/60 focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+              <Binoculars className="mt-0.5 h-5 w-5 shrink-0 text-neon-cyan" />
+              <div className="flex-1">
+                <div className="mt-2 flex items-center gap-2 text-xs font-medium text-foreground transition-transform group-hover:translate-x-1">
+                  Ejemplo modelo
+                  <ExternalLink className="h-3 w-3 opacity-60" />
+                </div>
               </div>
             </div>
-          </div>
+          </Link>
         </motion.div>
 
+
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.0, delay: 10.0 }}
+          className="mt-8 grid w-full max-w-2xl gap-3 sm:grid-cols-1"
+        >
+          <Link
+            href={PLANTILLA_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block focus-visible:outline-none"
+          >
+            <div className="group relative flex items-start gap-3 rounded-xl border border-[#00e5ff]/25 bg-[#00e5ff]/5 p-4 text-left transition hover:border-[#00e5ff]/50 hover:bg-card/60 focus-visible:ring-2 focus-visible:ring-current focus-visible:ring-offset-2 focus-visible:ring-offset-background">
+              <Table className="mt-0.5 h-5 w-5 shrink-0 text-neon-cyan" />
+              <div className="flex-1">
+                <div className="mt-2 flex items-center gap-2 text-xs font-medium text-foreground transition-transform group-hover:translate-x-1">
+                  Descarga la plantilla de bitácora
+                  <ExternalLink className="h-3 w-3 opacity-60" />
+                </div>
+              </div>
+            </div>
+          </Link>
+        </motion.div>
 
 
       </div>

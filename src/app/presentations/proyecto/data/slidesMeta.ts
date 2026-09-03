@@ -22,7 +22,7 @@ export const slidesMeta: SlideMeta[] = [
     chapter: "Portada",
     accent: "cyan",
     icon: Map,
-    audioDuration: 7.0,
+    audioDuration: 5.5,
   },
   {
     index: 2,
@@ -122,7 +122,7 @@ export const slidesMeta: SlideMeta[] = [
     chapter: "Epílogo",
     accent: "mint",
     icon: Flag,
-    audioDuration: 11.0,
+    audioDuration: 16.9,
   },
 ];
 

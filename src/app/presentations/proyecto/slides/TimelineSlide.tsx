@@ -109,7 +109,7 @@ export function TimelineSlide() {
       <motion.div
         initial={{ opacity: 0, x: 10 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 9.0 }}
+        transition={{ delay: 9.0, duration: 2.5 }}
         className="overflow-hidden rounded-xl border border-[#fbbf24]/25 bg-card/40"
       >
         <div className="flex items-center gap-2 border-b border-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-neon-amber">
