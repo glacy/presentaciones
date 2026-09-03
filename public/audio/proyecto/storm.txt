@@ -1,11 +1,9 @@
-# Audio para slide 8 (storm)
+Tabla cinco: El proceso debe documentarse.
 
-Texto: Tabla cinco es crítica: La realidad siempre gana a la teoría. Aquí registramos problemas reales y sus soluciones.
+Aunque el cronograma sea muy detallado y realista, en un proyecto siempre surgirán imprevistos y situaciones que resolver.
 
-Instrucciones para generar audio:
-- Usar TTS (Text-to-Speech) o grabación profesional
-- Formato: MP3, bitrate 128kbps
-- Duración estimada: 8 segundos
-- Tono: profesional, educativo, moderado
+El registro, como su nombre lo indica, permite al equipo llevar un control de todo aquello que acontece en el proyecto, tanto lo planificado como lo emergente.
 
-Nombre de archivo de audio: storm.mp3
+La persona con el rol de documentar, debe guardar evidencias de todo ello.
+
+

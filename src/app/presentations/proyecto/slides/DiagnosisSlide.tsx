@@ -9,7 +9,7 @@ import { TeacherNote } from "../../shared/ui/primitives";
 const meta = getSlideMetaById("diagnosis");
 
 const badExamples = [
-  "Soy bueno en todo.",
+  "Soy buena en todo.",
   "Trabajo bien en equipo.",
   "Me esfuerzo mucho.",
   "No tengo debilidades.",
@@ -19,7 +19,7 @@ const goodExamples = [
   "Se me dan bien las mates, pero soy un desastre con el formato Word.",
   "Procrastino: necesito fechas cortas y alguien que supervise.",
   "Redacto con claridad, pero me estreso montando experimentos.",
-  "Soy ordenado, pero me cuesta hablar en público.",
+  "Soy ordenada, pero me cuesta hablar en público.",
 ];
 
 export function DiagnosisSlide() {
@@ -29,7 +29,7 @@ export function DiagnosisSlide() {
       <motion.div
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1., delay: 0.5 }}
+        transition={{ duration: 1.5, delay: 1.0 }}
         className="mb-6 flex flex-wrap items-center gap-3 rounded-xl border border-[#4ade80]/30 bg-[#4ade80]/5 px-4 py-3"
       >
         <div className="grid h-9 w-9 place-items-center rounded-lg bg-[#4ade80]/15 text-neon-mint">
@@ -55,7 +55,7 @@ export function DiagnosisSlide() {
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.5, delay: 2 }}
+          transition={{ duration: 3.0, delay: 3.0 + 2.0 }}
           className="relative overflow-hidden rounded-xl border border-[#ff3d8b]/25 bg-[#ff3d8b]/5 p-5"
         >
           <div className="absolute right-3 top-3 grid h-7 w-7 place-items-center rounded-full bg-[#ff3d8b]/15 text-neon-magenta">
@@ -65,7 +65,7 @@ export function DiagnosisSlide() {
             Mal
           </div>
           <div className="mt-1 font-sans text-lg font-semibold text-foreground">
-            Vagueza decorativa
+            Reflexión superficial
           </div>
           <ul className="mt-4 space-y-2.5">
             {badExamples.map((t, i) => (
@@ -73,7 +73,7 @@ export function DiagnosisSlide() {
                 key={i}
                 initial={{ opacity: 0, x: -10 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.4 + i * 0.15 }}
+                transition={{ delay: 0. + i * 0.5 }}
                 className="flex items-start gap-2 text-sm text-muted-foreground line-through decoration-[#ff3d8b]/60"
               >
                 <X className="mt-0.5 h-4 w-4 shrink-0 text-[#ff3d8b]" />
@@ -90,7 +90,7 @@ export function DiagnosisSlide() {
         <motion.div
           initial={{ opacity: 0, x: 20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1.5, delay: 3.5 }}
+          transition={{ duration: 3.0, delay: 9.0 + 2.0 }}
           className="relative overflow-hidden rounded-xl border border-[#4ade80]/25 bg-[#4ade80]/5 p-5"
         >
           <div className="absolute right-3 top-3 grid h-7 w-7 place-items-center rounded-full bg-[#4ade80]/15 text-neon-mint">
@@ -108,7 +108,7 @@ export function DiagnosisSlide() {
                 key={i}
                 initial={{ opacity: 0, x: 10 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: 0.55 + i * 0.15 }}
+                transition={{ delay: 0. + i * 0.5 }}
                 className="flex items-start gap-2 text-sm text-foreground"
               >
                 <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#4ade80]" />

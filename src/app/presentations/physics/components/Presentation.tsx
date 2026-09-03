@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ChevronLeft,
@@ -90,6 +90,21 @@ export function Presentation() {
       audioManager.prevSlide(autoPlayAudio);
     }
   }, [index, audioManager, autoPlayAudio]);
+
+  const pillsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = pillsRef.current?.querySelector<HTMLElement>(
+      `[data-slide-index="${index}"]`,
+    );
+    el?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+  }, [index]);
+
+  const handlePillsWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      e.currentTarget.scrollLeft += e.deltaY;
+    }
+  };
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -186,18 +201,24 @@ export function Presentation() {
                 autoPlay={autoPlayAudio}
                 onPlay={() => setAutoPlayAudio(true)}
                 onPause={() => setAutoPlayAudio(false)}
-                className="hidden sm:flex"
               />
             )}
           </div>
 
-          {/* Slide pills */}
-          <div className="flex flex-1 items-center justify-center gap-1.5 overflow-x-auto px-1 sm:gap-2">
+          {/* Slide pills — scrollable; the inner w-max + mx-auto keeps it
+              centered when it fits and reachable-by-scroll when it overflows */}
+          <div
+            ref={pillsRef}
+            onWheel={handlePillsWheel}
+            className="flex flex-1 items-center overflow-x-auto px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          >
+            <div className="mx-auto flex w-max items-center gap-1.5 sm:gap-2">
             {physicsSlidesMeta.map((s, i) => {
               const active = i === index;
               return (
                 <button
                   key={s.index}
+                  data-slide-index={i}
                   onClick={() => go(i)}
                   aria-label={`Ir a la diapositiva ${s.index}: ${s.title}`}
                   title={`${s.index}. ${s.title}`}
@@ -232,6 +253,7 @@ export function Presentation() {
                 </button>
               );
             })}
+            </div>
           </div>
 
             <button

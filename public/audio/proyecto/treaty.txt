@@ -1,11 +1,5 @@
-# Audio para slide 6 (treaty)
+Las Tablas dos y tres permiten armar el rompecabezas. 
 
-Texto: Tablas dos y tres: Armando el rompecabezas. Aquí definimos roles, responsabilidades y expectativas para cada miembro.
+A partir de la reflexión anterior, se definen los roles y se asignan las responsabilidades y expectativas para cada persona del equipo.
 
-Instrucciones para generar audio:
-- Usar TTS (Text-to-Speech) o grabación profesional
-- Formato: MP3, bitrate 128kbps
-- Duración estimada: 8 segundos
-- Tono: profesional, educativo, moderado
-
-Nombre de archivo de audio: treaty.mp3
+Aunque cada proyecto es diferente, es recomendable, al menos, asignar una persona que se encarge de la coordinación general, otra que documente el proceso, alguien responsable del desarrollo práctico y quien revise e integre todos los aportes.

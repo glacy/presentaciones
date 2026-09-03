@@ -98,7 +98,7 @@ export function StructureSlide() {
                     key={table.id}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 1.5 + index * 1.5 }}
+                    transition={{ delay: 1.5 + index * 1.75 }}
                     className="group relative"
                   >
                     <div className={`flex items-start gap-4 rounded-xl border ${table.borderColor} ${table.bgColor} p-4 transition hover:border-opacity-60 hover:shadow-lg`}>
@@ -129,7 +129,7 @@ export function StructureSlide() {
           <motion.div
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 8.0 }}
+            transition={{ delay: 11.0 }}
             className="flex flex-col justify-center"
           >
             <div className="rounded-xl border border-[#4ade80]/30 bg-[#4ade80]/5 p-5">
@@ -145,8 +145,8 @@ export function StructureSlide() {
                     Cada tabla alimenta a la siguiente: el <span className="font-semibold text-neon-mint">diagnóstico</span> define los{" "}
                     <span className="font-semibold text-neon-cyan">roles</span>, que determinan el{" "}
                     <span className="font-semibold text-neon-amber">cronograma</span>, que se ajusta con el{" "}
-                    <span className="font-semibold text-neon-orange">registro</span> y se evalúa en el{" "}
-                    <span className="font-semibold text-neon-violet">balance</span>. Un ciclo de mejora continua.
+                    <span className="font-semibold text-neon-orange">registro</span> y se evalúa en la{" "}
+                    <span className="font-semibold text-neon-violet">evaluación</span>. Un ciclo de mejora continua.
                   </p>
                 </div>
               </div>

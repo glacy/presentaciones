@@ -47,7 +47,7 @@ export function VillainSlide() {
                 key={i}
                 initial={{ opacity: 0, y: 12 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 7.0 + i * 1.0 }}
+                transition={{ delay: 7.0 + i * 1.5 }}
                 className="group relative flex items-start gap-2 rounded-lg border border-white/8 bg-card/40 p-3 transition hover:border-[#ff3d8b]/40"
               >
                 <div className="flex flex-col items-center">
@@ -73,7 +73,7 @@ export function VillainSlide() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 13.0 }}
+            transition={{ delay: 16.0 }}
             className="mt-4 flex items-center gap-2 rounded-lg border border-[#00e5ff]/30 bg-[#00e5ff]/5 px-3 py-2 text-xs text-[#7decff]"
           >
             <ArrowRight className="h-3.5 w-3.5 shrink-0" />

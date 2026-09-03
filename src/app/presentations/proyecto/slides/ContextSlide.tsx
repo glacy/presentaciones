@@ -26,8 +26,8 @@ const goals = [
   },
   {
     icon: Award,
-    title: "Lograr el 100 %",
-    description: "Entregar proyectos de calidad que cumplen la rúbrica completa",
+    title: "Alcanzar las metas",
+    description: "Entregar proyectos de calidad",
     color: "text-neon-amber",
     bgColor: "bg-[#fbbf24]/10",
     borderColor: "border-[#fbbf24]/30"
@@ -102,7 +102,7 @@ export function ContextSlide() {
           </div> 
         </motion.div> */}
 
-        <motion.div
+        {/*         <motion.div
           initial={{ opacity: 0, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 6.0 }}
@@ -111,7 +111,7 @@ export function ContextSlide() {
           <p className=" text-muted-foreground mx-auto text-lg">
             <span className="font-semibold text-foreground">¿Listos?</span> Vamos a empezar identificando el problema que todos conocemos...
           </p>
-        </motion.div>
+        </motion.div> */}
       </div>
     </SlideShell>
   );

@@ -1,11 +1,6 @@
-# Audio para slide 10 (thread)
+El Panoráma general: 
 
-Texto: La trazabilidad es el secreto de los cien puntos. Todo queda documentado para justificar tu trabajo y resultados.
+la construcción de la Bitácora permite a los equipos asignar roles que garanticen los mejores resultados, con reglas y espectativas claras que facilitan el control y el seguimiento.
 
-Instrucciones para generar audio:
-- Usar TTS (Text-to-Speech) o grabación profesional
-- Formato: MP3, bitrate 128kbps
-- Duración estimada: 8 segundos
-- Tono: profesional, educativo, moderado
+La bitácora es un sistema para lograr un trabajo integrado, coherente y de alta calidad
 
-Nombre de archivo de audio: thread.mp3

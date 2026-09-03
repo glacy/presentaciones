@@ -37,7 +37,7 @@ const goodRows = [
     fecha: "Jue 15 mayo",
     duracion: "4 horas",
     responsable: "Ana (Desarrolladora)",
-    supervision: "Juan (Coordinador)",
+    supervision: "Diego (Desarrollador)",
   },
   {
     actividad: "Redacción de la introducción",
@@ -55,6 +55,7 @@ export function TimelineSlide() {
       <motion.div
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.0, duration: 2.0 }}
         className="mb-5 flex flex-wrap items-center gap-3 rounded-xl border border-[#fbbf24]/30 bg-[#fbbf24]/5 px-4 py-3"
       >
         <div className="grid h-9 w-9 place-items-center rounded-lg bg-[#fbbf24]/15 text-[#fbbf24]">
@@ -66,8 +67,7 @@ export function TimelineSlide() {
           </span>
           <br />
           <span className="font-semibold text-neon-amber">Especificidad</span> y{" "}
-          <span className="font-semibold text-neon-amber">Supervisión</span>: la
-          columna que casi nadie llena… y la que más vale.
+          <span className="font-semibold text-neon-amber">Supervisión</span>: todas las tareas deben distribuirse en el equipo, los tiempos deben ser realistas y respetarse y alguien debe verificar que se cumpla lo planeado.
         </p>
       </motion.div>
 
@@ -75,7 +75,7 @@ export function TimelineSlide() {
       <motion.div
         initial={{ opacity: 0, x: -10 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.15 }}
+        transition={{ delay: 6.0, duration: 2.5 }}
         className="mb-5 overflow-hidden rounded-xl border border-[#ff3d8b]/25 bg-[#ff3d8b]/5"
       >
         <div className="flex items-center gap-2 border-b border-[#ff3d8b]/15 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-neon-magenta">
@@ -109,7 +109,7 @@ export function TimelineSlide() {
       <motion.div
         initial={{ opacity: 0, x: 10 }}
         animate={{ opacity: 1, x: 0 }}
-        transition={{ delay: 0.3 }}
+        transition={{ delay: 9.0, duration: 2.5 }}
         className="overflow-hidden rounded-xl border border-[#fbbf24]/25 bg-card/40"
       >
         <div className="flex items-center gap-2 border-b border-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-neon-amber">
@@ -149,14 +149,14 @@ export function TimelineSlide() {
         </div>
       </motion.div>
 
-      <div className="mt-6">
+      {/* <div className="mt-6">
         <TeacherNote color="amber">
           El error aquí es poner: “Semana 2: Investigamos”. ¿Quién? ¿Cuánto
           tiempo? ¿Quién vigila que se haga? Si Juan es el coordinador, él no
           hace todo, pero su nombre debe aparecer en la columna de supervisión
           verificando que Diego sí montó el experimento.
         </TeacherNote>
-      </div>
+      </div> */}
     </SlideShell>
   );
 }

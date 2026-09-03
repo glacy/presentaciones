@@ -1,11 +1,3 @@
-# Audio para slide 2 (context)
+¿Para qué sirve la bitácora? Es más que un documento: es el mapa que guía tu equipo hacia el éxito y la eficiencia.
 
-Texto: ¿Para qué sirve la bitácora? Es más que un documento: es el mapa que guía tu equipo hacia el éxito y la eficiencia.
-
-Instrucciones para generar audio:
-- Usar TTS (Text-to-Speech) o grabación profesional
-- Formato: MP3, bitrate 128kbps
-- Duración estimada: 8 segundos
-- Tono: profesional, educativo, moderado
-
-Nombre de archivo de audio: context.mp3
+Entender el propósito de esta herramienta va ayudarte a transformar la experiencia de trabajar en equipo.

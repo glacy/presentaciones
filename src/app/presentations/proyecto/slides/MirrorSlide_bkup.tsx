@@ -127,7 +127,48 @@ export function MirrorSlide() {
         ))}
       </div>
 
+      {/* Detail panel */}
+      <AnimatePresence mode="wait">
+        {selected !== null && (
+          <motion.div
+            key={selected}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="mt-4 overflow-hidden"
+          >
+            <div className="rounded-xl border border-[#a855f7]/30 bg-[#a855f7]/5 p-4">
+              <div className="flex items-center gap-2">
+                <div className="grid h-7 w-7 place-items-center rounded-lg bg-[#a855f7]/15 text-[#c084fc]">
+                  <Eye className="h-4 w-4" />
+                </div>
+                <div className="text-[11px] font-semibold uppercase tracking-widest text-[#c89ef7]">
+                  Observaciones · Aspecto {selected + 1}
+                </div>
+              </div>
+              <p className="mt-2 text-sm leading-relaxed text-foreground">
+                {aspects[selected].exemplarText}
+              </p>
 
+              {/* Evidence example */}
+              <motion.div
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15 }}
+                className="mt-3 flex items-start gap-2 rounded-lg border border-[#4ade80]/25 bg-[#4ade80]/5 px-3 py-2 text-xs text-foreground"
+              >
+                <Link2 className="mt-0.5 h-3.5 w-3.5 shrink-0 text-neon-mint" />
+                <span>
+                  <span className="font-semibold text-neon-mint">Ejemplo:</span>{" "}
+                  “Fue ejemplar porque cuando el riel falló, Diego y José lo
+                  resolvieron sin afectar los tiempos del cronograma
+                  (Tabla 5).”
+                </span>
+              </motion.div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/*       <div className="mt-6">
         <TeacherNote color="violet">

@@ -185,7 +185,7 @@ export function AudioPlayer({
         )}
       </button>
 
-      <div className="flex items-center gap-2">
+      <div className="hidden items-center gap-2 sm:flex">
         <button
           onClick={toggleMute}
           className="rounded-lg border border-white/10 bg-white/5 p-2 transition hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-neon-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-background"

@@ -1,11 +1,6 @@
-# Audio para slide 7 (timeline)
+Tabla cuatro: El cronograma es un contrato. Establece actividades, plazos y fechas.
 
-Texto: Tabla cuatro: El cronograma no es un deseo, es un contrato. Los tiempos deben ser realistas y respetarse.
+El cronograma permite visualizar en un formato sencillo las tareas y su distribución en el tiempo; así como las personas encargadas de la supervisión.
 
-Instrucciones para generar audio:
-- Usar TTS (Text-to-Speech) o grabación profesional
-- Formato: MP3, bitrate 128kbps
-- Duración estimada: 7 segundos
-- Tono: profesional, educativo, moderado
 
-Nombre de archivo de audio: timeline.mp3
+Para que el cronograma se útil, los tiempos deben ser realistas y respetarse.

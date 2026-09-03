@@ -24,7 +24,7 @@ const flow = [
     weakness: "Procrastino",
     icon: Repeat,
     role: "Documentador",
-    reason: "Fechas cortas y específicas, supervisado por el coordinador.",
+    reason: "Fechas cortas y específicas, supervisado por la Coordinación.",
     roleIcon: FileText,
   },
   {
@@ -91,7 +91,7 @@ export function TreatySlide() {
       <motion.div
         initial={{ opacity: 0, y: -8 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
+        transition={{ delay: 1.0, duration: 1.5 }}
         className="mb-5 flex flex-wrap items-center gap-3 rounded-xl border border-[#00e5ff]/30 bg-[#00e5ff]/5 px-4 py-3"
       >
         <div className="grid h-9 w-9 place-items-center rounded-lg bg-[#00e5ff]/15 text-neon-cyan">
@@ -102,7 +102,7 @@ export function TreatySlide() {
             Concepto clave · Coherencia
           </span>
           <br />
-          La asignación de roles y responsabilidades debe basarse en <span className="font-semibold text-neon-magenta">debilidades</span> y <span className="font-semibold text-neon-mint">fortalezas</span> de cada miembro, de manera crítica y objetiva.
+          La asignación de roles y responsabilidades debe basarse en <span className="font-semibold text-neon-magenta">debilidades</span> y <span className="font-semibold text-neon-mint">fortalezas</span> de cada integrante, de manera crítica y objetiva.
           <br />
         </p>
       </motion.div>
@@ -111,10 +111,11 @@ export function TreatySlide() {
       <motion.h3
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
+        transition={{ delay: 5.0, duration: 1.0 }}
         className="mb-3 flex items-center gap-2 font-sans text-base font-semibold text-foreground sm:text-lg"
       >
         <Users className="h-5 w-5 text-neon-cyan" />
-        De la debilidad al rol (ejemplos)
+        De la debilidad al rol
       </motion.h3>
 
       <div className="grid gap-3 md:grid-cols-3">
@@ -126,7 +127,7 @@ export function TreatySlide() {
               key={i}
               initial={{ opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 + i * 0.18 }}
+              transition={{ delay: 5.0 + i * 1.5 }}
               className="rounded-xl border border-white/10 bg-card/40 p-4"
             >
               <div className="flex items-center gap-3">
@@ -178,7 +179,7 @@ export function TreatySlide() {
       <motion.h3
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 0.6 }}
+        transition={{ delay: 14.0 }}
         className="mb-3 mt-6 flex items-center gap-2 font-sans text-base font-semibold text-foreground sm:text-lg"
       >
         <ScrollText className="h-5 w-5 text-neon-cyan" />
@@ -192,7 +193,7 @@ export function TreatySlide() {
               key={i}
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 3 + i * 1.0 }}
+              transition={{ delay: 15.0 + i * 2.0 }}
               className={`rounded-xl border p-4 ${colorBorderMap[r.color]}`}
             >
               <Icon className={`h-6 w-6 ${colorTextMap[r.color]}`} />

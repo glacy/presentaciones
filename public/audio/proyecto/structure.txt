@@ -1,11 +1,3 @@
-# Audio para slide 4 (structure)
+La bitácora es un sistema articulado de componentes que trabajan juntos para mantener el orden y la claridad en el equipo.
 
-Texto: La bitácora es un sistema articulado de componentes que trabajan juntos para mantener el orden y la claridad en el equipo.
-
-Instrucciones para generar audio:
-- Usar TTS (Text-to-Speech) o grabación profesional
-- Formato: MP3, bitrate 128kbps
-- Duración estimada: 9 segundos
-- Tono: profesional, educativo, moderado
-
-Nombre de archivo de audio: structure.mp3
+Está organizado en TABLAS, cada una cumple con un propósito para completar la tarea en equipo, precisamente como equipo.

@@ -5,10 +5,23 @@ regenerar voces y cómo actualizar guiones.
 
 ## Estado actual (implementado)
 
-- Cada diapositiva tiene un guion en `public/audio/physics/slide-XX.txt` y su
-  narración generada en `public/audio/physics/slide-XX.wav`.
+- **Physics**: cada diapositiva tiene su guion en `public/audio/physics/slide-XX.txt`
+  y su narración en `public/audio/physics/slide-XX.wav` (10 slides).
+- **Proyecto**: guiones y narraciones en `public/audio/proyecto/` nombrados por
+  `id` del slide: `cover.wav`, `context.wav`, `villain.wav`, `structure.wav`,
+  `diagnosis.wav`, `treaty.wav`, `timeline.wav`, `storm.wav`, `mirror.wav`,
+  `thread.wav`, `epilogue.wav` (11 slides).
 - Voces generadas localmente con **Kokoro-82M** vía el CLI de HyperFrames
   (`npx hyperframes tts`), voz `ef_dora` (español), WAV PCM 16-bit mono 24 kHz.
+
+### Herramientas requeridas
+
+| Herramienta | Uso | Notas |
+| --- | --- | --- |
+| Node.js ≥ 18 | Ejecuta el TTS local vía `npx hyperframes tts` | La primera corrida descarga el modelo Kokoro |
+| `ffprobe` (ffmpeg) | Medir la duración real de cada WAV para `audioDuration` | `ffprobe -v error -show_entries format=duration -of csv=p=0 archivo.wav` |
+| `ffmpeg` | Validar/convertir (p. ej. WAV → MP3 para producción) | `ffmpeg -i entrada.wav -codec:a libmp3lame -b:a 128k -ac 1 salida.mp3` |
+| `file` | Verificar cabeceras válidas | Debe reportar `WAVE audio, Microsoft PCM` |
 
 ### Cómo se conecta el audio con las diapositivas
 
@@ -16,7 +29,7 @@ regenerar voces y cómo actualizar guiones.
 | --- | --- | --- |
 | Resolución de ruta | `src/app/presentations/shared/utils/audio.ts` | `getAudioPath()` → `/audio/<presentación>/<id>.wav`; `hasAudio()` decide si se muestra el reproductor |
 | Tipo | `src/app/presentations/shared/types.ts` | `SlideMeta`: `id`, `audioDuration?`, `audioPath?` |
-| Metadata de slides | `src/app/presentations/physics/data/physicsSlidesMeta.ts` | Cada slide tiene `id: "slide-XX"` y `audioDuration` (segundos, duración real del WAV) |
+| Metadata de slides | `src/app/presentations/physics/data/physicsSlidesMeta.ts` (physics), `src/app/presentations/proyecto/data/slidesMeta.ts` (proyecto) | Cada slide tiene `id: "slide-XX"` (o `id: "cover"`, etc. en proyecto) y `audioDuration` (segundos, duración real del WAV) |
 | Reproductor | `src/app/presentations/shared/ui/AudioPlayer.tsx` | Play/pausa, mute, volumen; muestra "Audio no disponible" solo si el archivo falla al cargar |
 
 Reglas importantes:
@@ -55,11 +68,23 @@ Reglas importantes:
 
 ### Regenerar todos los audios de una vez
 
+Physics (`slide-XX`):
+
 ```bash
 for i in 01 02 03 04 05 06 07 08 09 10; do
   sed -n 's/^Texto: //p' "public/audio/physics/slide-$i.txt" > "/tmp/narracion-$i.txt"
   npx hyperframes tts --text-file "/tmp/narracion-$i.txt" -v ef_dora \
     -o "public/audio/physics/slide-$i.wav"
+done
+```
+
+Proyecto (nombres por `id`):
+
+```bash
+for id in cover context villain structure diagnosis treaty timeline storm mirror thread epilogue; do
+  sed -n 's/^Texto: //p' "public/audio/proyecto/$id.txt" > "/tmp/narracion-$id.txt"
+  npx hyperframes tts --text-file "/tmp/narracion-$id.txt" -v ef_dora \
+    -o "public/audio/proyecto/$id.wav"
 done
 ```
 

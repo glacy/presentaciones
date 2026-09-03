@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ChevronLeft,
@@ -99,6 +99,21 @@ export function Presentation() {
     }
   }, [index, audioManager, autoPlayAudio]);
 
+  const pillsRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const el = pillsRef.current?.querySelector<HTMLElement>(
+      `[data-slide-index="${index}"]`,
+    );
+    el?.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+  }, [index]);
+
+  const handlePillsWheel = (e: React.WheelEvent<HTMLDivElement>) => {
+    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+      e.currentTarget.scrollLeft += e.deltaY;
+    }
+  };
+
   const toggleFullscreen = useCallback(() => {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen();
@@ -110,6 +125,15 @@ export function Presentation() {
   }, []);
 
   const [hoverArea, setHoverArea] = useState(false);
+  const showKeyboardHints = useSyncExternalStore(
+    (onStoreChange) => {
+      const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
+      mq.addEventListener("change", onStoreChange);
+      return () => mq.removeEventListener("change", onStoreChange);
+    },
+    () => window.matchMedia("(hover: hover) and (pointer: fine)").matches,
+    () => false,
+  );
 
   useEffect(() => {
     let timeout: NodeJS.Timeout;
@@ -200,9 +224,9 @@ export function Presentation() {
           </motion.div>
         </AnimatePresence>
 
-        {/* Subtle indicator when nav is hidden but mouse is near */}
+        {/* Subtle indicator when nav is hidden but mouse is near (desktop only) */}
         <AnimatePresence>
-          {!showNav && hoverArea && (
+          {!showNav && hoverArea && showKeyboardHints && (
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -291,17 +315,23 @@ export function Presentation() {
                   autoPlay={autoPlayAudio}
                   onPlay={() => setAutoPlayAudio(true)}
                   onPause={() => setAutoPlayAudio(false)}
-                  className="hidden sm:flex"
                 />
               )}
 
-              {/* Slide pills */}
-              <div className="flex flex-1 items-center justify-center gap-1.5 overflow-x-auto px-1 sm:gap-2">
+              {/* Slide pills — scrollable; the inner w-max + mx-auto keeps it
+                  centered when it fits and reachable-by-scroll when it overflows */}
+              <div
+                ref={pillsRef}
+                onWheel={handlePillsWheel}
+                className="flex flex-1 items-center overflow-x-auto px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+              >
+                <div className="mx-auto flex w-max items-center gap-1.5 sm:gap-2">
                 {slidesMeta.map((s, i) => {
                   const active = i === index;
                   return (
                     <button
                       key={s.index}
+                      data-slide-index={i}
                       onClick={() => go(i)}
                       aria-label={`Ir a la diapositiva ${s.index}: ${s.title}`}
                       title={`${s.index}. ${s.title}`}
@@ -336,6 +366,7 @@ export function Presentation() {
                     </button>
                   );
                 })}
+                </div>
               </div>
 
               <button
