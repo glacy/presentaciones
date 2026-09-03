@@ -73,7 +73,7 @@ export function VillainSlide() {
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 18.0 }}
+            transition={{ delay: 16.0 }}
             className="mt-4 flex items-center gap-2 rounded-lg border border-[#00e5ff]/30 bg-[#00e5ff]/5 px-3 py-2 text-xs text-[#7decff]"
           >
             <ArrowRight className="h-3.5 w-3.5 shrink-0" />
