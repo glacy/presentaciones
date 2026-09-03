@@ -176,7 +176,7 @@ export function StormSlide() {
         ))}
       </motion.div>
 
-      <div className="mt-6">
+      {/*   <div className="mt-6">
         <TeacherNote color="orange">
           ¡Atención! Si en esta tabla escriben “Todo salió perfecto”, pierden
           puntos. La rúbrica pregunta por “resolución de situaciones
@@ -185,7 +185,7 @@ export function StormSlide() {
           <span className="font-semibold text-foreground">trazabilidad</span>{" "}
           que buscamos.
         </TeacherNote>
-      </div>
+      </div> */}
     </SlideShell>
   );
 }

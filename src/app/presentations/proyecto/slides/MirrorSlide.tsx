@@ -54,9 +54,9 @@ export function MirrorSlide() {
             Concepto clave
           </span>
           <br />
-          <span className="font-semibold text-[#c084fc]">Justificar con evidencia</span>{" "}
-          — sombrear “Ejemplar” y dejar “Observaciones” en blanco es un{" "}
-          <span className="font-semibold text-neon-magenta">0</span>.
+          <span className="font-semibold text-[#c084fc]">La mejora continua</span>{" "}
+          — Una mirada crítica en retrospectiva siempre permite aprender para{" "}
+          <span className="font-semibold text-neon-mint">mejorar</span>.
         </p>
       </motion.div>
 
@@ -169,14 +169,14 @@ export function MirrorSlide() {
         )}
       </AnimatePresence>
 
-      <div className="mt-6">
+      {/*       <div className="mt-6">
         <TeacherNote color="violet">
           Muchos sombrean la casilla de “Ejemplar” y dejan en blanco las
           observaciones. Eso es un 0. Si dicen que fue “Ejemplar” porque “todos
           cumplieron”, tienen que citar la Tabla 5. Conecten el final con el
           principio.
         </TeacherNote>
-      </div>
+      </div> */}
     </SlideShell>
   );
 }

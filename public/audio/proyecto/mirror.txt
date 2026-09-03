@@ -1,11 +1,7 @@
-# Audio para slide 9 (mirror)
+La última etapa es la auto-evaluación: ¿Todos los integrantes cumplieron con sus responsabilidades?
 
-Texto: Tabla seis: La evaluación que no es por cumplir. Un espejo final para reflexionar sobre el trabajo realizado.
+¿La asignación de roles fue la adecuada?
 
-Instrucciones para generar audio:
-- Usar TTS (Text-to-Speech) o grabación profesional
-- Formato: MP3, bitrate 128kbps
-- Duración estimada: 8 segundos
-- Tono: profesional, educativo, moderado
+¿fue posible ejecutar todas las actividades tal y como se planificaron?
 
-Nombre de archivo de audio: mirror.mp3
+Una mirada crítica en retrospectiva siempre permite aprender para mejorar.

@@ -66,8 +66,7 @@ export function TimelineSlide() {
           </span>
           <br />
           <span className="font-semibold text-neon-amber">Especificidad</span> y{" "}
-          <span className="font-semibold text-neon-amber">Supervisión</span>: la
-          columna que casi nadie llena… y la que más vale.
+          <span className="font-semibold text-neon-amber">Supervisión</span>: todas las tareas deben distribuirse en el equipo, los tiempos deben ser realistas y respetarse y alguien debe verificar que se cumpla lo planeado.
         </p>
       </motion.div>
 
@@ -149,14 +148,14 @@ export function TimelineSlide() {
         </div>
       </motion.div>
 
-      <div className="mt-6">
+      {/* <div className="mt-6">
         <TeacherNote color="amber">
           El error aquí es poner: “Semana 2: Investigamos”. ¿Quién? ¿Cuánto
           tiempo? ¿Quién vigila que se haga? Si Juan es el coordinador, él no
           hace todo, pero su nombre debe aparecer en la columna de supervisión
           verificando que Diego sí montó el experimento.
         </TeacherNote>
-      </div>
+      </div> */}
     </SlideShell>
   );
 }

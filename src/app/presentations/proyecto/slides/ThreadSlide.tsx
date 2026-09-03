@@ -74,10 +74,10 @@ export function ThreadSlide() {
         </div>
         <p className="flex-1 text-sm text-foreground sm:text-base">
           <span className="text-[11px] font-semibold uppercase tracking-widest text-[#7decff]">
-            El secreto de los 100 puntos
+            Una estructura integrada
           </span>
           <br />
-          Si una tabla desconoce a la anterior, el documento se desmorona.
+          Cada paso de la Bitácora es una pieza clave en la construcción de un todo coherente.
         </p>
       </motion.div>
 
@@ -145,7 +145,7 @@ export function ThreadSlide() {
                 </div>
               </div>
 
-              <AnimatePresence>
+              {/* <AnimatePresence>
                 {isActive && (
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
@@ -157,14 +157,14 @@ export function ThreadSlide() {
                     <span>{l.risk}</span>
                   </motion.div>
                 )}
-              </AnimatePresence>
+              </AnimatePresence> */}
             </motion.button>
           );
         })}
       </div>
 
       {/* Bottom summary */}
-      <motion.div
+      {/*       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.8 }}
@@ -172,16 +172,16 @@ export function ThreadSlide() {
       >
         <span className="font-mono text-neon-cyan">→</span>
         Toca cada conexión para ver el riesgo de romper el hilo.
-      </motion.div>
+      </motion.div> */}
 
-      <div className="mt-5">
+      {/*       <div className="mt-5">
         <TeacherNote color="cyan">
           Si la Tabla 5 habla de cosas que no estaban en la Tabla 4, o si el rol
           de la Tabla 3 ignora la debilidad de la Tabla 1, el documento se
           desmorona. La bitácora debe contar una historia lógica de principio a
           fin.
         </TeacherNote>
-      </div>
+      </div> */}
     </SlideShell>
   );
 }

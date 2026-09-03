@@ -1,11 +1,1 @@
-# Audio para slide 8 (storm)
-
-Texto: Tabla cinco es crítica: La realidad siempre gana a la teoría. Aquí registramos problemas reales y sus soluciones.
-
-Instrucciones para generar audio:
-- Usar TTS (Text-to-Speech) o grabación profesional
-- Formato: MP3, bitrate 128kbps
-- Duración estimada: 8 segundos
-- Tono: profesional, educativo, moderado
-
-Nombre de archivo de audio: storm.mp3
+Tabla cinco es crítica: La realidad siempre gana a la teoría. Aquí registramos problemas reales y sus soluciones.
