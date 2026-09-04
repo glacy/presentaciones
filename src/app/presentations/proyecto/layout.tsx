@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   ],
   authors: [{ name: "Cátedra de Física General I" }],
   icons: {
-    icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
+    icon: "/logo.svg",
   },
   openGraph: {
     title: "Bitácora de Trabajo en Equipo | Física General I",

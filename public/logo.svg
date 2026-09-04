@@ -1,92 +1,44 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150" width="150" height="150">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
   <defs>
-    <filter id="glow-cyan" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
+    <filter id="gc" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1.2" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <filter id="glow-magenta" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
+    <filter id="gm" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="1" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <filter id="glow-violet" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
-      <feMerge>
-        <feMergeNode in="blur"/>
-        <feMergeNode in="SourceGraphic"/>
-      </feMerge>
+    <filter id="gv" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="0.8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
-    <linearGradient id="bg-grad" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#060620"/>
-      <stop offset="100%" stop-color="#0d0828"/>
-    </linearGradient>
   </defs>
 
-  <!-- Background tile -->
-  <rect width="150" height="150" rx="18" fill="url(#bg-grad)"/>
+  <!-- Background -->
+  <rect width="32" height="32" rx="6" fill="#060620"/>
 
-  <!-- Subtle grid texture -->
-  <line x1="75" y1="10" x2="75" y2="140" stroke="#ffffff" stroke-width="0.3" opacity="0.04"/>
-  <line x1="10" y1="75" x2="140" y2="75" stroke="#ffffff" stroke-width="0.3" opacity="0.04"/>
+  <!-- Frame 3 — back, violet -->
+  <rect x="10" y="3" width="19" height="14" rx="2.5"
+        fill="none" stroke="#7c3aed" stroke-width="1.6"
+        opacity="0.55" filter="url(#gv)"/>
 
-  <!-- === FRAME 3 — back (violet, most offset) === -->
-  <rect x="38" y="26" width="80" height="62" rx="5"
-        fill="#0d0828"
-        stroke="#7c3aed" stroke-width="1.8"
-        opacity="0.5"
-        filter="url(#glow-violet)"/>
-  <!-- content lines on back frame -->
-  <line x1="50" y1="44" x2="106" y2="44" stroke="#7c3aed" stroke-width="1.2" opacity="0.35"/>
-  <line x1="50" y1="53" x2="90"  y2="53" stroke="#7c3aed" stroke-width="1.2" opacity="0.25"/>
-  <line x1="50" y1="62" x2="98"  y2="62" stroke="#7c3aed" stroke-width="1.2" opacity="0.2"/>
-  <line x1="50" y1="71" x2="82"  y2="71" stroke="#7c3aed" stroke-width="1.2" opacity="0.15"/>
+  <!-- Frame 2 — middle, magenta -->
+  <rect x="6" y="9" width="19" height="14" rx="2.5"
+        fill="#060620" stroke="#ff00ff" stroke-width="1.8"
+        opacity="0.8" filter="url(#gm)"/>
 
-  <!-- === FRAME 2 — middle (magenta) === -->
-  <rect x="28" y="44" width="80" height="62" rx="5"
-        fill="#0a0622"
-        stroke="#ff00ff" stroke-width="2"
-        opacity="0.72"
-        filter="url(#glow-magenta)"/>
-  <!-- content lines on middle frame -->
-  <line x1="40" y1="62" x2="96" y2="62" stroke="#ff00ff" stroke-width="1.4" opacity="0.45"/>
-  <line x1="40" y1="71" x2="80" y2="71" stroke="#ff00ff" stroke-width="1.4" opacity="0.3"/>
-  <line x1="40" y1="80" x2="88" y2="80" stroke="#ff00ff" stroke-width="1.4" opacity="0.25"/>
-  <line x1="40" y1="89" x2="72" y2="89" stroke="#ff00ff" stroke-width="1.4" opacity="0.2"/>
+  <!-- Frame 1 — front, cyan -->
+  <rect x="2" y="15" width="19" height="14" rx="2.5"
+        fill="#040f20" stroke="#00ffff" stroke-width="2"
+        filter="url(#gc)"/>
 
-  <!-- === FRAME 1 — front (cyan, fully rendered) === -->
-  <rect x="18" y="62" width="80" height="62" rx="5"
-        fill="#040f20"
-        stroke="#00ffff" stroke-width="2.5"
-        filter="url(#glow-cyan)"/>
+  <!-- Front frame header accent -->
+  <rect x="2" y="15" width="19" height="4" rx="2.5"
+        fill="#00ffff" opacity="0.15"/>
+  <rect x="2" y="17" width="19" height="2" fill="#00ffff" opacity="0.08"/>
 
-  <!-- Front frame: header bar -->
-  <rect x="18" y="62" width="80" height="12" rx="5"
-        fill="#00ffff" opacity="0.12"/>
-  <rect x="18" y="68" width="80" height="6"
-        fill="#00ffff" opacity="0.07"/>
-
-  <!-- Front frame: three dot indicator (like browser/app chrome) -->
-  <circle cx="30" cy="68.5" r="2.2" fill="#00ffff" opacity="0.7" filter="url(#glow-cyan)"/>
-  <circle cx="38" cy="68.5" r="2.2" fill="#ff00ff" opacity="0.6" filter="url(#glow-magenta)"/>
-  <circle cx="46" cy="68.5" r="2.2" fill="#7c3aed" opacity="0.7" filter="url(#glow-violet)"/>
-
-  <!-- Front frame: content lines -->
-  <line x1="30" y1="84"  x2="86" y2="84"  stroke="#00ffff" stroke-width="1.8" opacity="0.9" filter="url(#glow-cyan)"/>
-  <line x1="30" y1="93"  x2="72" y2="93"  stroke="#00ffff" stroke-width="1.5" opacity="0.6"/>
-  <line x1="30" y1="102" x2="80" y2="102" stroke="#00ffff" stroke-width="1.5" opacity="0.5"/>
-  <line x1="30" y1="111" x2="62" y2="111" stroke="#ff00ff" stroke-width="1.4" opacity="0.55" filter="url(#glow-magenta)"/>
-
-  <!-- Corner accent — bottom-right neon bracket -->
-  <polyline points="122,108 134,108 134,120"
-            fill="none" stroke="#00ffff" stroke-width="2" stroke-linecap="square"
-            opacity="0.7" filter="url(#glow-cyan)"/>
-  <!-- top-left bracket -->
-  <polyline points="16,42 16,30 28,30"
-            fill="none" stroke="#7c3aed" stroke-width="2" stroke-linecap="square"
-            opacity="0.6" filter="url(#glow-violet)"/>
+  <!-- Three dots on front frame -->
+  <circle cx="6"  cy="19" r="1.1" fill="#00ffff" opacity="0.9" filter="url(#gc)"/>
+  <circle cx="9.5" cy="19" r="1.1" fill="#ff00ff" opacity="0.8" filter="url(#gm)"/>
+  <circle cx="13" cy="19" r="1.1" fill="#7c3aed" opacity="0.8" filter="url(#gv)"/>
 </svg>
