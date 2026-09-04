@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Bitácora de Trabajo en Equipo | Física General I",
   description:
-    "Presentación interactiva para aprender a completar correctamente la bitácora de trabajo en equipo en Física General I. Storytelling visual de principio a fin.",
+    "Presentación interactiva para aprender a completar correctamente la bitácora de trabajo en equipo en Física General I.",
   keywords: [
     "bitácora",
     "trabajo en equipo",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Bitácora de Trabajo en Equipo | Física General I",
     description:
-      "Cómo conquistar el trabajo en equipo sin morir en el intento.",
+      "Una guía para organizar, documentar y evaluar el trabajo en equipo durante el proyecto de Física General I.",
     type: "website",
   },
 };
