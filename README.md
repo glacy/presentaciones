@@ -1,12 +1,11 @@
 # 📐 Presentaciones Interactivas | Física General I
 
-Portal de presentaciones educativas interactivas con diseño neon/cyberpunk y animaciones fluidas para Física General I.
+Portal de presentaciones educativas interactivas con diseño neon/cyberpunk y animaciones fluidas.
 
 ## 🎯 Características
 
 - **Múltiples presentaciones** separadas con metadata específica
-- **Presentación interactiva** de vectores y operaciones vectoriales (10 capítulos)
-- **Presentación de bitácora** de trabajo en equipo (11 capítulos)
+- **Presentación interactiva** 
 - **Audio narrado por diapositiva** con TTS local (Kokoro), auto-play y auto-avance (ver [Audio](#-audio-narrado))
 - **Navegación por teclado**: ← → para navegar, 1-9 para saltar a diapositivas específicas
 - **Diseño neon/cyberpunk** con efectos de brillo y animaciones suaves
@@ -14,35 +13,6 @@ Portal de presentaciones educativas interactivas con diseño neon/cyberpunk y an
 - **Progreso visual** con barra de progreso animada
 - **Responsive** con optimizaciones para escritorio y móvil
 - **Matemáticas con LaTeX/KaTeX** para notación científica precisa
-
-## 📚 Contenido
-
-### Presentación de Vectores y Operaciones Vectoriales
-
-1. **Portada** - Introducción a los vectores
-2. **Unidades** - Cantidades físicas y unidades fundamentales
-3. **Escalares vs Vectores** - Diferencias y aplicaciones
-4. **Sistemas de Coordenadas** - Sistemas de referencia
-5. **Operaciones Básicas** - Suma y resta de vectores
-6. **Direcciones Cardinales** - Navegación con puntos cardinales
-7. **Producto Escalar** - Trabajo y proyección
-8. **Producto Vectorial** - Torque y perpendicularidad
-9. **Resumen** - Resumen de operaciones vectoriales
-10. **Conclusión** - El poder de los vectores
-
-### Presentación de Bitácora de Trabajo en Equipo
-
-1. **Portada** - La Bitácora del Trabajo Individual y en Equipo
-2. **Contexto** - ¿Para qué sirve la Bitácora?
-3. **El problema** - El Villano de la Historia
-4. **Estructura integrada** - La Bitácora: un sistema articulado
-5. **Diagnóstico · T1** - Mirarse al espejo sin filtro
-6. **Tratado de paz · T2-T3** - Armando el rompecabezas
-7. **Cronograma · T4** - El Cronograma no es un deseo, es un contrato
-8. **La Tormenta · T5** - La realidad siempre gana a la teoría
-9. **Espejo final · T6** - La evaluación que no es por cumplir
-10. **El hilo invisible** - La Trazabilidad: el secreto de los 100 puntos
-11. **Epílogo** - La bitácora no es puro papeleo
 
 ## 🚀 Comenzando
 
@@ -239,8 +209,16 @@ bun run audio:mp3
 
 ## 👥 Autores
 
-Cátedra de Física General I · Tecnológico de Costa Rica
+Gerardo Lacy Mora
+glacy@tec.ac.cr
 
 ## 📄 Licencia
 
-Proyecto educativo para Física General I - I Semestre 2026
+Doble licencia para un proyecto educativo abierto (ver [`LICENSE`](LICENSE)):
+
+- **Código fuente**: [MIT](LICENSE) — uso, modificación y redistribución libres.
+- **Contenido educativo** (diapositivas, guiones, narraciones de audio,
+  documentación): [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es) —
+  compartir y adaptar con atribución y bajo la misma licencia.
+
+© 2026 Cátedra de Física General I · Tecnológico de Costa Rica
