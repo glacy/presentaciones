@@ -20,14 +20,14 @@ regenerar voces y cómo actualizar guiones.
 | --- | --- | --- |
 | Node.js ≥ 18 | Ejecuta el TTS local vía `npx hyperframes tts` | La primera corrida descarga el modelo Kokoro |
 | `ffprobe` (ffmpeg) | Medir la duración real de cada WAV para `audioDuration` | `ffprobe -v error -show_entries format=duration -of csv=p=0 archivo.wav` |
-| `ffmpeg` | Validar/convertir (p. ej. WAV → MP3 para producción) | `ffmpeg -i entrada.wav -codec:a libmp3lame -b:a 128k -ac 1 salida.mp3` |
+| `ffmpeg` | Validar/convertir (p. ej. WAV → MP3 para producción) | Automatizado en `bun run audio:mp3`; manual: `ffmpeg -i entrada.wav -codec:a libmp3lame -b:a 128k -ac 1 salida.mp3` |
 | `file` | Verificar cabeceras válidas | Debe reportar `WAVE audio, Microsoft PCM` |
 
 ### Cómo se conecta el audio con las diapositivas
 
 | Pieza | Archivo | Función |
 | --- | --- | --- |
-| Resolución de ruta | `src/app/presentations/shared/utils/audio.ts` | `getAudioPath()` → `/audio/<presentación>/<id>.wav`; `hasAudio()` decide si se muestra el reproductor |
+| Resolución de ruta | `src/app/presentations/shared/utils/audio.ts` | `getAudioPath()` → `/audio/<presentación>/<id>.wav` (dev) o `.mp3` (producción); `hasAudio()` decide si se muestra el reproductor |
 | Tipo | `src/app/presentations/shared/types.ts` | `SlideMeta`: `id`, `audioDuration?`, `audioPath?` |
 | Metadata de slides | `src/app/presentations/physics/data/physicsSlidesMeta.ts` (physics), `src/app/presentations/proyecto/data/slidesMeta.ts` (proyecto) | Cada slide tiene `id: "slide-XX"` (o `id: "cover"`, etc. en proyecto) y `audioDuration` (segundos, duración real del WAV) |
 | Reproductor | `src/app/presentations/shared/ui/AudioPlayer.tsx` | Play/pausa, mute, volumen; muestra "Audio no disponible" solo si el archivo falla al cargar |
@@ -39,8 +39,22 @@ Reglas importantes:
 - El `id` del slide define el nombre de archivo esperado: `id: "slide-04"` →
   `/audio/physics/slide-04.wav`. Si un día usas ids semánticos (`"portada"`),
   renombra el WAV o define `audioPath` explícito en el meta.
-- Para migrar a MP3 en producción: convierte los archivos, cambia la extensión
-  en `getAudioPath()` (`audio.ts`, línea del `.wav`) y actualiza los nombres.
+
+### WAV en desarrollo, MP3 en producción
+
+- `getAudioPath()` elige la extensión automáticamente según entorno:
+  `.wav` cuando `NODE_ENV !== "production"` (dev) y `.mp3` en builds de
+  producción. El WAV es el máster; el MP3 se deriva de él.
+- Antes de un build de producción, genera/actualiza los MP3:
+
+  ```bash
+  bun run audio:mp3          # convierte solo los WAV nuevos/actualizados
+  bun run audio:mp3 --force  # reconvierte todo
+  bun run build
+  ```
+
+- El script `scripts/audio-to-mp3.ts` convierte todo `public/audio/**` a
+  MP3 128 kbps mono y es idempotente (compara fechas de modificación).
 
 ---
 

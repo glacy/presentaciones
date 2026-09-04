@@ -97,9 +97,10 @@ Cada diapositiva tiene un guion (`.txt`) y su narración generada con **TTS loca
 
 | Pieza | Archivo | Función |
 | --- | --- | --- |
-| Guion + narración | `public/audio/<presentación>/<id>.txt` / `.wav` | Fuente del texto y audio servido estáticamente |
-| Resolución de ruta | `src/app/presentations/shared/utils/audio.ts` | `getAudioPath()` construye `/audio/<pres>/<id>.wav`; `hasAudio()` decide si se muestra el reproductor |
-| Metadata | `physics/data/physicsSlidesMeta.ts`, `proyecto/data/slidesMeta.ts` | Cada slide declara `id` (define el nombre del WAV) y `audioDuration` (segundos reales) |
+| Guion + narración | `public/audio/<presentación>/<id>.txt` / `.wav` / `.mp3` | El WAV es el máster; el MP3 se deriva para producción |
+| Resolución de ruta | `src/app/presentations/shared/utils/audio.ts` | `getAudioPath()` construye `/audio/<pres>/<id>.wav` en dev y `.mp3` en producción (`NODE_ENV`); `hasAudio()` decide si se muestra el reproductor |
+| Conversión WAV → MP3 | `scripts/audio-to-mp3.ts` (`bun run audio:mp3`) | Convierte todo `public/audio/**` a MP3 128 kbps mono; idempotente (solo reconviene si el WAV es más nuevo) |
+| Metadata | `physics/data/physicsSlidesMeta.ts`, `proyecto/data/slidesMeta.ts` | Cada slide declara `id` (define el nombre del archivo) y `audioDuration` (segundos reales) |
 | Reproductor | `shared/ui/AudioPlayer.tsx` | Play/pausa, volumen, progreso; visible siempre (barra inferior animada sin desmontarse) |
 | Auto-play / auto-avance | `shared/hooks/useAudioManager.ts` + `shared/ui/AutoPlayToggle.tsx` | Al terminar la narración avanza a la siguiente diapositiva (si auto-play está activo) |
 
@@ -117,7 +118,9 @@ Convenciones clave:
   requiere Node ≥ 18; la primera corrida descarga el modelo)
 - **Validación**: `file <archivo.wav>` (debe reportar `WAVE audio, Microsoft PCM`)
 - **Duración**: `ffprobe -v error -show_entries format=duration -of csv=p=0 <archivo.wav>`
-- **Conversión a MP3 (producción)**: `ffmpeg -i entrada.wav -codec:a libmp3lame -b:a 128k -ac 1 salida.mp3`
+- **Conversión a MP3 (producción)**: `bun run audio:mp3` — convierte todos los
+  WAV de `public/audio/` a MP3 128 kbps mono. Ejecutar **antes de** `bun run build`
+  (en producción la app sirve `.mp3`; en desarrollo, `.wav`)
 
 ```bash
 # Regenerar la narración de una diapositiva tras editar su guion
@@ -216,6 +219,9 @@ El proyecto está configurado para despliegue con:
 - **SQLite** embebido para base de datos
 
 ```bash
+# Generar/actualizar MP3 de narración (requerido para producción)
+bun run audio:mp3
+
 # Build completo con mini-services
 .zscripts/build.sh
 
