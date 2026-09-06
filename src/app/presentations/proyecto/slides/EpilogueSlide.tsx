@@ -10,7 +10,7 @@ const meta = getSlideMetaById("epilogue");
 
 const PLANTILLA_URL = "#";
 
-const EJEMPLO_MODELO_URL = "#";
+const EJEMPLO_MODELO_URL = "/ejemplo_modelo_bitacora_trabajo_equipo.pdf";
 
 export function EpilogueSlide() {
   return (
@@ -120,6 +120,7 @@ export function EpilogueSlide() {
           <Link
             href={EJEMPLO_MODELO_URL}
             target="_blank"
+            download="ejemplo_modelo_bitacora_trabajo_equipo.pdf"
             rel="noopener noreferrer"
             className="block focus-visible:outline-none"
           >
