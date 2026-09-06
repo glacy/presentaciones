@@ -8,7 +8,7 @@ import { getSlideMetaById } from "../data/slidesMeta";
 
 const meta = getSlideMetaById("epilogue");
 
-const PLANTILLA_URL = "#";
+const PLANTILLA_URL = "/FG1_IIS-2026_proyecto_bitacora_trabajo_en_equipo.docx";
 
 const EJEMPLO_MODELO_URL = "/ejemplo_modelo_bitacora_trabajo_equipo.pdf";
 
@@ -146,6 +146,7 @@ export function EpilogueSlide() {
           <Link
             href={PLANTILLA_URL}
             target="_blank"
+            download="FG1_IIS-2026_proyecto_bitacora_trabajo_en_equipo.docx"
             rel="noopener noreferrer"
             className="block focus-visible:outline-none"
           >
