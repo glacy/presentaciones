@@ -221,4 +221,3 @@ Doble licencia para un proyecto educativo abierto (ver [`LICENSE`](LICENSE)):
   documentación): [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/deed.es) —
   compartir y adaptar con atribución y bajo la misma licencia.
 
-© 2026 Cátedra de Física General I · Tecnológico de Costa Rica
