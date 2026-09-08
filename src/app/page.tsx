@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Atom, Map, ExternalLink } from "lucide-react";
+import { ArrowRight, Atom, Map, ExternalLink, Share2 } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import type { KeyboardEvent } from "react";
@@ -10,15 +10,15 @@ export default function PresentationLauncher() {
   const [openInNewWindow, setOpenInNewWindow] = useState(false);
 
   const presentations = [
-    // {
-    //   title: "Vectores y Operaciones vectoriales",
-    //   description: "Vectores, sistemas de coordenadas y operaciones vectoriales",
-    //   path: "/presentations/physics",
-    //   icon: Atom,
-    //   color: "text-neon-cyan",
-    //   borderColor: "border-neon-cyan/30",
-    //   bgColor: "bg-neon-cyan/10",
-    // },
+    {
+      title: "Vectores y Operaciones vectoriales",
+      description: "Vectores, sistemas de coordenadas y operaciones vectoriales",
+      path: "/presentations/physics",
+      icon: Atom,
+      color: "text-neon-cyan",
+      borderColor: "border-neon-cyan/30",
+      bgColor: "bg-neon-cyan/10",
+    },
     {
       title: "Bitácora de Trabajo en Equipo",
       description: "Una herramienta para organizar el trabajo en equipo y documentar el proceso",
@@ -27,6 +27,15 @@ export default function PresentationLauncher() {
       color: "text-neon-magenta",
       borderColor: "border-neon-magenta/30",
       bgColor: "bg-neon-magenta/10",
+    },
+    {
+      title: "Construir para compartir",
+      description: "Educación abierta, reproducible e inclusiva para un aprendizaje accesible",
+      path: "/presentations/compartir",
+      icon: Share2,
+      color: "text-neon-cyan",
+      borderColor: "border-neon-cyan/30",
+      bgColor: "bg-neon-cyan/10",
     },
   ];
 
