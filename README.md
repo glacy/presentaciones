@@ -1,4 +1,6 @@
-# 📐 Presentaciones Interactivas | Física General I
+# 📐 Presentaciones Interactivas
+
+[![Sitio en producción](https://img.shields.io/badge/sitio-presentaciones-black?style=flat-square&logo=vercel)](https://presentaciones-nine-delta.vercel.app/)
 
 Portal de presentaciones educativas interactivas con diseño neon/cyberpunk y animaciones fluidas.
 
