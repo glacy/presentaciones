@@ -12,10 +12,11 @@ import {
   RefreshCw,
   Gift,
   Link2,
+  Github,
 } from "lucide-react";
 import type { SlideMeta } from "../../shared/types";
 
-export const SLIDE_TOTAL = 13;
+export const SLIDE_TOTAL = 14;
 
 export const slidesMeta: SlideMeta[] = [
   {
@@ -92,6 +93,15 @@ export const slidesMeta: SlideMeta[] = [
   },
   {
     index: 9,
+    id: "github-profile",
+    shortLabel: "Perfil",
+    title: "Así se ve un perfil abierto",
+    chapter: "Bajo la cortina",
+    accent: "cyan",
+    icon: Github,
+  },
+  {
+    index: 10,
     id: "engine-flow",
     shortLabel: "CI/CD · Vercel",
     title: "Tú escribes, la máquina publica",
@@ -100,7 +110,7 @@ export const slidesMeta: SlideMeta[] = [
     icon: Zap,
   },
   {
-    index: 10,
+    index: 11,
     id: "ladder",
     shortLabel: "La escalera",
     title: "Caminos de adopción: la escalera",
@@ -109,7 +119,7 @@ export const slidesMeta: SlideMeta[] = [
     icon: TrendingUp,
   },
   {
-    index: 11,
+    index: 12,
     id: "lifecycle",
     shortLabel: "Ciclo de vida",
     title: "El ciclo de vida del material abierto",
@@ -118,7 +128,7 @@ export const slidesMeta: SlideMeta[] = [
     icon: RefreshCw,
   },
   {
-    index: 12,
+    index: 13,
     id: "messages",
     shortLabel: "Tres mensajes",
     title: "Tres mensajes para llevar",
@@ -127,7 +137,7 @@ export const slidesMeta: SlideMeta[] = [
     icon: Gift,
   },
   {
-    index: 13,
+    index: 14,
     id: "epilogue",
     shortLabel: "Enlaces",
     title: "Empieza hoy: enlaces y recursos",

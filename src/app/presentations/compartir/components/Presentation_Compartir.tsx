@@ -29,6 +29,7 @@ import { InclusiveSlide } from "../slides/InclusiveSlide";
 import { MoldSlide } from "../slides/MoldSlide";
 import { DemoSlide } from "../slides/DemoSlide";
 import { EngineGithubSlide } from "../slides/EngineGithubSlide";
+import { GithubProfileSlide } from "../slides/GithubProfileSlide";
 import { EngineFlowSlide } from "../slides/EngineFlowSlide";
 import { LadderSlide } from "../slides/LadderSlide";
 import { LifecycleSlide } from "../slides/LifecycleSlide";
@@ -44,6 +45,7 @@ const slideComponents: Record<string, React.ComponentType> = {
   mold: MoldSlide,
   demo: DemoSlide,
   "engine-github": EngineGithubSlide,
+  "github-profile": GithubProfileSlide,
   "engine-flow": EngineFlowSlide,
   ladder: LadderSlide,
   lifecycle: LifecycleSlide,

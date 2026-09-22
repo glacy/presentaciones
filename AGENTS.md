@@ -18,3 +18,4 @@
 - Never modify: .zscripts/, db/, neon color system in globals.css
 - No tests / no CI — don't create them unless asked
 - next.config.ts has ignoreBuildErrors: true → a passing build proves nothing; type-check with `bunx tsc --noEmit
+- no hacer build a mennos que se solicite
