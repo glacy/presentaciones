@@ -1,0 +1,41 @@
+# Licencia dual del repositorio
+
+Este repositorio se distribuye bajo dos licencias según el tipo de contenido:
+
+1. **Código del sistema de presentaciones** (framework, componentes de infraestructura, configuración, scripts y todo el código fuente de la aplicación) → **Licencia MIT** (ver texto más abajo).
+2. **Las presentaciones en sí** (contenido de las diapositivas: textos, datos de las slides, material didáctico y cualquier obra de autoría incluida en ellas) → **Creative Commons Atribución 4.0 Internacional (CC BY 4.0)**, disponible en: https://creativecommons.org/licenses/by/4.0/
+
+Al contribuir a este repositorio aceptas que tu contribución al código se licencie bajo MIT y tu contribución al contenido de las presentaciones bajo CC BY 4.0.
+
+---
+
+## Licencia MIT (código del sistema)
+
+Copyright (c) 2026 Gerardo Lacy M
+
+Por la presente se concede permiso, libre de cargos, a cualquier persona que obtenga una copia de este software y de los archivos de documentación asociados (el "Software"), a utilizar el Software sin restricción, incluyendo sin limitación los derechos a usar, copiar, modificar, fusionar, publicar, distribuir, sublicenciar, y/o vender copias del Software, y a permitir a las personas a las que se les proporcione el Software a hacer lo mismo, sujeto a las siguientes condiciones:
+
+El aviso de copyright anterior y este aviso de permiso se incluirán en todas las copias o partes sustanciales del Software.
+
+EL SOFTWARE SE PROPORCIONA "COMO ESTÁ", SIN GARANTÍA DE NINGÚN TIPO, EXPRESA O IMPLÍCITA, INCLUYENDO PERO NO LIMITADO A GARANTÍAS DE COMERCIALIZACIÓN, IDONEIDAD PARA UN PROPÓSITO PARTICULAR E INCUMPLIMIENTO. EN NINGÚN CASO LOS AUTORES O PROPIETARIOS DE LOS DERECHOS DE AUTOR SERÁN RESPONSABLES DE NINGUNA RECLAMACIÓN, DAÑOS U OTRAS RESPONSABILIDADES, YA SEA EN UNA ACCIÓN DE CONTRATO, AGRAVIO O CUALQUIER OTRO MOTIVO, DERIVADAS DE, FUERA DE O EN CONEXIÓN CON EL SOFTWARE O SU USO U OTRO TIPO DE ACCIONES EN EL SOFTWARE.
+
+---
+
+## Contenido de las presentaciones
+
+Las presentaciones incluidas en este repositorio (el contenido de las diapositivas y su material asociado) se publican bajo la licencia **Creative Commons Atribución 4.0 Internacional (CC BY 4.0)**.
+
+Usted es libre de:
+
+- **Compartir** — copiar y redistribuir el material en cualquier medio o formato.
+- **Adaptar** — remezclar, transformar y crear a partir del material para cualquier propósito, incluso comercialmente.
+
+Bajo los siguientes términos:
+
+- **Atribución** — Debe dar crédito de manera adecuada, brindar un enlace a la licencia, e indicar si se han realizado cambios. Puede hacerlo en cualquier forma razonable, pero no de forma tal que sugiera que usted o su uso tienen el apoyo del licenciante.
+
+Texto legal completo: https://creativecommons.org/licenses/by/4.0/legalcode.es
+
+Atribución sugerida al reutilizar el contenido:
+
+> Basado en presentaciones de Gerardo Lacy M (https://github.com/glacy/presentaciones), licenciado bajo CC BY 4.0.

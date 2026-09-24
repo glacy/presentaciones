@@ -1,12 +1,16 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Usb, FileText, Folder, TrendingUp, TrendingDown, Sparkles, ReceiptText } from "lucide-react";
+import { QRCodeSVG } from "qrcode.react";
+import { Usb, FileText, Folder, TrendingUp, TrendingDown, Sparkles, ReceiptText, QrCode } from "lucide-react";
 import { getSlideMetaById } from "../data/slidesMeta";
 import { SLIDE_TOTAL } from "../data/slidesMeta";
 import { SlideShell } from "../../shared/ui/SlideShell";
 
 const meta = getSlideMetaById("where");
+
+const FORM_URL =
+  "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=kLsZEbqIlEi38d4m4SnZd7WxCuAJJ7RJrohuZupZ7HJUNVc1WlVKRzJMTUVDM1hGSUlYWDU4Q1UxUC4u";
 
 const answers = [
   { icon: Usb, text: "Un Word en un pendrive… que ya no leo", color: "text-neon-magenta" },
@@ -59,6 +63,40 @@ export function WhereSlide() {
               </motion.div>
             ))}
           </div>
+
+          <motion.a
+            href={FORM_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.9 }}
+            whileHover={{ scale: 1.01 }}
+            className="mt-4 flex items-center gap-4 rounded-xl border border-[#00e5ff]/40 bg-[#00e5ff]/5 p-3 shadow-[0_0_30px_-10px_rgba(0,229,255,0.4)]"
+          >
+            <span className="grid h-[104px] w-[104px] shrink-0 place-items-center rounded-lg bg-white p-2">
+              <QRCodeSVG
+                value={FORM_URL}
+                size={88}
+                bgColor="#ffffff"
+                fgColor="#0a0f16"
+                level="M"
+                aria-hidden
+              />
+            </span>
+            <span className="min-w-0">
+              <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-[#7decff]">
+                <QrCode className="h-3.5 w-3.5" />
+                Encuesta en vivo
+              </span>
+              <span className="mt-1 block font-sans text-base font-semibold leading-snug text-foreground sm:text-lg">
+                Mientras piensas: escanea y cuéntanos
+              </span>
+              <span className="mt-1 block text-xs text-muted-foreground">
+                Veremos tus respuestas proyectadas durante la charla.
+              </span>
+            </span>
+          </motion.a>
         </div>
 
         <div>
