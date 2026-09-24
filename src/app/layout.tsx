@@ -20,21 +20,21 @@ const jetbrainsMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Presentaciones Interactivas | Física General I",
   description:
-    "Portal de presentaciones interactivas para Física General I. Accede a diferentes módulos de aprendizaje con contenido visual y dinámico.",
+    "Portal de presentaciones interactivas. Accede a diferentes módulos de aprendizaje con contenido visual y dinámico.",
   keywords: [
     "presentaciones",
     "física general",
     "aprendizaje interactivo",
     "educación",
   ],
-  authors: [{ name: "Cátedra de Física General I" }],
+  authors: [{ name: "Gerardo Lacy Mora" }],
   icons: {
     icon: "https://z-cdn.chatglm.cn/z-ai/static/logo.svg",
   },
   openGraph: {
-    title: "Presentaciones Interactivas | Física General I",
+    title: "Presentaciones Interactivas",
     description:
-      "Portal de presentaciones interactivas para Física General I",
+      "Portal de presentaciones interactivas",
     type: "website",
   },
 };

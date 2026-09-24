@@ -72,7 +72,7 @@ export function CoverSlide() {
           className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#00e5ff]/40 bg-[#00e5ff]/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#7decff]"
         >
           <Share2 className="h-3.5 w-3.5" />
-          Charla para docentes · Educación abierta
+          FIMAT CONCITES 2026
         </motion.div>
 
         <motion.h1

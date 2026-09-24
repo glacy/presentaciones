@@ -46,7 +46,7 @@ export function GithubProfileSlide() {
           src={githubProfile}
           alt="Perfil público de GitHub de glacy (Gerardo Lacy Mora) con estadísticas de actividad y repositorios fijados"
           unoptimized
-          className="h-auto w-full"
+          className="h-auto width-auto max-w-full"
           priority
         />
         <span className="absolute right-3 top-3 flex items-center gap-1.5 rounded-lg border border-white/10 bg-background/80 px-2.5 py-1 text-xs font-medium text-[#7decff] backdrop-blur-sm">

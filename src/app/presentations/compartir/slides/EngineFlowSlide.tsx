@@ -19,7 +19,7 @@ const steps = [
   {
     icon: FileText,
     title: "Escribes",
-    desc: "Editas tu .md — texto simple, tuyo",
+    desc: "Editas tu .md — texto simple",
     color: "cyan",
   },
   {
@@ -37,7 +37,7 @@ const steps = [
   {
     icon: Rocket,
     title: "Publica",
-    desc: "Vercel despliega gratis",
+    desc: "El material se desplega en la web",
     color: "orange",
   },
   {

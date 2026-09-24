@@ -33,9 +33,9 @@ export default function PresentationLauncher() {
       description: "Educación abierta, reproducible e inclusiva para un aprendizaje accesible",
       path: "/presentations/compartir",
       icon: Share2,
-      color: "text-neon-cyan",
-      borderColor: "border-neon-cyan/30",
-      bgColor: "bg-neon-cyan/10",
+      color: "text-neon-mint",
+      borderColor: "border-neon-mint/30",
+      bgColor: "bg-neon-mint/10",
     },
   ];
 

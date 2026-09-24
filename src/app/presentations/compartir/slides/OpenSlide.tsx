@@ -51,13 +51,12 @@ export function OpenSlide() {
                 className="flex items-center gap-3 rounded-lg border border-white/8 bg-card/40 p-3"
               >
                 <span
-                  className={`grid h-10 w-14 shrink-0 place-items-center rounded-md border font-mono text-xs font-bold ${
-                    l.color === "mint"
+                  className={`grid h-10 w-14 shrink-0 place-items-center rounded-md border font-mono text-xs font-bold ${l.color === "mint"
                       ? "border-[#4ade80]/30 bg-[#4ade80]/10 text-[#8af0a8]"
                       : l.color === "cyan"
                         ? "border-[#00e5ff]/30 bg-[#00e5ff]/10 text-[#7decff]"
                         : "border-[#fbbf24]/30 bg-[#fbbf24]/10 text-[#fcd363]"
-                  }`}
+                    }`}
                 >
                   {l.code}
                 </span>
