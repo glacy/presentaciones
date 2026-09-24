@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useReducer, useRef, useState, useSyncExternalStore } from "react";
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import {
   ChevronLeft,
@@ -56,6 +56,15 @@ const slideComponents: Record<string, React.ComponentType> = {
 
 type Direction = 1 | -1;
 
+function subscribeToProjectorQuery(onChange: () => void) {
+  window.addEventListener("popstate", onChange);
+  return () => window.removeEventListener("popstate", onChange);
+}
+
+function getProjectorQuerySnapshot() {
+  return new URLSearchParams(window.location.search).get("proyector") === "1";
+}
+
 export function Presentation() {
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState<Direction>(1);
@@ -63,25 +72,25 @@ export function Presentation() {
   const [showNav, setShowNav] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [autoPlayAudio, setAutoPlayAudio] = useState(true);
-  const [projector, setProjector] = useState(
-    () =>
-      typeof window !== "undefined" &&
-      new URLSearchParams(window.location.search).get("proyector") === "1",
+  const [projectorOverride, setProjectorOverride] = useState<boolean | null>(null);
+  const projectorFromUrl = useSyncExternalStore(
+    subscribeToProjectorQuery,
+    getProjectorQuerySnapshot,
+    () => false,
   );
+  const projector = projectorOverride ?? projectorFromUrl;
 
-  useEffect(() => {
+  const toggleProjector = useCallback(() => {
+    const next = !(projectorOverride ?? getProjectorQuerySnapshot());
     const url = new URL(window.location.href);
-    if (projector) {
+    if (next) {
       url.searchParams.set("proyector", "1");
     } else {
       url.searchParams.delete("proyector");
     }
     window.history.replaceState(null, "", url);
-  }, [projector]);
-
-  const toggleProjector = useCallback(() => {
-    setProjector((v) => !v);
-  }, []);
+    setProjectorOverride(next);
+  }, [projectorOverride]);
 
   const total = slidesMeta.length;
   const meta = slidesMeta[index];
@@ -126,6 +135,17 @@ export function Presentation() {
   }, [index, audioManager, autoPlayAudio]);
 
   const pillsRef = useRef<HTMLDivElement>(null);
+
+  // Repaint safety net: a re-render after the enter transition forces
+  // framer-motion to re-evaluate and finish any animation left in an
+  // intermediate state (same effect as moving the mouse manually).
+  // This works around stale compositor layers from animating
+  // backdrop-filter/blur elements at non-100% browser zoom or fullscreen.
+  const [, refreshAfterTransition] = useReducer((c: number) => c + 1, 0);
+  useEffect(() => {
+    const t = setTimeout(refreshAfterTransition, 600);
+    return () => clearTimeout(t);
+  }, [index]);
 
   useEffect(() => {
     const el = pillsRef.current?.querySelector<HTMLElement>(
@@ -228,7 +248,6 @@ export function Presentation() {
     <MotionConfig reducedMotion="user">
     <div
       data-projector={projector ? "true" : undefined}
-      suppressHydrationWarning
       className="relative flex h-[100dvh] w-full flex-col overflow-hidden bg-background text-foreground"
     >
       <div className="absolute left-0 top-0 z-30 h-1 w-full bg-white/5">
@@ -241,14 +260,13 @@ export function Presentation() {
       </div>
 
       <div className="relative flex-1 overflow-hidden">
-        <AnimatePresence mode="wait" custom={direction}>
+        <AnimatePresence initial={false}>
           <motion.div
             key={index}
-            custom={direction}
-            initial={{ opacity: 0, x: direction * 60, filter: "blur(8px)" }}
-            animate={{ opacity: 1, x: 0, filter: "blur(0px)" }}
-            exit={{ opacity: 0, x: direction * -40, filter: "blur(8px)" }}
-            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            initial={{ opacity: 0, x: 24 }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: -16 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             className="absolute inset-0"
           >
             <Current />
@@ -263,7 +281,7 @@ export function Presentation() {
               exit={{ opacity: 0 }}
               className="absolute bottom-4 right-4 z-30"
             >
-              <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-background/60 px-3 py-1.5 text-xs text-muted-foreground backdrop-blur-sm">
+              <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-background/90 px-3 py-1.5 text-xs text-muted-foreground">
                 <span>Presiona N para mostrar controles</span>
               </div>
             </motion.div>
@@ -283,7 +301,7 @@ export function Presentation() {
                 onClick={() => setShowNav((v) => !v)}
                 aria-label={showNav ? "Ocultar navegación" : "Mostrar navegación"}
                 title={`${showNav ? "Ocultar" : "Mostrar"} navegación (N)`}
-                className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-background/90 px-3 py-2 text-xs font-medium text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground backdrop-blur-md"
+                className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-background px-3 py-2 text-xs font-medium text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground"
               >
                 {showNav ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                 <span className="hidden sm:inline">{showNav ? "Ocultar" : "Mostrar"}</span>
@@ -307,7 +325,7 @@ export function Presentation() {
                 onClick={toggleFullscreen}
                 aria-label={isFullscreen ? "Salir de pantalla completa" : "Pantalla completa"}
                 title={`${isFullscreen ? "Salir de" : "Pantalla"} completa (F)`}
-                className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-background/90 px-3 py-2 text-xs font-medium text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground backdrop-blur-md"
+                className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-background px-3 py-2 text-xs font-medium text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground"
               >
                 {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
                 <span className="hidden sm:inline">{isFullscreen ? "Minimizar" : "Fullscreen"}</span>
@@ -335,7 +353,7 @@ export function Presentation() {
         animate={{ y: showNav ? 0 : 100, opacity: showNav ? 1 : 0 }}
         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
         className={cn(
-          "relative z-20 border-t border-white/5 bg-background/80 px-3 py-2.5 backdrop-blur-md sm:px-5",
+          "relative z-20 border-t border-white/5 bg-background px-3 py-2.5 sm:px-5",
           !showNav && "pointer-events-none",
         )}
         aria-hidden={!showNav}
