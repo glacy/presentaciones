@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import {
   ChevronLeft,
   ChevronRight,
@@ -14,6 +14,7 @@ import {
   EyeOff,
   Maximize2,
   Minimize2,
+  Projector,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { slidesMeta } from "../data/slidesMeta";
@@ -62,6 +63,25 @@ export function Presentation() {
   const [showNav, setShowNav] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [autoPlayAudio, setAutoPlayAudio] = useState(true);
+  const [projector, setProjector] = useState(
+    () =>
+      typeof window !== "undefined" &&
+      new URLSearchParams(window.location.search).get("proyector") === "1",
+  );
+
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    if (projector) {
+      url.searchParams.set("proyector", "1");
+    } else {
+      url.searchParams.delete("proyector");
+    }
+    window.history.replaceState(null, "", url);
+  }, [projector]);
+
+  const toggleProjector = useCallback(() => {
+    setProjector((v) => !v);
+  }, []);
 
   const total = slidesMeta.length;
   const meta = slidesMeta[index];
@@ -193,6 +213,8 @@ export function Presentation() {
         setShowNav((v) => !v);
       } else if (e.key.toLowerCase() === "f") {
         toggleFullscreen();
+      } else if (e.key.toLowerCase() === "p") {
+        toggleProjector();
       } else if (/^[1-9]$/.test(e.key)) {
         const n = parseInt(e.key, 10) - 1;
         if (n < total) go(n);
@@ -200,10 +222,15 @@ export function Presentation() {
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [next, prev, go, total, toggleFullscreen]);
+  }, [next, prev, go, total, toggleFullscreen, toggleProjector]);
 
   return (
-    <div className="relative flex h-[100dvh] w-full flex-col overflow-hidden bg-background text-foreground">
+    <MotionConfig reducedMotion="user">
+    <div
+      data-projector={projector ? "true" : undefined}
+      suppressHydrationWarning
+      className="relative flex h-[100dvh] w-full flex-col overflow-hidden bg-background text-foreground"
+    >
       <div className="absolute left-0 top-0 z-30 h-1 w-full bg-white/5">
         <motion.div
           className="h-full bg-gradient-to-r from-[#00e5ff] via-[#4ade80] to-[#ff8c42]"
@@ -260,6 +287,21 @@ export function Presentation() {
               >
                 {showNav ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                 <span className="hidden sm:inline">{showNav ? "Ocultar" : "Mostrar"}</span>
+              </button>
+              <button
+                onClick={toggleProjector}
+                aria-pressed={projector}
+                aria-label={projector ? "Desactivar modo proyector" : "Activar modo proyector"}
+                title={`Modo proyector (P) — fondo negro, máximo contraste`}
+                className={cn(
+                  "flex items-center gap-1.5 rounded-lg border px-3 py-2 text-xs font-medium backdrop-blur-md transition",
+                  projector
+                    ? "border-[#fbbf24]/50 bg-[#fbbf24]/10 text-[#fcd363]"
+                    : "border-white/10 bg-background/90 text-muted-foreground hover:border-[#fbbf24]/40 hover:text-foreground",
+                )}
+              >
+                <Projector className="h-4 w-4" />
+                <span className="hidden sm:inline">Proyector</span>
               </button>
               <button
                 onClick={toggleFullscreen}
@@ -489,5 +531,6 @@ export function Presentation() {
         )}
       </AnimatePresence>
     </div>
+    </MotionConfig>
   );
 }

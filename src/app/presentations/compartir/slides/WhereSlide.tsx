@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { QRCodeSVG } from "qrcode.react";
-import { Usb, FileText, Folder, TrendingUp, TrendingDown, Sparkles, ReceiptText, QrCode } from "lucide-react";
+import { Usb, FileText, Folder, TrendingUp, TrendingDown, Sparkles, ReceiptText, QrCode, Pyramid } from "lucide-react";
 import { getSlideMetaById } from "../data/slidesMeta";
 import { SLIDE_TOTAL } from "../data/slidesMeta";
 import { SlideShell } from "../../shared/ui/SlideShell";
@@ -13,8 +13,8 @@ const FORM_URL =
   "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=kLsZEbqIlEi38d4m4SnZd7WxCuAJJ7RJrohuZupZ7HJUNVc1WlVKRzJMTUVDM1hGSUlYWDU4Q1UxUC4u";
 
 const answers = [
-  { icon: Usb, text: "Un Word en un pendrive… que ya no leo", color: "text-neon-magenta" },
-  { icon: FileText, text: "Un PDF en el aula virtual, sin fuente", color: "text-neon-orange" },
+  { icon: Usb, text: "Un Word en una llave… que ya no leo", color: "text-neon-magenta" },
+  { icon: FileText, text: "Un PDF en el aula virtual", color: "text-neon-orange" },
   { icon: Folder, text: "Una carpeta que solo yo entiendo", color: "text-[#fcd363]" },
   { icon: ReceiptText, text: "Unas viejas impresiones", color: "text-neon-cyan" },
 ];
@@ -106,7 +106,8 @@ export function WhereSlide() {
             transition={{ delay: 1.0 }}
             className="mb-4 font-sans text-lg font-semibold text-foreground"
           >
-            La paradoja docente
+            <Pyramid className="h-5 w-5 text-neon-cyan" />  La paradoja docente
+
           </motion.h3>
 
           <div className="space-y-3">
@@ -153,9 +154,8 @@ export function WhereSlide() {
           >
             <Sparkles className="mt-0.5 h-4 w-4 shrink-0" />
             <span>
-              <span className="font-semibold">Promesa de la charla:</span> existen
-              materiales vivos, accesibles, auditables y reutilizables — y no hace
-              falta ser programador.
+              <span className="font-semibold">Objetivo de la charla:</span> es posible crear y compartir
+              materiales vivos, accesibles, auditables y reutilizables.
             </span>
           </motion.div>
         </div>

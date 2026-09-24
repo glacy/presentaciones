@@ -116,7 +116,7 @@ export function OpenSlide() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2.0 }}
-            className="mt-4 px-1 font-mono text-[11px] uppercase tracking-widest text-muted-foreground/70"
+            className="mt-4 px-1 font-mono text-[11px] uppercase tracking-widest text-muted-foreground"
           >
             creativecommons.org · unesco.org/rea
           </motion.div>

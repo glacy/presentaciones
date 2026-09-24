@@ -126,7 +126,7 @@ export function EpilogueSlide() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.4 }}
-          className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground/60"
+          className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground"
         >
           Construir para compartir · gracias
         </motion.p>

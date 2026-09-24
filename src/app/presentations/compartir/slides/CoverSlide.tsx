@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Share2, Unlock, RefreshCw, Accessibility } from "lucide-react";
+import { Share2, Unlock, RefreshCw, Accessibility, Mail } from "lucide-react";
 
 const keywords = [
   { icon: Unlock, label: "Abierta", color: "text-[#8af0a8] border-[#4ade80]/30 bg-[#4ade80]/10" },
@@ -120,7 +120,22 @@ export function CoverSlide() {
         </motion.div>
       </div>
 
-      <div className="absolute bottom-4 left-1/2 z-10 -translate-x-1/2 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground/60">
+
+      <div className="absolute bottom-4 left-1/2 z-10 -translate-x-1/2 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
+
+        <div className="relative z-10 flex h-full w-full flex-col items-center justify-center px-6 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#00e5ff]/40 bg-[#00e5ff]/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#7decff]"
+          >
+
+            Gerardo Lacy Mora <Mail className="h-3.5 w-3.5" /> glacy@itcr.ac.cr
+          </motion.div>
+
+        </div>
+
         De documentos congelados a bienes comunes educativos
       </div>
     </div>

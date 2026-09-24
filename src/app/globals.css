@@ -373,3 +373,21 @@ span.katex {
 table .katex {
   vertical-align: baseline;
 }
+
+/* Projector mode (video beam / bright rooms): pure black background,
+   brighter secondary text, no glow effects. Activated with the
+   data-projector attribute on the presentation root (button or ?proyector=1). */
+[data-projector="true"] {
+  --background: oklch(0 0 0);
+  --card: oklch(0.09 0 0);
+  --muted-foreground: oklch(0.87 0.008 240);
+}
+[data-projector="true"] .glow-cyan,
+[data-projector="true"] .glow-magenta,
+[data-projector="true"] .glow-mint {
+  display: none;
+}
+[data-projector="true"] .bg-grid,
+[data-projector="true"] .bg-dots {
+  opacity: 0.1;
+}
