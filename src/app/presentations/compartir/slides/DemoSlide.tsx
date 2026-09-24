@@ -40,7 +40,7 @@ const repos = [
     name: "MMFI1",
     url: "https://github.com/glacy/MMFI1",
     demo: "Interactividad con React/Next",
-    message: "El techo es alto cuando lo necesites — pero no es el punto de partida",
+    message: "Diseño de experiencias interactivas: el estudiante explora, no solo lee",
     tags: ["Next.js", "React"],
     color: "violet",
   },
@@ -64,7 +64,9 @@ export function DemoSlide() {
       >
         Cuatro repositorios reales, ordenados de{" "}
         <span className="font-semibold text-foreground">menor a mayor esfuerzo</span>.
-        Todos parten de lo mismo: texto.
+        Todos parten de lo mismo: texto — y pueden llegar hasta{" "}
+        <span className="font-semibold text-foreground">experiencias interactivas</span>{" "}
+        para el aula.
       </motion.p>
 
       <div className="grid gap-3 sm:grid-cols-2">

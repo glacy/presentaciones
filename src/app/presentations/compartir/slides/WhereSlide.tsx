@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Usb, FileText, Folder, TrendingUp, TrendingDown, Sparkles } from "lucide-react";
+import { Usb, FileText, Folder, TrendingUp, TrendingDown, Sparkles, ReceiptText } from "lucide-react";
 import { getSlideMetaById } from "../data/slidesMeta";
 import { SLIDE_TOTAL } from "../data/slidesMeta";
 import { SlideShell } from "../../shared/ui/SlideShell";
@@ -12,6 +12,7 @@ const answers = [
   { icon: Usb, text: "Un Word en un pendrive… que ya no leo", color: "text-neon-magenta" },
   { icon: FileText, text: "Un PDF en el aula virtual, sin fuente", color: "text-neon-orange" },
   { icon: Folder, text: "Una carpeta que solo yo entiendo", color: "text-[#fcd363]" },
+  { icon: ReceiptText, text: "Unas viejas impresiones", color: "text-neon-cyan" },
 ];
 
 export function WhereSlide() {

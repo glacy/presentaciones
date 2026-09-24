@@ -125,7 +125,9 @@ export function LifecycleSlide() {
             className="pt-1 text-center text-xs text-muted-foreground"
           >
             …y el ciclo vuelve a empezar: otro docente lo adapta y el material
-            renace en otro curso.
+            renace en otro curso. A eso le llamamos{" "}
+            <span className="font-semibold text-foreground">sostenibilidad</span>:
+            el material no muere con su autor.
           </motion.p>
         </div>
       </div>

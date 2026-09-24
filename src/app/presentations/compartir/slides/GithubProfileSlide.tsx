@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ExternalLink, GitCommitHorizontal, FolderGit2, Languages, Scale } from "lucide-react";
+import { ExternalLink, GitCommitHorizontal, FolderGit2, BookOpen, Scale } from "lucide-react";
 import githubProfile from "../assets/github-profile.svg";
 import { getSlideMetaById, SLIDE_TOTAL } from "../data/slidesMeta";
 import { SlideShell } from "../../shared/ui/SlideShell";
@@ -12,8 +12,8 @@ const meta = getSlideMetaById("github-profile");
 const stats = [
   { icon: GitCommitHorizontal, value: "1067", label: "commits públicos" },
   { icon: FolderGit2, value: "30", label: "repositorios abiertos" },
-  { icon: Languages, value: "14", label: "lenguajes en uso" },
   { icon: Scale, value: "MIT", label: "licencia preferida" },
+  { icon: BookOpen, value: "1", label: "documento con el que empecé" },
 ];
 
 export function GithubProfileSlide() {
@@ -27,7 +27,9 @@ export function GithubProfileSlide() {
       >
         Compartir no es una promesa: es una{" "}
         <span className="font-semibold text-foreground">página pública</span> que
-        cualquiera puede visitar. Este es mi perfil en GitHub, en vivo.
+        cualquiera puede visitar. Este es mi perfil en GitHub, en vivo — y no
+        empecé así: empecé compartiendo un solo documento. La constancia hizo
+        el resto.
       </motion.p>
 
       <motion.a
