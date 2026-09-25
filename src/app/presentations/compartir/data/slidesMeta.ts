@@ -9,7 +9,7 @@ import {
   TrendingUp,
   RefreshCw,
   Gift,
-  Link2,
+  Mail,
   PackageOpen,
 } from "lucide-react";
 import type { SlideMeta } from "../../shared/types";
@@ -108,13 +108,13 @@ export const slidesMeta: SlideMeta[] = [
     icon: RefreshCw,
   },
   {
-    index: 11,
+    index: 13,
     id: "epilogue",
-    shortLabel: "Enlaces",
-    title: "Empieza hoy: enlaces y recursos",
+    shortLabel: "Contacto",
+    title: "Gracias — conversemos",
     chapter: "Epílogo",
     accent: "mint",
-    icon: Link2,
+    icon: Mail,
   },
 ];
 

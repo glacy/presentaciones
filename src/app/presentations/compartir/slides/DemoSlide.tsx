@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Rocket, Atom, Frame, FolderGit2, PackageOpen, Globe } from "lucide-react";
+import { ExternalLink, Rocket, Atom, Frame, FolderGit2, Globe } from "lucide-react";
 import { getSlideMetaById, SLIDE_TOTAL } from "../data/slidesMeta";
 import { SlideShell } from "../../shared/ui/SlideShell";
 
@@ -15,7 +15,7 @@ const repos = [
     url: "https://presentaciones-nine-delta.vercel.app/",
     demo: "Presentaciones web interactivas, responsivas",
     message: "Interactividad con React/Next",
-    tags: ["Slides", "Next.js", "React"],
+    tags: ["Next.js", "React", "Kokoro TTS"],
     color: "cyan",
   },
   {
@@ -24,7 +24,7 @@ const repos = [
     repo: "https://github.com/glacy/fg1-astro",
     url: "https://fg1-astro.vercel.app/",
     demo: "Sitio de curso ligero y rápido",
-    message: "Un curso completo, navegable, en una URL",
+    message: "Un curso completo (materiales, fechas, actividades, ...) navegable y accesible",
     tags: ["Astro", "Starlight"],
     color: "mint",
   },
@@ -34,8 +34,8 @@ const repos = [
     repo: "https://github.com/glacy/syllabus-viewer",
     url: "https://glacy.github.io/syllabus-viewer/",
     demo: "Herramienta para generar planeamientos didácticos",
-    message: "",
-    tags: ["React", "Herramienta"],
+    message: "Diseña tus cursos y actividades con un editor visual y exporta a PDF o HTML",
+    tags: ["React", "Typescript", "Vite"],
     color: "amber",
   },
   {
@@ -66,10 +66,8 @@ export function DemoSlide() {
         transition={{ delay: 0.25 }}
         className="mb-4 text-sm text-muted-foreground"
       >
-        Cuatro repositorios reales, ordenados de{" "}
-        <span className="font-semibold text-foreground">menor a mayor esfuerzo</span>.
-        Todos parten de lo mismo: texto — y pueden llegar hasta{" "}
-        <span className="font-semibold text-foreground">experiencias interactivas</span>{" "}
+        Cuatro repositorios reales, desde{" "}{" "}
+        <span className="font-semibold text-foreground">cursos hasta experiencias interactivas</span>{" "}
         para el aula.
       </motion.p>
 

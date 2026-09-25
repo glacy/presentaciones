@@ -130,8 +130,7 @@ export function CoverSlide() {
             transition={{ duration: 0.6 }}
             className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#00e5ff]/40 bg-[#00e5ff]/5 px-4 py-1.5 text-[11px] font-semibold uppercase tracking-[0.28em] text-[#7decff]"
           >
-
-            Gerardo Lacy Mora <Mail className="h-3.5 w-3.5" /> glacy@itcr.ac.cr
+            Gerardo Lacy Mora
           </motion.div>
 
         </div>

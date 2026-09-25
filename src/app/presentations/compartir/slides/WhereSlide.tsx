@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { QRCodeSVG } from "qrcode.react";
-import { Usb, FileText, Folder, TrendingUp, TrendingDown, Sparkles, ReceiptText, QrCode, Pyramid, BadgeQuestionMark } from "lucide-react";
+import { FileText, Folder, TrendingUp, TrendingDown, Sparkles, ReceiptText, QrCode, Pyramid, BadgeQuestionMark } from "lucide-react";
 import { getSlideMetaById } from "../data/slidesMeta";
 import { SLIDE_TOTAL } from "../data/slidesMeta";
 import { SlideShell } from "../../shared/ui/SlideShell";
@@ -83,12 +83,11 @@ export function WhereSlide() {
                 aria-hidden
               />
             </span>
-            <span className="min-w-0">
+            <span className="min-w-0 flex-1">
               <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.25em] text-[#7decff]">
-                <QrCode className="h-3.5 w-3.5" />
                 Encuesta en vivo
               </span>
-              <span className="mt-1 block font-sans text-base font-semibold leading-snug text-foreground sm:text-lg">
+              <span className="mt-1 block font-sans text-base font-semibold leading-snug break-words text-foreground sm:text-lg">
                 Escanea y cuéntanos
               </span>
             </span>
