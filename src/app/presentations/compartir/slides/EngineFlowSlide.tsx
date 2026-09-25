@@ -73,7 +73,7 @@ export function EngineFlowSlide() {
             El flujo automático
           </span>
           <br />
-          Tú escribes, la máquina publica.
+          Un proceso de constante actualización y publicación de contenido, desde texto hasta experiencias interactivas.
         </p>
       </motion.div>
 

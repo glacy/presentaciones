@@ -61,9 +61,6 @@ export function LifecycleSlide() {
             <div className="mt-2 font-sans text-sm font-bold text-foreground">
               Material abierto, reproducible e inclusivo
             </div>
-            <div className="text-[10px] text-muted-foreground">
-              nunca “terminado”, siempre vivo
-            </div>
           </div>
 
           {stages.map((s, i) => (

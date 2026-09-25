@@ -56,8 +56,7 @@ export function InclusiveSlide() {
           >
             <KeyRound className="mt-0.5 h-4 w-4 shrink-0" />
             <span>
-              El acceso es una <span className="font-semibold">URL gratuita</span>,
-              no una licencia de software.
+              El acceso es una <span className="font-semibold">URL gratuita</span>.
             </span>
           </motion.div>
         </div>
@@ -99,7 +98,7 @@ export function InclusiveSlide() {
             className="mt-4 rounded-xl border border-white/10 bg-card/40 p-4 text-sm leading-relaxed text-muted-foreground"
           >
             <span className="font-semibold text-foreground">Inclusiva</span> porque
-            la accesibilidad no es un esfuerzo extra aquí:{" "}
+            la accesibilidad no es un esfuerzo extra {" "}
             <span className="text-foreground">es resultado del flujo</span> —
             responsive, formatos múltiples y estructura semántica salen
             “de fábrica”.

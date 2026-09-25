@@ -138,18 +138,7 @@ export function DemoSlide() {
         ))}
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.5 }}
-        className="mt-4 flex items-center gap-2 rounded-lg border border-[#00e5ff]/30 bg-[#00e5ff]/5 px-3 py-2 text-xs text-[#7decff]"
-      >
-        <span className="font-mono font-bold">→</span>
-        <span>
-          Cada repo es también un sitio en vivo: abre cualquiera desde tu
-          teléfono.
-        </span>
-      </motion.div>
+
     </SlideShell>
   );
 }
