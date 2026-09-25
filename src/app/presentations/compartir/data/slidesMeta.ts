@@ -3,7 +3,7 @@ import {
   FolderSearch,
   Scale,
   ChefHat,
-  Accessibility,
+  Parasol,
   Shapes,
   LayoutGrid,
   GitBranch,
@@ -12,7 +12,7 @@ import {
   RefreshCw,
   Gift,
   Link2,
-  Github,
+  PackageOpen,
 } from "lucide-react";
 import type { SlideMeta } from "../../shared/types";
 
@@ -62,7 +62,7 @@ export const slidesMeta: SlideMeta[] = [
     title: "Inclusiva: una fuente, muchos formatos",
     chapter: "Tres palabras clave",
     accent: "violet",
-    icon: Accessibility,
+    icon: Parasol,
   },
   {
     index: 6,
@@ -98,7 +98,7 @@ export const slidesMeta: SlideMeta[] = [
     title: "Así se ve un perfil abierto",
     chapter: "Bajo la cortina",
     accent: "cyan",
-    icon: Github,
+    icon: PackageOpen,
   },
   {
     index: 10,

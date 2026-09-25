@@ -1,12 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Share2, Unlock, RefreshCw, Accessibility, Mail } from "lucide-react";
+import { Share2, Unlock, RefreshCw, Parasol, Mail } from "lucide-react";
 
 const keywords = [
   { icon: Unlock, label: "Abierta", color: "text-[#8af0a8] border-[#4ade80]/30 bg-[#4ade80]/10" },
   { icon: RefreshCw, label: "Reproducible", color: "text-[#fcd363] border-[#fbbf24]/30 bg-[#fbbf24]/10" },
-  { icon: Accessibility, label: "Inclusiva", color: "text-[#c89ef7] border-[#a855f7]/30 bg-[#a855f7]/10" },
+  { icon: Parasol, label: "Inclusiva", color: "text-[#c89ef7] border-[#a855f7]/30 bg-[#a855f7]/10" },
 ];
 
 export function CoverSlide() {

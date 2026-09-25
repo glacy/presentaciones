@@ -53,7 +53,7 @@ export function MoldSlide() {
               <span className="h-2.5 w-2.5 rounded-full bg-[#febc2e]" />
               <span className="h-2.5 w-2.5 rounded-full bg-[#28c840]" />
               <span className="ml-2 text-[11px] text-muted-foreground">
-                curso.md — texto simple, durable
+                curso.md
               </span>
             </div>
             <div className="space-y-1 p-4">

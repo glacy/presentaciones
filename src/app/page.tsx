@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Atom, Map, ExternalLink, Share2, Github } from "lucide-react";
+import { ArrowRight, Atom, Map, ExternalLink, Share2, PackageOpen } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import type { KeyboardEvent } from "react";
@@ -135,7 +135,7 @@ export default function PresentationLauncher() {
         aria-label="Ver el código fuente de estas presentaciones en GitHub"
         className="group fixed bottom-4 right-4 z-10 flex items-center gap-2 rounded-lg border border-white/10 bg-card/60 px-3.5 py-2 text-xs text-muted-foreground backdrop-blur-sm transition hover:border-[#4ade80]/40 hover:text-foreground"
       >
-        <Github className="h-4 w-4" />
+        <PackageOpen className="h-4 w-4" />
         <span className="font-mono">glacy/presentaciones</span>
         <span className="hidden items-center gap-1 text-[#8af0a8] sm:flex">
           código abierto

@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Github, ExternalLink, Rocket, Atom, FlaskConical, Blocks } from "lucide-react";
+import { ExternalLink, Rocket, Atom, FlaskConical, Blocks, PackageOpen } from "lucide-react";
 import { getSlideMetaById, SLIDE_TOTAL } from "../data/slidesMeta";
 import { SlideShell } from "../../shared/ui/SlideShell";
 
@@ -13,8 +13,8 @@ const repos = [
     name: "presentaciones",
     url: "https://github.com/glacy/presentaciones",
     demo: "Presentaciones web desde texto",
-    message: "“Esto puedes usarlo esta semana” — el punto de entrada más bajo",
-    tags: ["Markdown", "Slides"],
+    message: "Interactividad con React/Next",
+    tags: ["Slides", "Next.js", "React"],
     color: "cyan",
   },
   {
@@ -23,25 +23,25 @@ const repos = [
     url: "https://github.com/glacy/fg1-astro",
     demo: "Sitio de curso ligero y rápido",
     message: "Un curso completo, navegable, en una URL",
-    tags: ["Astro"],
+    tags: ["Astro", "Starlight"],
     color: "mint",
   },
   {
     icon: FlaskConical,
     name: "myst-course-starter",
     url: "https://github.com/glacy/myst-course-starter",
-    demo: "Reproducibilidad real: matemáticas y contenido ejecutable",
+    demo: "Una plantilla para iniciar tu curso",
     message: "El material científico puede verificarse y ejecutarse",
-    tags: ["MyST", "Jupyter"],
+    tags: ["MyST", "Markdown"],
     color: "amber",
   },
   {
     icon: Blocks,
     name: "MMFI1",
     url: "https://github.com/glacy/MMFI1",
-    demo: "Interactividad con React/Next",
-    message: "Diseño de experiencias interactivas: el estudiante explora, no solo lee",
-    tags: ["Next.js", "React"],
+    demo: "Estructura un curso completo",
+    message: "Una solución integral para crear cursos interactivos",
+    tags: ["Myst", "Jupyter"],
     color: "violet",
   },
 ];
@@ -89,7 +89,7 @@ export function DemoSlide() {
                 </span>
                 <div>
                   <div className="flex items-center gap-1.5 font-mono text-sm font-bold text-foreground">
-                    <Github className="h-3.5 w-3.5 opacity-70" />
+                    <PackageOpen className="h-3.5 w-3.5 opacity-70" />
                     glacy/{r.name}
                   </div>
                   <div className="mt-0.5 text-xs font-medium text-muted-foreground">

@@ -51,7 +51,28 @@ Para video beam de características desconocidas / salas con luz alta.
   primero en degradarse con un proyector lavado; los textos clave usan
   `text-foreground` (19:1) y sobreviven.
 
-### 4. Patrón de estado externo (lección de la hidratación)
+### 4. Estabilidad de renderizado entre diapositivas
+
+Síntoma histórico: a veces una diapositiva se mostraba incompleta al navegar
+(sobre todo con zoom ≠ 100% o fullscreen), y mover el mouse lo arreglaba.
+
+- **Causa raíz**: capas `backdrop-filter` (`backdrop-blur-*`) animándose sobre
+  el área de diapositivas (barra de navegación, botones flotantes) — generan
+  capas de composición obsoletas en Chromium con zoom/fullscreen.
+- **Fix**: fondo sólido (`bg-background`) en todos los elementos que se
+  renderizan sobre las diapositivas; sin `backdrop-blur` en el shell.
+  Además, la barra de navegación NO se anima: alterna `visibility` (`invisible`)
+  al instante. Su espacio queda reservado en el layout de forma constante, así
+  que mostrar/ocultar no altera la geometría del área de diapositivas ni
+  genera capas con transform animado (dos mecanismos que, combinados con
+  zoom ≠ 100% o fullscreen, provocaban regiones sin recomponer en Chromium).
+- Además: `AnimatePresence` sin `mode="wait"` (la entrante nunca queda
+  bloqueada por la saliente), sin `filter: blur()` en la transición (capa GPU
+  frágil ante zoom), y `initial={false}` en la primera carga.
+- Si el síntoma reapareciera, siguientes candidatos: los `backdrop-blur-sm`
+  estáticos dentro de slides (Lifecycle, Mold, GithubProfile).
+
+### 5. Patrón de estado externo (lección de la hidratación)
 
 El modo proyector lee la URL. El intento con `useState(() => window...)` provocó
 un hydration mismatch (el atributo y el botón diferían del SSR), y

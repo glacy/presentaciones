@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useReducer, useRef, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { AnimatePresence, motion, MotionConfig } from "framer-motion";
 import {
   ChevronLeft,
@@ -135,17 +135,6 @@ export function Presentation() {
   }, [index, audioManager, autoPlayAudio]);
 
   const pillsRef = useRef<HTMLDivElement>(null);
-
-  // Repaint safety net: a re-render after the enter transition forces
-  // framer-motion to re-evaluate and finish any animation left in an
-  // intermediate state (same effect as moving the mouse manually).
-  // This works around stale compositor layers from animating
-  // backdrop-filter/blur elements at non-100% browser zoom or fullscreen.
-  const [, refreshAfterTransition] = useReducer((c: number) => c + 1, 0);
-  useEffect(() => {
-    const t = setTimeout(refreshAfterTransition, 600);
-    return () => clearTimeout(t);
-  }, [index]);
 
   useEffect(() => {
     const el = pillsRef.current?.querySelector<HTMLElement>(
@@ -348,13 +337,10 @@ export function Presentation() {
         />
       </div>
 
-      <motion.div
-        initial={false}
-        animate={{ y: showNav ? 0 : 100, opacity: showNav ? 1 : 0 }}
-        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      <div
         className={cn(
           "relative z-20 border-t border-white/5 bg-background px-3 py-2.5 sm:px-5",
-          !showNav && "pointer-events-none",
+          !showNav && "invisible pointer-events-none",
         )}
         aria-hidden={!showNav}
         inert={!showNav}
@@ -459,7 +445,7 @@ export function Presentation() {
             <Home className="h-4 w-4" />
           </button>
         </div>
-      </motion.div>
+      </div>
 
       <AnimatePresence>
         {overview && (

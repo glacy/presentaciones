@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { QRCodeSVG } from "qrcode.react";
-import { Usb, FileText, Folder, TrendingUp, TrendingDown, Sparkles, ReceiptText, QrCode, Pyramid } from "lucide-react";
+import { Usb, FileText, Folder, TrendingUp, TrendingDown, Sparkles, ReceiptText, QrCode, Pyramid, BadgeQuestionMark } from "lucide-react";
 import { getSlideMetaById } from "../data/slidesMeta";
 import { SLIDE_TOTAL } from "../data/slidesMeta";
 import { SlideShell } from "../../shared/ui/SlideShell";
@@ -13,7 +13,6 @@ const FORM_URL =
   "https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=kLsZEbqIlEi38d4m4SnZd7WxCuAJJ7RJrohuZupZ7HJUNVc1WlVKRzJMTUVDM1hGSUlYWDU4Q1UxUC4u";
 
 const answers = [
-  { icon: Usb, text: "Un Word en una llave… que ya no leo", color: "text-neon-magenta" },
   { icon: FileText, text: "Un PDF en el aula virtual", color: "text-neon-orange" },
   { icon: Folder, text: "Una carpeta que solo yo entiendo", color: "text-[#fcd363]" },
   { icon: ReceiptText, text: "Unas viejas impresiones", color: "text-neon-cyan" },
@@ -30,7 +29,7 @@ export function WhereSlide() {
             transition={{ delay: 0.3 }}
             className="mb-4 flex items-center gap-2 font-sans text-lg font-semibold text-foreground"
           >
-            <Sparkles className="h-5 w-5 text-neon-cyan" />
+            <BadgeQuestionMark className="h-5 w-5 text-neon-cyan" />
             Pregunta rompehielos
           </motion.h3>
 
@@ -90,10 +89,7 @@ export function WhereSlide() {
                 Encuesta en vivo
               </span>
               <span className="mt-1 block font-sans text-base font-semibold leading-snug text-foreground sm:text-lg">
-                Mientras piensas: escanea y cuéntanos
-              </span>
-              <span className="mt-1 block text-xs text-muted-foreground">
-                Veremos tus respuestas proyectadas durante la charla.
+                Escanea y cuéntanos
               </span>
             </span>
           </motion.a>
@@ -104,10 +100,10 @@ export function WhereSlide() {
             initial={{ opacity: 0, x: -10 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.0 }}
-            className="mb-4 font-sans text-lg font-semibold text-foreground"
+            className="mb-4 flex items-center gap-2 font-sans text-lg font-semibold text-foreground"
           >
-            <Pyramid className="h-5 w-5 text-neon-cyan" />  La paradoja docente
-
+            <Pyramid className="h-5 w-5 text-neon-cyan" />
+            La paradoja docente
           </motion.h3>
 
           <div className="space-y-3">

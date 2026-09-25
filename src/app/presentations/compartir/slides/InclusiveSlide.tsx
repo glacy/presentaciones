@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import {
-  Accessibility,
+  Parasol,
   Smartphone,
   FileText,
   Ear,
@@ -15,8 +15,8 @@ import { SlideShell } from "../../shared/ui/SlideShell";
 const meta = getSlideMetaById("inclusive");
 
 const outputs = [
-  { icon: Smartphone, label: "Web responsive", desc: "se lee bien en el móvil del estudiante", color: "cyan" },
-  { icon: FileText, label: "PDF imprimible", desc: "para quien no tiene internet en casa", color: "amber" },
+  { icon: Smartphone, label: "Web responsive", desc: "se lee bien en el móvil o en computadora", color: "cyan" },
+  { icon: FileText, label: "PDF imprimible", desc: "para quien prefiere subrayar o no tiene internet en casa", color: "amber" },
   { icon: Ear, label: "Lectores de pantalla", desc: "estructura semántica de fábrica", color: "violet" },
 ];
 
@@ -38,7 +38,7 @@ export function InclusiveSlide() {
             className="rounded-2xl border border-[#a855f7]/30 bg-[#a855f7]/5 p-6 text-center"
           >
             <span className="mx-auto grid h-16 w-16 place-items-center rounded-2xl border border-[#a855f7]/30 bg-[#a855f7]/10 text-[#c89ef7]">
-              <Accessibility className="h-8 w-8" />
+              <Parasol className="h-8 w-8" />
             </span>
             <div className="mt-4 font-sans text-xl font-bold text-foreground">
               Una sola fuente de contenido
@@ -100,7 +100,7 @@ export function InclusiveSlide() {
           >
             <span className="font-semibold text-foreground">Inclusiva</span> porque
             la accesibilidad no es un esfuerzo extra aquí:{" "}
-            <span className="text-foreground">es un resultado del flujo</span> —
+            <span className="text-foreground">es resultado del flujo</span> —
             responsive, formatos múltiples y estructura semántica salen
             “de fábrica”.
           </motion.div>

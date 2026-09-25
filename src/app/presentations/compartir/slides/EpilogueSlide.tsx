@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import {
-  Github,
+  PackageOpen,
   ExternalLink,
   Scale,
   Globe,
@@ -55,7 +55,7 @@ export function EpilogueSlide() {
               transition={{ delay: 0.3 }}
               className="mb-2 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground"
             >
-              <Github className="h-3.5 w-3.5" />
+              <PackageOpen className="h-3.5 w-3.5" />
               Los repos de la charla
             </motion.div>
             <div className="space-y-2">
