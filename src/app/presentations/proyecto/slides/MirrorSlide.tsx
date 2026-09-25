@@ -33,7 +33,7 @@ const aspects = [
   },
 ];
 
-const scales = ["Incipiente", "En desarrollo", "Suficiente", "Ejemplar"];
+const scales = ["0", "1", "2", "3"];
 
 export function MirrorSlide() {
   const [selected, setSelected] = useState<number | null>(0);

@@ -113,6 +113,7 @@ export function AudioPlayer({
 
   const handleLoadedMetadata = () => {
     const audio = audioRef.current;
+    setIsLoaded(true);
     if (audio?.duration && Number.isFinite(audio.duration)) {
       setDuration(audio.duration);
     }
@@ -166,7 +167,7 @@ export function AudioPlayer({
         onLoadStart={handleLoadStart}
         onLoadedData={handleLoadedData}
         onLoadedMetadata={handleLoadedMetadata}
-        preload="metadata"
+        preload="auto"
       />
       
       <button
