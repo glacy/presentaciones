@@ -17,11 +17,14 @@ export function SlideShell({
   className,
   /** When true, the layout becomes a centered hero (used for the cover & epilogue). */
   variant = "default",
+  /** Total number of slides, shown in the header counter. */
+  total,
 }: {
   meta: SlideMeta;
   children: React.ReactNode;
   className?: string;
   variant?: "default" | "hero";
+  total?: number;
 }) {
   const Icon = meta.icon;
   return (
@@ -79,7 +82,7 @@ export function SlideShell({
               </div>
             </div>
             <div className="hidden font-mono text-xs text-muted-foreground sm:block">
-              {String(meta.index).padStart(2, "0")} / 10
+              {String(meta.index).padStart(2, "0")} / {String(total ?? 10).padStart(2, "0")}
             </div>
           </motion.header>
         )}

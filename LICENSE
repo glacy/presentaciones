@@ -1,61 +1,41 @@
-Licencia del proyecto "Presentaciones Interactivas | Física General I"
+# Licencia dual del repositorio
 
-Este proyecto se distribuye bajo doble licencia:
+Este repositorio se distribuye bajo dos licencias según el tipo de contenido:
 
-  1. Código fuente (aplicación Next.js, scripts, configuración): licencia MIT.
-  2. Contenido educativo (diapositivas, guiones, narraciones de audio,
-     documentación): Creative Commons Atribución-CompartirIgual 4.0
-     Internacional (CC BY-SA 4.0).
+1. **Código del sistema de presentaciones** (framework, componentes de infraestructura, configuración, scripts y todo el código fuente de la aplicación) → **Licencia MIT** (ver texto más abajo).
+2. **Las presentaciones en sí** (contenido de las diapositivas: textos, datos de las slides, material didáctico y cualquier obra de autoría incluida en ellas) → **Creative Commons Atribución 4.0 Internacional (CC BY 4.0)**, disponible en: https://creativecommons.org/licenses/by/4.0/
 
-======================================================================
+Al contribuir a este repositorio aceptas que tu contribución al código se licencie bajo MIT y tu contribución al contenido de las presentaciones bajo CC BY 4.0.
 
-1) LICENCIA DEL CÓDIGO FUENTE — MIT License
+---
 
-Copyright (c) 2026 Cátedra de Física General I, Tecnológico de Costa Rica
+## Licencia MIT (código del sistema)
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+Copyright (c) 2026 Gerardo Lacy M
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+Por la presente se concede permiso, libre de cargos, a cualquier persona que obtenga una copia de este software y de los archivos de documentación asociados (el "Software"), a utilizar el Software sin restricción, incluyendo sin limitación los derechos a usar, copiar, modificar, fusionar, publicar, distribuir, sublicenciar, y/o vender copias del Software, y a permitir a las personas a las que se les proporcione el Software a hacer lo mismo, sujeto a las siguientes condiciones:
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+El aviso de copyright anterior y este aviso de permiso se incluirán en todas las copias o partes sustanciales del Software.
 
-======================================================================
+EL SOFTWARE SE PROPORCIONA "COMO ESTÁ", SIN GARANTÍA DE NINGÚN TIPO, EXPRESA O IMPLÍCITA, INCLUYENDO PERO NO LIMITADO A GARANTÍAS DE COMERCIALIZACIÓN, IDONEIDAD PARA UN PROPÓSITO PARTICULAR E INCUMPLIMIENTO. EN NINGÚN CASO LOS AUTORES O PROPIETARIOS DE LOS DERECHOS DE AUTOR SERÁN RESPONSABLES DE NINGUNA RECLAMACIÓN, DAÑOS U OTRAS RESPONSABILIDADES, YA SEA EN UNA ACCIÓN DE CONTRATO, AGRAVIO O CUALQUIER OTRO MOTIVO, DERIVADAS DE, FUERA DE O EN CONEXIÓN CON EL SOFTWARE O SU USO U OTRO TIPO DE ACCIONES EN EL SOFTWARE.
 
-2) LICENCIA DEL CONTENIDO EDUCATIVO — CC BY-SA 4.0
+---
 
-Copyright (c) 2026 Cátedra de Física General I, Tecnológico de Costa Rica
+## Contenido de las presentaciones
 
-Las diapositivas, guiones, narraciones de audio, imágenes y documentación del
-proyecto se comparten bajo la licencia Creative Commons Atribución-
-CompartirIgual 4.0 Internacional (CC BY-SA 4.0).
+Las presentaciones incluidas en este repositorio (el contenido de las diapositivas y su material asociado) se publican bajo la licencia **Creative Commons Atribución 4.0 Internacional (CC BY 4.0)**.
 
-Esto significa que eres libre de:
+Usted es libre de:
 
-  - Compartir: copiar y redistribuir el material en cualquier medio o formato.
-  - Adaptar: remezclar, transformar y crear a partir del material para
-    cualquier propósito, incluso comercial.
+- **Compartir** — copiar y redistribuir el material en cualquier medio o formato.
+- **Adaptar** — remezclar, transformar y crear a partir del material para cualquier propósito, incluso comercialmente.
 
 Bajo los siguientes términos:
 
-  - Atribución: debes dar crédito de manera adecuada, brindar un enlace a la
-    licencia e indicar si se han realizado cambios.
-  - CompartirIgual: si remezclas, transformas o creas a partir del material,
-    debes distribuir tu contribución bajo la misma licencia que el original.
+- **Atribución** — Debe dar crédito de manera adecuada, brindar un enlace a la licencia, e indicar si se han realizado cambios. Puede hacerlo en cualquier forma razonable, pero no de forma tal que sugiera que usted o su uso tienen el apoyo del licenciante.
 
-Texto legal completo: https://creativecommons.org/licenses/by-sa/4.0/legalcode.es
-Resumen legible: https://creativecommons.org/licenses/by-sa/4.0/deed.es
+Texto legal completo: https://creativecommons.org/licenses/by/4.0/legalcode.es
 
-Narraciones de audio generadas con Kokoro-82M (modelo Apache 2.0) y servidas
-como contenido educativo bajo CC BY-SA 4.0.
+Atribución sugerida al reutilizar el contenido:
+
+> Basado en presentaciones de Gerardo Lacy M (https://github.com/glacy/presentaciones), licenciado bajo CC BY 4.0.

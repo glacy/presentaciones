@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight, Atom, Map, ExternalLink } from "lucide-react";
+import { ArrowRight, Atom, Map, ExternalLink, Share2, PackageOpen } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import type { KeyboardEvent } from "react";
@@ -10,15 +10,15 @@ export default function PresentationLauncher() {
   const [openInNewWindow, setOpenInNewWindow] = useState(false);
 
   const presentations = [
-    // {
-    //   title: "Vectores y Operaciones vectoriales",
-    //   description: "Vectores, sistemas de coordenadas y operaciones vectoriales",
-    //   path: "/presentations/physics",
-    //   icon: Atom,
-    //   color: "text-neon-cyan",
-    //   borderColor: "border-neon-cyan/30",
-    //   bgColor: "bg-neon-cyan/10",
-    // },
+    {
+      title: "Vectores y Operaciones vectoriales",
+      description: "Vectores, sistemas de coordenadas y operaciones vectoriales",
+      path: "/presentations/physics",
+      icon: Atom,
+      color: "text-neon-cyan",
+      borderColor: "border-neon-cyan/30",
+      bgColor: "bg-neon-cyan/10",
+    },
     {
       title: "Bitácora de Trabajo en Equipo",
       description: "Una herramienta para organizar el trabajo en equipo y documentar el proceso",
@@ -27,6 +27,15 @@ export default function PresentationLauncher() {
       color: "text-neon-magenta",
       borderColor: "border-neon-magenta/30",
       bgColor: "bg-neon-magenta/10",
+    },
+    {
+      title: "Construir para compartir",
+      description: "Educación abierta, reproducible e inclusiva para un aprendizaje accesible",
+      path: "/presentations/compartir",
+      icon: Share2,
+      color: "text-neon-mint",
+      borderColor: "border-neon-mint/30",
+      bgColor: "bg-neon-mint/10",
     },
   ];
 
@@ -115,6 +124,24 @@ export default function PresentationLauncher() {
           ))}
         </div>
       </div>
+
+      <motion.a
+        href="https://github.com/glacy/presentaciones"
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ opacity: 0, y: 10 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6 }}
+        aria-label="Ver el código fuente de estas presentaciones en GitHub"
+        className="group fixed bottom-4 right-4 z-10 flex items-center gap-2 rounded-lg border border-white/10 bg-card/60 px-3.5 py-2 text-xs text-muted-foreground backdrop-blur-sm transition hover:border-[#4ade80]/40 hover:text-foreground"
+      >
+        <PackageOpen className="h-4 w-4" />
+        <span className="font-mono">glacy/presentaciones</span>
+        <span className="hidden items-center gap-1 text-[#8af0a8] sm:flex">
+          código abierto
+          <ExternalLink className="h-3 w-3 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+        </span>
+      </motion.a>
     </div>
   );
 }
