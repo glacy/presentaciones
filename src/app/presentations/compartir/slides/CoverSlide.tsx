@@ -135,7 +135,7 @@ export function CoverSlide() {
 
         </div>
 
-        De documentos congelados a bienes comunes educativos
+        Instituto Tecnológico de Costa Rica
       </div>
     </div>
   );

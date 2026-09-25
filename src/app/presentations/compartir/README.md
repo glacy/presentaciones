@@ -71,6 +71,12 @@ Síntoma histórico: a veces una diapositiva se mostraba incompleta al navegar
   frágil ante zoom), y `initial={false}` en la primera carga.
 - Si el síntoma reapareciera, siguientes candidatos: los `backdrop-blur-sm`
   estáticos dentro de slides (Lifecycle, Mold, GithubProfile).
+- **Gotcha relacionado (diapositiva final, zoom)**: en un padre
+  `flex flex-col h-full` con contenido más alto que el viewport, los hijos
+  flex se encogen (`flex-shrink`) y el contenido desborda su borde — la regla
+  global `a { min-height: 44px }` de globals.css reemplaza el `min-height:
+  auto` que normalmente lo impediría. Fix: `shrink-0` en los hijos directos de
+  la columna (el contenedor ya tiene `overflow-y-auto` y hará scroll).
 
 ### 5. Patrón de estado externo (lección de la hidratación)
 

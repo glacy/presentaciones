@@ -66,7 +66,7 @@ export function EpilogueSlide() {
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-          className="rounded-3xl bg-gradient-to-br from-[#00e5ff] via-[#4ade80] to-[#ff8c42] p-[3px] shadow-[0_0_50px_-12px_rgba(0,229,255,0.45)]"
+          className="shrink-0 rounded-3xl bg-gradient-to-br from-[#00e5ff] via-[#4ade80] to-[#ff8c42] p-[3px] shadow-[0_0_50px_-12px_rgba(0,229,255,0.45)]"
         >
           <Image
             src={avatar}
@@ -77,7 +77,7 @@ export function EpilogueSlide() {
           />
         </motion.div>
 
-        <div className="text-center">
+        <div className="shrink-0 text-center">
           <motion.h2
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
@@ -96,7 +96,7 @@ export function EpilogueSlide() {
           </motion.p>
         </div>
 
-        <div className="w-full max-w-md space-y-2.5">
+        <div className="w-full max-w-md shrink-0 space-y-2.5">
           {contacts.map((c, i) => (
             <motion.a
               key={c.label}
@@ -132,7 +132,7 @@ export function EpilogueSlide() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.95 }}
           whileHover={{ scale: 1.01 }}
-          className="flex w-full max-w-md items-center gap-4 rounded-xl border border-[#00e5ff]/40 bg-[#00e5ff]/5 p-3.5 shadow-[0_0_30px_-10px_rgba(0,229,255,0.4)]"
+          className="flex w-full max-w-md shrink-0 items-center gap-4 rounded-xl border border-[#00e5ff]/40 bg-[#00e5ff]/5 p-3.5 shadow-[0_0_30px_-10px_rgba(0,229,255,0.4)]"
         >
           <span className="grid h-[88px] w-[88px] shrink-0 place-items-center rounded-lg bg-white p-2">
             <QRCodeSVG
@@ -159,7 +159,7 @@ export function EpilogueSlide() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.3 }}
-          className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground"
+          className="shrink-0 font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground"
         >
           · gracias ·
         </motion.p>
