@@ -15,7 +15,7 @@ const repos = [
   { name: "glacy/presentaciones", url: "https://github.com/glacy/presentaciones", tag: "Presentaciones web" },
   { name: "glacy/fg1-astro", url: "https://github.com/glacy/fg1-astro", tag: "Curso con Astro" },
   { name: "glacy/myst-course-starter", url: "https://github.com/glacy/myst-course-starter", tag: "Starter MyST" },
-  { name: "glacy/MMFI1", url: "https://github.com/glacy/MMFI1", tag: "Interactivo · Next" },
+  { name: "glacy/MMFI1", url: "https://github.com/glacy/MMFI1", tag: "Métodos Matemáticos para Física e Ingeniería I" },
 ];
 
 const resources = [
@@ -43,7 +43,7 @@ export function EpilogueSlide() {
         >
           <span className="text-foreground">Empieza </span>
           <span className="bg-gradient-to-r from-[#00e5ff] via-[#4ade80] to-[#ff8c42] bg-clip-text text-transparent">
-            esta semana
+            a compartir
           </span>
         </motion.h2>
 
@@ -128,7 +128,7 @@ export function EpilogueSlide() {
           transition={{ delay: 1.4 }}
           className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground"
         >
-          Construir para compartir · gracias
+          · gracias ·
         </motion.p>
       </div>
     </div>
