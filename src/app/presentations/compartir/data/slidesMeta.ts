@@ -108,7 +108,7 @@ export const slidesMeta: SlideMeta[] = [
     icon: RefreshCw,
   },
   {
-    index: 13,
+    index: 11,
     id: "epilogue",
     shortLabel: "Contacto",
     title: "Gracias — conversemos",
