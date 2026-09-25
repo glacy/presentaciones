@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Scale, Globe, Repeat, PencilLine, Shuffle, Send } from "lucide-react";
+import { Scale, Globe, Repeat, PencilLine, RefreshCw, Send } from "lucide-react";
 import { getSlideMetaById, SLIDE_TOTAL } from "../data/slidesMeta";
 import { SlideShell } from "../../shared/ui/SlideShell";
 
@@ -11,7 +11,7 @@ const fiveR = [
   { icon: Globe, label: "Retener", desc: "una copia es tuya" },
   { icon: Repeat, label: "Reutilizar", desc: "en cualquier contexto" },
   { icon: PencilLine, label: "Revisar", desc: "ajustar a tu curso" },
-  { icon: Shuffle, label: "Remezclar", desc: "combinar con otros" },
+  { icon: RefreshCw, label: "Remezclar", desc: "combinar con otros" },
   { icon: Send, label: "Redistribuir", desc: "compartir de nuevo" },
 ];
 
@@ -51,11 +51,11 @@ export function OpenSlide() {
                 className="flex items-center gap-3 rounded-lg border border-white/8 bg-card/40 p-3"
               >
                 <span
-                  className={`grid h-10 w-14 shrink-0 place-items-center rounded-md border font-mono text-xs font-bold ${l.color === "mint"
-                      ? "border-[#4ade80]/30 bg-[#4ade80]/10 text-[#8af0a8]"
-                      : l.color === "cyan"
-                        ? "border-[#00e5ff]/30 bg-[#00e5ff]/10 text-[#7decff]"
-                        : "border-[#fbbf24]/30 bg-[#fbbf24]/10 text-[#fcd363]"
+                  className={`grid h-10 w-24 shrink-0 place-items-center rounded-md border font-mono text-xs font-bold ${l.color === "mint"
+                    ? "border-[#4ade80]/30 bg-[#4ade80]/10 text-[#8af0a8]"
+                    : l.color === "cyan"
+                      ? "border-[#00e5ff]/30 bg-[#00e5ff]/10 text-[#7decff]"
+                      : "border-[#fbbf24]/30 bg-[#fbbf24]/10 text-[#fcd363]"
                     }`}
                 >
                   {l.code}

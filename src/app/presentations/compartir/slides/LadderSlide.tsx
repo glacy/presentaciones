@@ -20,15 +20,15 @@ const levels = [
     icon: Download,
     title: "Usar",
     desc: "Visitar, descargar, proyectar los materiales tal cual.",
-    detail: "Hoy mismo, sin cuenta ni permiso",
+    detail: "Recuerda dar créditos",
     color: "cyan",
   },
   {
     n: 2,
     icon: PencilLine,
     title: "Adaptar",
-    desc: "Partir de una plantilla y editar el texto en el navegador de GitHub.",
-    detail: "Sin instalar nada — demostración en vivo",
+    desc: "Partir de un ejemplo para editar, modificar.",
+    detail: "Puede ser una manera de colaborar",
     color: "mint",
   },
   {
@@ -84,40 +84,6 @@ export function LadderSlide() {
         ))}
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.6 }}
-        className="mt-6 rounded-xl border border-[#00e5ff]/30 bg-[#00e5ff]/5 p-4 text-sm text-[#7decff] sm:text-base"
-      >
-        <span className="font-semibold">Mensaje clave:</span> no necesitas
-        aprender Git profundo, ni terminal, ni programación para empezar.
-      </motion.div>
-
-      <div className="mt-3 grid gap-3 sm:grid-cols-2">
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1.9 }}
-          className="flex items-center gap-3 rounded-lg border border-white/8 bg-card/40 p-3"
-        >
-          <Smartphone className="h-5 w-5 shrink-0 text-[#c89ef7]" />
-          <span className="text-xs text-muted-foreground sm:text-sm">
-            Responsive, PDF, web: formatos múltiples sin trabajo extra
-          </span>
-        </motion.div>
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2.1 }}
-          className="flex items-center gap-3 rounded-lg border border-white/8 bg-card/40 p-3"
-        >
-          <Accessibility className="h-5 w-5 shrink-0 text-[#c89ef7]" />
-          <span className="text-xs text-muted-foreground sm:text-sm">
-            La accesibilidad no es un esfuerzo: es un resultado del flujo
-          </span>
-        </motion.div>
-      </div>
     </SlideShell>
   );
 }

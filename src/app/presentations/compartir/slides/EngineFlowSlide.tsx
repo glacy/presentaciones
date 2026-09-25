@@ -25,25 +25,25 @@ const steps = [
   {
     icon: UploadCloud,
     title: "Guardas",
-    desc: "Un commit = una versión registrada",
+    desc: "Una versión registrada",
     color: "mint",
   },
   {
     icon: Settings,
     title: "Construye",
-    desc: "CI/CD compila y verifica solo",
+    desc: "Las máquinas hacen lo suyo",
     color: "amber",
   },
   {
     icon: Rocket,
     title: "Publica",
-    desc: "El material se desplega en la web",
+    desc: "Material en la web",
     color: "orange",
   },
   {
     icon: Globe,
     title: "Compartes",
-    desc: "URL pública para quien quieras",
+    desc: "URL pública",
     color: "violet",
   },
 ];
@@ -73,8 +73,7 @@ export function EngineFlowSlide() {
             El flujo automático
           </span>
           <br />
-          Tú escribes, la máquina publica. De texto guardado a URL pública en
-          minutos, gratis.
+          Tú escribes, la máquina publica.
         </p>
       </motion.div>
 
@@ -104,50 +103,13 @@ export function EngineFlowSlide() {
                 </div>
               </motion.div>
 
-              {i < steps.length - 1 && (
-                <motion.div
-                  animate={{ x: [0, 4, 0] }}
-                  transition={{ duration: 1.4, repeat: Infinity, delay: 0.6 + i * 0.2 }}
-                  className="shrink-0 text-muted-foreground lg:hidden"
-                >
-                  <ArrowRight className="h-5 w-5 rotate-90 lg:hidden" />
-                </motion.div>
-              )}
 
-              {i < steps.length - 1 && (
-                <motion.div
-                  animate={{ x: [0, 4, 0] }}
-                  transition={{ duration: 1.4, repeat: Infinity, delay: 0.6 + i * 0.2 }}
-                  className="hidden shrink-0 pt-5 text-muted-foreground lg:block"
-                >
-                  <ArrowRight className="h-5 w-5" />
-                </motion.div>
-              )}
             </div>
           );
         })}
       </div>
 
-      <div className="mt-6 grid gap-3 sm:grid-cols-3">
-        {[
-          { stat: "minutos", label: "de guardar a publicado", color: "text-[#7decff]" },
-          { stat: "$0", label: "hosting para materiales públicos", color: "text-[#8af0a8]" },
-          { stat: "1", label: "acción tuya: guardar el texto", color: "text-[#fcd363]" },
-        ].map((s, i) => (
-          <motion.div
-            key={s.stat}
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 2.1 + i * 0.2 }}
-            className="rounded-xl border border-white/10 bg-card/40 p-4 text-center"
-          >
-            <div className={`font-sans text-2xl font-extrabold ${s.color}`}>
-              {s.stat}
-            </div>
-            <div className="mt-1 text-xs text-muted-foreground">{s.label}</div>
-          </motion.div>
-        ))}
-      </div>
+
     </SlideShell>
   );
 }

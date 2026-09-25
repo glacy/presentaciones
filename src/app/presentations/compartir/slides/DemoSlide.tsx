@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ExternalLink, Rocket, Atom, FlaskConical, Blocks, PackageOpen } from "lucide-react";
+import { ExternalLink, Rocket, Atom, Frame, FolderGit2, PackageOpen, Globe } from "lucide-react";
 import { getSlideMetaById, SLIDE_TOTAL } from "../data/slidesMeta";
 import { SlideShell } from "../../shared/ui/SlideShell";
 
@@ -11,8 +11,9 @@ const repos = [
   {
     icon: Rocket,
     name: "presentaciones",
-    url: "https://github.com/glacy/presentaciones",
-    demo: "Presentaciones web desde texto",
+    repo: "https://github.com/glacy/presentaciones",
+    url: "https://presentaciones-nine-delta.vercel.app/",
+    demo: "Presentaciones web interactivas, responsivas",
     message: "Interactividad con React/Next",
     tags: ["Slides", "Next.js", "React"],
     color: "cyan",
@@ -20,28 +21,31 @@ const repos = [
   {
     icon: Atom,
     name: "fg1-astro",
-    url: "https://github.com/glacy/fg1-astro",
+    repo: "https://github.com/glacy/fg1-astro",
+    url: "https://fg1-astro.vercel.app/",
     demo: "Sitio de curso ligero y rápido",
     message: "Un curso completo, navegable, en una URL",
     tags: ["Astro", "Starlight"],
     color: "mint",
   },
   {
-    icon: FlaskConical,
-    name: "myst-course-starter",
-    url: "https://github.com/glacy/myst-course-starter",
-    demo: "Una plantilla para iniciar tu curso",
-    message: "El material científico puede verificarse y ejecutarse",
-    tags: ["MyST", "Markdown"],
+    icon: Frame,
+    name: "syllabus-viewer",
+    repo: "https://github.com/glacy/syllabus-viewer",
+    url: "https://glacy.github.io/syllabus-viewer/",
+    demo: "Herramienta para generar planeamientos didácticos",
+    message: "",
+    tags: ["React", "Herramienta"],
     color: "amber",
   },
   {
-    icon: Blocks,
-    name: "MMFI1",
-    url: "https://github.com/glacy/MMFI1",
+    icon: FolderGit2,
+    name: "MMFI2",
+    repo: "https://github.com/glacy/MMFI2",
+    url: "https://glacy-mmfi2.curve.space/",
     demo: "Estructura un curso completo",
     message: "Una solución integral para crear cursos interactivos",
-    tags: ["Myst", "Jupyter"],
+    tags: ["Myst", "Jupyter", "Curvenote"],
     color: "violet",
   },
 ];
@@ -71,11 +75,8 @@ export function DemoSlide() {
 
       <div className="grid gap-3 sm:grid-cols-2">
         {repos.map((r, i) => (
-          <motion.a
+          <motion.div
             key={r.name}
-            href={r.url}
-            target="_blank"
-            rel="noopener noreferrer"
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45 + i * 0.2 }}
@@ -88,10 +89,14 @@ export function DemoSlide() {
                   <r.icon className="h-5 w-5" />
                 </span>
                 <div>
-                  <div className="flex items-center gap-1.5 font-mono text-sm font-bold text-foreground">
-                    <PackageOpen className="h-3.5 w-3.5 opacity-70" />
-                    glacy/{r.name}
-                  </div>
+                  <a
+                    href={r.repo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 font-mono text-sm font-bold text-foreground transition hover:underline"
+                  >
+                    github/glacy/{r.name}
+                  </a>
                   <div className="mt-0.5 text-xs font-medium text-muted-foreground">
                     {r.demo}
                   </div>
@@ -100,11 +105,26 @@ export function DemoSlide() {
               <ExternalLink className="h-4 w-4 shrink-0 opacity-0 transition group-hover:opacity-100" />
             </div>
 
-            <p className="mt-3 text-sm leading-snug text-foreground/90">
-              {r.message}
-            </p>
+            {r.message && (
+              <p className="mt-3 text-sm leading-snug text-foreground/90">
+                {r.message}
+              </p>
+            )}
 
-            <div className="mt-3 flex flex-wrap gap-1.5">
+            <a
+              href={r.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              title={r.url}
+              className="mt-3 flex max-w-full items-center gap-1.5 font-mono text-xs text-muted-foreground transition hover:text-foreground"
+            >
+              <Globe className="h-3.5 w-3.5 shrink-0" />
+              <span className="truncate underline decoration-white/20 underline-offset-2">
+                {r.url.replace(/^https?:\/\//, "").replace(/\/$/, "")}
+              </span>
+            </a>
+
+            <div className="mt-2.5 flex flex-wrap gap-1.5">
               {r.tags.map((t) => (
                 <span
                   key={t}
@@ -114,7 +134,7 @@ export function DemoSlide() {
                 </span>
               ))}
             </div>
-          </motion.a>
+          </motion.div>
         ))}
       </div>
 
@@ -126,7 +146,8 @@ export function DemoSlide() {
       >
         <span className="font-mono font-bold">→</span>
         <span>
-          Los cuatro son públicos: puedes abrirlos ahora desde tu teléfono.
+          Cada repo es también un sitio en vivo: abre cualquiera desde tu
+          teléfono.
         </span>
       </motion.div>
     </SlideShell>

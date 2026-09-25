@@ -29,12 +29,9 @@ import { ReproducibleSlide } from "../slides/ReproducibleSlide";
 import { InclusiveSlide } from "../slides/InclusiveSlide";
 import { MoldSlide } from "../slides/MoldSlide";
 import { DemoSlide } from "../slides/DemoSlide";
-import { EngineGithubSlide } from "../slides/EngineGithubSlide";
-import { GithubProfileSlide } from "../slides/GithubProfileSlide";
 import { EngineFlowSlide } from "../slides/EngineFlowSlide";
 import { LadderSlide } from "../slides/LadderSlide";
 import { LifecycleSlide } from "../slides/LifecycleSlide";
-import { MessagesSlide } from "../slides/MessagesSlide";
 import { EpilogueSlide } from "../slides/EpilogueSlide";
 
 const slideComponents: Record<string, React.ComponentType> = {
@@ -45,12 +42,9 @@ const slideComponents: Record<string, React.ComponentType> = {
   inclusive: InclusiveSlide,
   mold: MoldSlide,
   demo: DemoSlide,
-  "engine-github": EngineGithubSlide,
-  "github-profile": GithubProfileSlide,
   "engine-flow": EngineFlowSlide,
   ladder: LadderSlide,
   lifecycle: LifecycleSlide,
-  messages: MessagesSlide,
   epilogue: EpilogueSlide,
 };
 
@@ -235,306 +229,306 @@ export function Presentation() {
 
   return (
     <MotionConfig reducedMotion="user">
-    <div
-      data-projector={projector ? "true" : undefined}
-      className="relative flex h-[100dvh] w-full flex-col overflow-hidden bg-background text-foreground"
-    >
-      <div className="absolute left-0 top-0 z-30 h-1 w-full bg-white/5">
-        <motion.div
-          className="h-full bg-gradient-to-r from-[#00e5ff] via-[#4ade80] to-[#ff8c42]"
-          initial={false}
-          animate={{ width: `${((index + 1) / total) * 100}%` }}
-          transition={{ duration: 0.5, ease: "easeOut" }}
-        />
-      </div>
-
-      <div className="relative flex-1 overflow-hidden">
-        <AnimatePresence initial={false}>
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, x: 24 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -16 }}
-            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute inset-0"
-          >
-            <Current />
-          </motion.div>
-        </AnimatePresence>
-
-        <AnimatePresence>
-          {!showNav && hoverArea && showKeyboardHints && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              className="absolute bottom-4 right-4 z-30"
-            >
-              <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-background/90 px-3 py-1.5 text-xs text-muted-foreground">
-                <span>Presiona N para mostrar controles</span>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        <AnimatePresence>
-          {showNav && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-              transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
-              className="absolute bottom-4 right-4 z-40 flex flex-col gap-2"
-            >
-              <button
-                onClick={() => setShowNav((v) => !v)}
-                aria-label={showNav ? "Ocultar navegación" : "Mostrar navegación"}
-                title={`${showNav ? "Ocultar" : "Mostrar"} navegación (N)`}
-                className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-background px-3 py-2 text-xs font-medium text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground"
-              >
-                {showNav ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                <span className="hidden sm:inline">{showNav ? "Ocultar" : "Mostrar"}</span>
-              </button>
-              <button
-                onClick={toggleProjector}
-                aria-pressed={projector}
-                aria-label={projector ? "Desactivar modo proyector" : "Activar modo proyector"}
-                title={`Modo proyector (P) — fondo negro, máximo contraste`}
-                className={cn(
-                  "flex items-center gap-1.5 rounded-lg border px-3 py-2 text-xs font-medium backdrop-blur-md transition",
-                  projector
-                    ? "border-[#fbbf24]/50 bg-[#fbbf24]/10 text-[#fcd363]"
-                    : "border-white/10 bg-background/90 text-muted-foreground hover:border-[#fbbf24]/40 hover:text-foreground",
-                )}
-              >
-                <Projector className="h-4 w-4" />
-                <span className="hidden sm:inline">Proyector</span>
-              </button>
-              <button
-                onClick={toggleFullscreen}
-                aria-label={isFullscreen ? "Salir de pantalla completa" : "Pantalla completa"}
-                title={`${isFullscreen ? "Salir de" : "Pantalla"} completa (F)`}
-                className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-background px-3 py-2 text-xs font-medium text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground"
-              >
-                {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
-                <span className="hidden sm:inline">{isFullscreen ? "Minimizar" : "Fullscreen"}</span>
-              </button>
-            </motion.div>
-          )}
-        </AnimatePresence>
-
-        <button
-          aria-label="Diapositiva anterior"
-          onClick={prev}
-          disabled={index === 0}
-          className="absolute left-0 top-0 hidden h-full w-[12%] cursor-w-resize bg-transparent disabled:cursor-default lg:block"
-        />
-        <button
-          aria-label="Diapositiva siguiente"
-          onClick={next}
-          disabled={index === total - 1}
-          className="absolute right-0 top-0 hidden h-full w-[12%] cursor-e-resize bg-transparent disabled:cursor-default lg:block"
-        />
-      </div>
-
       <div
-        className={cn(
-          "relative z-20 border-t border-white/5 bg-background px-3 py-2.5 sm:px-5",
-          !showNav && "invisible pointer-events-none",
-        )}
-        aria-hidden={!showNav}
-        inert={!showNav}
+        data-projector={projector ? "true" : undefined}
+        className="relative flex h-[100dvh] w-full flex-col overflow-hidden bg-background text-foreground"
       >
-        <div className="mx-auto flex max-w-6xl items-center justify-between gap-2">
+        <div className="absolute left-0 top-0 z-30 h-1 w-full bg-white/5">
+          <motion.div
+            className="h-full bg-gradient-to-r from-[#00e5ff] via-[#4ade80] to-[#ff8c42]"
+            initial={false}
+            animate={{ width: `${((index + 1) / total) * 100}%` }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          />
+        </div>
+
+        <div className="relative flex-1 overflow-hidden">
+          <AnimatePresence initial={false}>
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, x: 24 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -16 }}
+              transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute inset-0"
+            >
+              <Current />
+            </motion.div>
+          </AnimatePresence>
+
+          <AnimatePresence>
+            {!showNav && hoverArea && showKeyboardHints && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="absolute bottom-4 right-4 z-30"
+              >
+                <div className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-background/90 px-3 py-1.5 text-xs text-muted-foreground">
+                  <span>Presiona N para mostrar controles</span>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <AnimatePresence>
+            {showNav && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute bottom-4 right-4 z-40 flex flex-col gap-2"
+              >
+                <button
+                  onClick={() => setShowNav((v) => !v)}
+                  aria-label={showNav ? "Ocultar navegación" : "Mostrar navegación"}
+                  title={`${showNav ? "Ocultar" : "Mostrar"} navegación (N)`}
+                  className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-background px-3 py-2 text-xs font-medium text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground"
+                >
+                  {showNav ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                  <span className="hidden sm:inline">{showNav ? "Ocultar" : "Mostrar"}</span>
+                </button>
+                <button
+                  onClick={toggleProjector}
+                  aria-pressed={projector}
+                  aria-label={projector ? "Desactivar modo proyector" : "Activar modo proyector"}
+                  title={`Modo proyector (P) — fondo negro, máximo contraste`}
+                  className={cn(
+                    "flex items-center gap-1.5 rounded-lg border px-3 py-2 text-xs font-medium backdrop-blur-md transition",
+                    projector
+                      ? "border-[#fbbf24]/50 bg-[#fbbf24]/10 text-[#fcd363]"
+                      : "border-white/10 bg-background/90 text-muted-foreground hover:border-[#fbbf24]/40 hover:text-foreground",
+                  )}
+                >
+                  <Projector className="h-4 w-4" />
+                  <span className="hidden sm:inline">Proyector</span>
+                </button>
+                <button
+                  onClick={toggleFullscreen}
+                  aria-label={isFullscreen ? "Salir de pantalla completa" : "Pantalla completa"}
+                  title={`${isFullscreen ? "Salir de" : "Pantalla"} completa (F)`}
+                  className="flex items-center gap-1.5 rounded-lg border border-white/10 bg-background px-3 py-2 text-xs font-medium text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground"
+                >
+                  {isFullscreen ? <Minimize2 className="h-4 w-4" /> : <Maximize2 className="h-4 w-4" />}
+                  <span className="hidden sm:inline">{isFullscreen ? "Minimizar" : "Fullscreen"}</span>
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
           <button
+            aria-label="Diapositiva anterior"
             onClick={prev}
             disabled={index === 0}
-            className="group inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground disabled:pointer-events-none disabled:opacity-30 sm:px-3 sm:py-2 sm:text-sm"
-          >
-            <ChevronLeft className="h-4 w-4" />
-            <span className="hidden sm:inline">Anterior</span>
-          </button>
-
-          {hasSlideAudio && (
-            <AudioPlayer
-              audioPath={currentAudioPath}
-              autoPlay={autoPlayAudio}
-              onPlay={() => setAutoPlayAudio(true)}
-              onPause={() => setAutoPlayAudio(false)}
-            />
-          )}
-
-          <div
-            ref={pillsRef}
-            onWheel={handlePillsWheel}
-            className="flex flex-1 items-center overflow-x-auto px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-          >
-            <div className="mx-auto flex w-max items-center gap-1.5 sm:gap-2">
-              {slidesMeta.map((s, i) => {
-                const active = i === index;
-                return (
-                  <button
-                    key={s.index}
-                    data-slide-index={i}
-                    onClick={() => go(i)}
-                    aria-label={`Ir a la diapositiva ${s.index}: ${s.title}`}
-                    title={`${s.index}. ${s.title}`}
-                    className={cn(
-                      "group relative flex shrink-0 items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs transition sm:px-3",
-                      active
-                        ? "bg-white/10 text-foreground"
-                        : "text-muted-foreground hover:bg-white/5 hover:text-foreground",
-                    )}
-                  >
-                    <span
-                      className={cn(
-                        "font-mono text-[10px]",
-                        active && s.accent === "cyan" && "text-neon-cyan",
-                        active && s.accent === "mint" && "text-neon-mint",
-                        active && s.accent === "orange" && "text-neon-orange",
-                        active && s.accent === "magenta" && "text-neon-magenta",
-                        active && s.accent === "violet" && "text-[#c084fc]",
-                        active && s.accent === "amber" && "text-[#fbbf24]",
-                        !active && "opacity-60",
-                      )}
-                    >
-                      {String(s.index).padStart(2, "0")}
-                    </span>
-                    <span className="hidden md:inline">{s.shortLabel}</span>
-                    {active && (
-                      <motion.span
-                        layoutId="slide-underline"
-                        className="absolute -bottom-[1px] left-2 right-2 h-0.5 rounded-full bg-current"
-                      />
-                    )}
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-
+            className="absolute left-0 top-0 hidden h-full w-[12%] cursor-w-resize bg-transparent disabled:cursor-default lg:block"
+          />
           <button
+            aria-label="Diapositiva siguiente"
             onClick={next}
             disabled={index === total - 1}
-            className="group inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground disabled:pointer-events-none disabled:opacity-30 sm:px-3 sm:py-2 sm:text-sm"
-          >
-            <span className="hidden sm:inline">Siguiente</span>
-            <ChevronRight className="h-4 w-4" />
-          </button>
-
-          <AutoPlayToggle
-            autoPlay={autoPlayAudio}
-            onToggle={() => setAutoPlayAudio(!autoPlayAudio)}
+            className="absolute right-0 top-0 hidden h-full w-[12%] cursor-e-resize bg-transparent disabled:cursor-default lg:block"
           />
-
-          <button
-            onClick={() => setOverview(true)}
-            aria-label="Ver todas las diapositivas"
-            title="Vista general (G)"
-            className="ml-1 flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 p-2 text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground sm:inline-flex"
-          >
-            <Grid2x2 className="h-4 w-4" />
-          </button>
-
-          <button
-            onClick={() => window.location.href = "/"}
-            aria-label="Ir al lanzador de presentaciones (H)"
-            title="Lanzador (H)"
-            className="ml-1 flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 p-2 text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground sm:inline-flex"
-          >
-            <Home className="h-4 w-4" />
-          </button>
         </div>
-      </div>
 
-      <AnimatePresence>
-        {overview && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex flex-col bg-background/95 backdrop-blur-xl"
-          >
-            <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
-              <div className="flex items-center gap-2">
-                <Grid2x2 className="h-5 w-5 text-[#00e5ff]" />
-                <h3 className="font-sans text-base font-semibold">
-                  Mapa de la presentación
-                </h3>
-                <span className="hidden font-mono text-xs text-muted-foreground sm:inline">
-                  · {total} diapositivas
-                </span>
-              </div>
-              <div className="flex items-center gap-2">
-                <div className="hidden items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs text-muted-foreground sm:flex">
-                  <Keyboard className="h-3.5 w-3.5" />
-                  <span>← → para navegar</span>
-                </div>
-                <button
-                  onClick={() => setOverview(false)}
-                  className="inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-sm text-muted-foreground transition hover:text-foreground"
-                >
-                  <X className="h-4 w-4" />
-                  Cerrar
-                </button>
-              </div>
-            </div>
-            <div className="scroll-neon flex-1 overflow-y-auto p-4 sm:p-6">
-              <div className="mx-auto grid max-w-6xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        <div
+          className={cn(
+            "relative z-20 border-t border-white/5 bg-background px-3 py-2.5 sm:px-5",
+            !showNav && "invisible pointer-events-none",
+          )}
+          aria-hidden={!showNav}
+          inert={!showNav}
+        >
+          <div className="mx-auto flex max-w-6xl items-center justify-between gap-2">
+            <button
+              onClick={prev}
+              disabled={index === 0}
+              className="group inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground disabled:pointer-events-none disabled:opacity-30 sm:px-3 sm:py-2 sm:text-sm"
+            >
+              <ChevronLeft className="h-4 w-4" />
+              <span className="hidden sm:inline">Anterior</span>
+            </button>
+
+            {hasSlideAudio && (
+              <AudioPlayer
+                audioPath={currentAudioPath}
+                autoPlay={autoPlayAudio}
+                onPlay={() => setAutoPlayAudio(true)}
+                onPause={() => setAutoPlayAudio(false)}
+              />
+            )}
+
+            <div
+              ref={pillsRef}
+              onWheel={handlePillsWheel}
+              className="flex flex-1 items-center overflow-x-auto px-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            >
+              <div className="mx-auto flex w-max items-center gap-1.5 sm:gap-2">
                 {slidesMeta.map((s, i) => {
-                  const Icon = s.icon;
+                  const active = i === index;
                   return (
-                    <motion.button
+                    <button
                       key={s.index}
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.04 }}
+                      data-slide-index={i}
                       onClick={() => go(i)}
+                      aria-label={`Ir a la diapositiva ${s.index}: ${s.title}`}
+                      title={`${s.index}. ${s.title}`}
                       className={cn(
-                        "group relative overflow-hidden rounded-xl border bg-card/40 p-4 text-left transition hover:bg-card/70",
-                        i === index
-                          ? "border-[#00e5ff]/50"
-                          : "border-white/10 hover:border-white/25",
+                        "group relative flex shrink-0 items-center gap-2 rounded-lg px-2.5 py-1.5 text-xs transition sm:px-3",
+                        active
+                          ? "bg-white/10 text-foreground"
+                          : "text-muted-foreground hover:bg-white/5 hover:text-foreground",
                       )}
                     >
-                      <div className="flex items-start justify-between gap-3">
-                        <div className="flex items-center gap-2">
-                          {Icon && (
-                            <span
-                              className={cn(
-                                "grid h-8 w-8 place-items-center rounded-lg border border-white/10 bg-white/5",
-                                s.accent === "cyan" && "text-neon-cyan",
-                                s.accent === "mint" && "text-neon-mint",
-                                s.accent === "orange" && "text-neon-orange",
-                                s.accent === "magenta" && "text-neon-magenta",
-                                s.accent === "violet" && "text-[#c084fc]",
-                                s.accent === "amber" && "text-[#fbbf24]",
-                              )}
-                            >
-                              <Icon className="h-4 w-4" />
-                            </span>
-                          )}
-                          <span className="font-mono text-xs text-muted-foreground">
-                            {String(s.index).padStart(2, "0")}
-                          </span>
-                        </div>
-                        <Play className="h-3.5 w-3.5 text-muted-foreground opacity-0 transition group-hover:opacity-100" />
-                      </div>
-                      <div className="mt-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
-                        {s.chapter}
-                      </div>
-                      <div className="mt-1 font-sans text-sm font-semibold leading-snug text-foreground">
-                        {s.title}
-                      </div>
-                    </motion.button>
+                      <span
+                        className={cn(
+                          "font-mono text-[10px]",
+                          active && s.accent === "cyan" && "text-neon-cyan",
+                          active && s.accent === "mint" && "text-neon-mint",
+                          active && s.accent === "orange" && "text-neon-orange",
+                          active && s.accent === "magenta" && "text-neon-magenta",
+                          active && s.accent === "violet" && "text-[#c084fc]",
+                          active && s.accent === "amber" && "text-[#fbbf24]",
+                          !active && "opacity-60",
+                        )}
+                      >
+                        {String(s.index).padStart(2, "0")}
+                      </span>
+                      <span className="hidden md:inline">{s.shortLabel}</span>
+                      {active && (
+                        <motion.span
+                          layoutId="slide-underline"
+                          className="absolute -bottom-[1px] left-2 right-2 h-0.5 rounded-full bg-current"
+                        />
+                      )}
+                    </button>
                   );
                 })}
               </div>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+
+            <button
+              onClick={next}
+              disabled={index === total - 1}
+              className="group inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground disabled:pointer-events-none disabled:opacity-30 sm:px-3 sm:py-2 sm:text-sm"
+            >
+              <span className="hidden sm:inline">Siguiente</span>
+              <ChevronRight className="h-4 w-4" />
+            </button>
+
+            <AutoPlayToggle
+              autoPlay={autoPlayAudio}
+              onToggle={() => setAutoPlayAudio(!autoPlayAudio)}
+            />
+
+            <button
+              onClick={() => setOverview(true)}
+              aria-label="Ver todas las diapositivas"
+              title="Vista general (G)"
+              className="ml-1 flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 p-2 text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground sm:inline-flex"
+            >
+              <Grid2x2 className="h-4 w-4" />
+            </button>
+
+            <button
+              onClick={() => window.location.href = "/"}
+              aria-label="Ir al lanzador de presentaciones (H)"
+              title="Lanzador (H)"
+              className="ml-1 flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 p-2 text-muted-foreground transition hover:border-[#00e5ff]/40 hover:text-foreground sm:inline-flex"
+            >
+              <Home className="h-4 w-4" />
+            </button>
+          </div>
+        </div>
+
+        <AnimatePresence>
+          {overview && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex flex-col bg-background/95 backdrop-blur-xl"
+            >
+              <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
+                <div className="flex items-center gap-2">
+                  <Grid2x2 className="h-5 w-5 text-[#00e5ff]" />
+                  <h3 className="font-sans text-base font-semibold">
+                    Mapa de la presentación
+                  </h3>
+                  <span className="hidden font-mono text-xs text-muted-foreground sm:inline">
+                    · {total} diapositivas
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <div className="hidden items-center gap-1.5 rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-xs text-muted-foreground sm:flex">
+                    <Keyboard className="h-3.5 w-3.5" />
+                    <span>← → para navegar</span>
+                  </div>
+                  <button
+                    onClick={() => setOverview(false)}
+                    className="inline-flex items-center gap-1 rounded-lg border border-white/10 bg-white/5 px-3 py-1.5 text-sm text-muted-foreground transition hover:text-foreground"
+                  >
+                    <X className="h-4 w-4" />
+                    Cerrar
+                  </button>
+                </div>
+              </div>
+              <div className="scroll-neon flex-1 overflow-y-auto p-4 sm:p-6">
+                <div className="mx-auto grid max-w-6xl grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
+                  {slidesMeta.map((s, i) => {
+                    const Icon = s.icon;
+                    return (
+                      <motion.button
+                        key={s.index}
+                        initial={{ opacity: 0, y: 12 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: i * 0.04 }}
+                        onClick={() => go(i)}
+                        className={cn(
+                          "group relative overflow-hidden rounded-xl border bg-card/40 p-4 text-left transition hover:bg-card/70",
+                          i === index
+                            ? "border-[#00e5ff]/50"
+                            : "border-white/10 hover:border-white/25",
+                        )}
+                      >
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="flex items-center gap-2">
+                            {Icon && (
+                              <span
+                                className={cn(
+                                  "grid h-8 w-8 place-items-center rounded-lg border border-white/10 bg-white/5",
+                                  s.accent === "cyan" && "text-neon-cyan",
+                                  s.accent === "mint" && "text-neon-mint",
+                                  s.accent === "orange" && "text-neon-orange",
+                                  s.accent === "magenta" && "text-neon-magenta",
+                                  s.accent === "violet" && "text-[#c084fc]",
+                                  s.accent === "amber" && "text-[#fbbf24]",
+                                )}
+                              >
+                                <Icon className="h-4 w-4" />
+                              </span>
+                            )}
+                            <span className="font-mono text-xs text-muted-foreground">
+                              {String(s.index).padStart(2, "0")}
+                            </span>
+                          </div>
+                          <Play className="h-3.5 w-3.5 text-muted-foreground opacity-0 transition group-hover:opacity-100" />
+                        </div>
+                        <div className="mt-3 text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+                          {s.chapter}
+                        </div>
+                        <div className="mt-1 font-sans text-sm font-semibold leading-snug text-foreground">
+                          {s.title}
+                        </div>
+                      </motion.button>
+                    );
+                  })}
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </MotionConfig>
   );
 }

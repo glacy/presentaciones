@@ -1,7 +1,7 @@
 # Presentación: "Construir para compartir"
 
 Charla para docentes sobre educación abierta, reproducible e inclusiva.
-14 diapositivas (`data/slidesMeta.ts` es la fuente de verdad; componentes en `slides/`).
+13 diapositivas (`data/slidesMeta.ts` es la fuente de verdad; componentes en `slides/`).
 
 ## Implementaciones documentadas
 

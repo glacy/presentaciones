@@ -57,16 +57,9 @@ export function LifecycleSlide() {
           </svg>
 
           <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-center">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.8, type: "spring", stiffness: 160 }}
-              className="grid h-20 w-20 place-items-center rounded-2xl border border-[#a855f7]/30 bg-[#a855f7]/10 text-[#c89ef7]"
-            >
-              <RefreshCw className="h-9 w-9" />
-            </motion.div>
+
             <div className="mt-2 font-sans text-sm font-bold text-foreground">
-              Material abierto
+              Material abierto, reproducible e inclusivo
             </div>
             <div className="text-[10px] text-muted-foreground">
               nunca “terminado”, siempre vivo

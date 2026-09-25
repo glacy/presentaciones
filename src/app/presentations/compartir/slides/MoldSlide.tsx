@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Cookie, Layers, Presentation as PresentationIcon, Globe, Infinity as InfinityIcon } from "lucide-react";
+import { Cookie, Layers, Presentation as PresentationIcon, Globe, TextCursor } from "lucide-react";
 import { getSlideMetaById, SLIDE_TOTAL } from "../data/slidesMeta";
 import { SlideShell } from "../../shared/ui/SlideShell";
 
@@ -77,10 +77,10 @@ export function MoldSlide() {
             transition={{ delay: 1.8 }}
             className="mt-4 flex items-start gap-2 rounded-lg border border-[#00e5ff]/30 bg-[#00e5ff]/5 px-4 py-3 text-sm text-[#7decff]"
           >
-            <InfinityIcon className="mt-0.5 h-4 w-4 shrink-0" />
+            <TextCursor className="mt-0.5 h-4 w-4 shrink-0" />
             <span>
-              Legible por humanos y máquinas:{" "}
-              <span className="font-semibold">lo que escribes es tuyo para siempre</span>.
+              Legible por humanos:{" "}
+              <span className="font-semibold">solo requiere un editor de texto</span>.
             </span>
           </motion.div>
         </div>

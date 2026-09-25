@@ -1,13 +1,11 @@
 import {
   Share2,
   FolderSearch,
-  Scale,
-  ChefHat,
+  Unlock,
   Parasol,
   Shapes,
   LayoutGrid,
-  GitBranch,
-  Zap,
+  Gpu,
   TrendingUp,
   RefreshCw,
   Gift,
@@ -16,7 +14,7 @@ import {
 } from "lucide-react";
 import type { SlideMeta } from "../../shared/types";
 
-export const SLIDE_TOTAL = 14;
+export const SLIDE_TOTAL = 11;
 
 export const slidesMeta: SlideMeta[] = [
   {
@@ -44,7 +42,7 @@ export const slidesMeta: SlideMeta[] = [
     title: "Abierta: la licencia lo cambia todo",
     chapter: "Tres palabras clave",
     accent: "mint",
-    icon: Scale,
+    icon: Unlock,
   },
   {
     index: 4,
@@ -53,7 +51,7 @@ export const slidesMeta: SlideMeta[] = [
     title: "Reproducible: la receta pública",
     chapter: "Tres palabras clave",
     accent: "amber",
-    icon: ChefHat,
+    icon: RefreshCw,
   },
   {
     index: 5,
@@ -84,33 +82,15 @@ export const slidesMeta: SlideMeta[] = [
   },
   {
     index: 8,
-    id: "engine-github",
-    shortLabel: "GitHub",
-    title: "La casa del material: GitHub",
-    chapter: "Bajo la cortina",
-    accent: "mint",
-    icon: GitBranch,
-  },
-  {
-    index: 9,
-    id: "github-profile",
-    shortLabel: "Perfil",
-    title: "Así se ve un perfil abierto",
-    chapter: "Bajo la cortina",
-    accent: "cyan",
-    icon: PackageOpen,
-  },
-  {
-    index: 10,
     id: "engine-flow",
-    shortLabel: "CI/CD · Vercel",
+    shortLabel: "CI/CD",
     title: "Tú escribes, la máquina publica",
     chapter: "Bajo la cortina",
     accent: "amber",
-    icon: Zap,
+    icon: Gpu,
   },
   {
-    index: 11,
+    index: 9,
     id: "ladder",
     shortLabel: "La escalera",
     title: "Caminos de adopción: la escalera",
@@ -119,7 +99,7 @@ export const slidesMeta: SlideMeta[] = [
     icon: TrendingUp,
   },
   {
-    index: 12,
+    index: 10,
     id: "lifecycle",
     shortLabel: "Ciclo de vida",
     title: "El ciclo de vida del material abierto",
@@ -128,16 +108,7 @@ export const slidesMeta: SlideMeta[] = [
     icon: RefreshCw,
   },
   {
-    index: 13,
-    id: "messages",
-    shortLabel: "Tres mensajes",
-    title: "Tres mensajes para llevar",
-    chapter: "Cierre",
-    accent: "cyan",
-    icon: Gift,
-  },
-  {
-    index: 14,
+    index: 11,
     id: "epilogue",
     shortLabel: "Enlaces",
     title: "Empieza hoy: enlaces y recursos",
